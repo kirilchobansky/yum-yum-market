@@ -1,0 +1,26 @@
+.content {
+    padding: 20px;
+    text-align: center;
+}
+
+.content h2 {
+    color: dodgerblue;
+}
+
+.content p {
+    color: #666;
+}
+
+.content a {
+    background-color: dodgerblue;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.content button:hover {
+    background-color: dodgerblue;
+}
