@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Food } from 'src/app/shared/models';
 import { FoodService } from '../food.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,7 +11,12 @@ import { FoodService } from '../food.service';
 export class DashboardComponent {
   foods: Food[] = [];
 
-  constructor(private foodServices: FoodService){
-      this.foods = this.foodServices.getAll();
+  constructor(private foodServices: FoodService, activatedRoute: ActivatedRoute){
+      activatedRoute.params.subscribe((params) => {
+        if(params['search']){
+            this.foods = this.foodServices.getFoodBySearch(params['search']);
+        }else this.foods = this.foodServices.getAll();
+      })
+      
   }
 }

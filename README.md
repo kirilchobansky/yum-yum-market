@@ -1,13 +1,26 @@
 # yum-yum-market
-Angular project with nodeJS @ SoftUni 
+
+Angular project with nodeJS @ SoftUni
 
 1. Create Angular App
 2. Create main modules in app
-3. Create header in core
-    - add html
-    - add css
-4. Create food services in food module
-5. Create dashboard in food module 
-    - get data from service in ts
-    - add html
-    - add css 
+3. Header
+   - create component
+   - add html
+   - add css
+4. Food services
+   - create service in food module
+5. Dashboard
+   - get data from service in ts
+   - add html
+   - add css
+6. Search
+   - add method to food service
+   - add search route
+   - show shearch result in dashboard
+   - generate search componet
+     - add to dashboard component
+     - add ts
+     - add html 
+     - add css
+

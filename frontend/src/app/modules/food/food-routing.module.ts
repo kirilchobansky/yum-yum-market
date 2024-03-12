@@ -9,6 +9,10 @@ const routes: Routes = [
             {
                 path: 'dashboard',
                 component: DashboardComponent
+            },
+            {
+                path: 'search/:search',
+                component: DashboardComponent
             }
         ]
     }
