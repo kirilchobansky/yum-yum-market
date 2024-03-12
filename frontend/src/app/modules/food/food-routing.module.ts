@@ -13,6 +13,10 @@ const routes: Routes = [
             {
                 path: 'search/:search',
                 component: DashboardComponent
+            },
+            {
+                path: 'tag/:tag',
+                component: DashboardComponent
             }
         ]
     }

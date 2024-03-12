@@ -1,6 +1,6 @@
-import { Food } from './shared/models';
+import { Food, Tag } from './shared/models';
 
-export const sampleFoods: Food[] = [
+export const sample_foods: Food[] = [
     {
     id:'1',
     name: 'Pizza Pepperoni',
@@ -67,4 +67,15 @@ export const sampleFoods: Food[] = [
     imageUrl: 'https://github.com/nasirjd/foodmine-course/blob/007095da4fef5c43d1f2f309c4a85b42677405ad/frontend/src/assets/food-1.jpg?raw=true',
     tags: ['FastFood', 'Pizza', 'Lunch'],
   }
+]
+
+export const sample_tags:Tag[] = [
+  { name: 'All', count: 6 },
+  { name: 'FastFood', count: 4 },
+  { name: 'Pizza', count: 2 },
+  { name: 'Lunch', count: 3 },
+  { name: 'SlowFood', count: 2 },
+  { name: 'Hamburger', count: 1 },
+  { name: 'Fry', count: 1 },
+  { name: 'Soup', count: 1 },
 ]

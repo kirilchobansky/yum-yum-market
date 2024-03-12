@@ -14,7 +14,9 @@ export class DashboardComponent {
   constructor(private foodServices: FoodService, activatedRoute: ActivatedRoute){
       activatedRoute.params.subscribe((params) => {
         if(params['search']){
-            this.foods = this.foodServices.getFoodBySearch(params['search']);
+          this.foods = this.foodServices.getFoodBySearch(params['search']);
+        }else if(params['tag']){
+          this.foods = this.foodServices.getAllFoodsByTag(params['tag']);
         }else this.foods = this.foodServices.getAll();
       })
       

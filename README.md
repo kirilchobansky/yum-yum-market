@@ -21,6 +21,18 @@ Angular project with nodeJS @ SoftUni
    - generate search componet
      - add to dashboard component
      - add ts
-     - add html 
+     - add html
      - add css
-
+7. Tags Bar
+   - create tag model
+   - add sample tags to data.ts
+   - Food service
+     - create getAllTags method
+     - create getAllFoodsByTag method
+   - add tags routing
+   - show tag result in dashboard
+   - generate tag component
+     - add to dashboard component
+     - add ts
+     - add html
+     - add css
