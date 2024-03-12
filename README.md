@@ -36,3 +36,10 @@ Angular project with nodeJS @ SoftUni
      - add ts
      - add html
      - add css
+8. Food Datails Page
+   - add method to food service
+   - generate food page component
+     - add route
+     - add ts 
+     - add html 
+     - add css
