@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FoodModule } from './food/food.module';
+import { AccountModule } from './account/account.module';
 
 
 
@@ -8,7 +9,8 @@ import { FoodModule } from './food/food.module';
   declarations: [],
   imports: [
     CommonModule,
-    FoodModule
+    FoodModule,
+    AccountModule
   ]
 })
 export class ModulesModule { }

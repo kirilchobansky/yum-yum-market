@@ -40,6 +40,16 @@ Angular project with nodeJS @ SoftUni
    - add method to food service
    - generate food page component
      - add route
-     - add ts 
-     - add html 
+     - add ts
+     - add html
+     - add css
+9. Cart page
+   - create cart item model
+   - create cart model
+   - generate cart service
+   - add to card button in card details page
+   - generate cart component
+     - add route
+     - add ts
+     - add html
      - add css
