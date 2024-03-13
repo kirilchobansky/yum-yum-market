@@ -9,14 +9,14 @@ import { ModulesModule } from './modules/modules.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     CoreModule,
     SharedModule,
-    ModulesModule
+    ModulesModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

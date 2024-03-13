@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { FoodRoutingModule } from './food-routing.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { DetailsComponent } from './details/details.component';
+import { CoreModule } from 'src/app/core/core.module';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { DetailsComponent } from './details/details.component';
     CommonModule,
     RouterModule,
     FoodRoutingModule,
-    SharedModule
+    SharedModule,
+    CoreModule
   ]
 })
 export class FoodModule { }

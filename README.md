@@ -53,3 +53,12 @@ Angular project with nodeJS @ SoftUni
      - add ts
      - add html
      - add css
+10. Not found page
+   - generate component 
+      - add ts
+      - add html 
+      - add css
+   - add to pages
+      - home page
+      - food details page
+      - cart page

@@ -3,17 +3,19 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header/header.component';
 import { RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-
+import { NotFoundPageComponent } from './not-found-page/not-found-page.component';
 
 
 @NgModule({
   declarations: [
     HeaderComponent,
-    HomeComponent
+    HomeComponent,
+    NotFoundPageComponent,
   ],
   exports: [
     HeaderComponent,
-    HomeComponent
+    HomeComponent,
+    NotFoundPageComponent,
   ],
   imports: [
     CommonModule,
