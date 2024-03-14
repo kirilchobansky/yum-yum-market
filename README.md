@@ -54,11 +54,29 @@ Angular project with nodeJS @ SoftUni
      - add html
      - add css
 10. Not found page
-   - generate component 
-      - add ts
-      - add html 
-      - add css
-   - add to pages
-      - home page
-      - food details page
-      - cart page
+
+- generate component
+  - add ts
+  - add html
+  - add css
+- add to pages
+  - home page
+  - food details page
+  - cart page
+
+11. Connect to backend
+
+- create backend folder
+- initialize project
+- install typescript
+- add ts config
+- copy data from frondend
+- install express and cors
+- create server.ts
+  - install @types
+  - install nodemon
+  - create routes and controllers folder
+  - create foodController and apis inside
+- add urs.ts to frontend
+- add httpClient module
+- update food service

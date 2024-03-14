@@ -10,7 +10,7 @@ import { NotFoundPageComponent } from './not-found-page/not-found-page.component
   declarations: [
     HeaderComponent,
     HomeComponent,
-    NotFoundPageComponent,
+    NotFoundPageComponent
   ],
   exports: [
     HeaderComponent,

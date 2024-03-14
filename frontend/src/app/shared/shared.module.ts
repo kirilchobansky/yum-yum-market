@@ -7,23 +7,22 @@ import { RouterModule } from '@angular/router';
 import { TitleComponent } from './title/title.component';
 
 
-
 @NgModule({
   declarations: [
     StarRatingComponent,
     SearchComponent,
     TagsComponent,
-    TitleComponent
+    TitleComponent,
   ],
   exports: [
     StarRatingComponent,
     SearchComponent,
     TagsComponent,
-    TitleComponent
+    TitleComponent,
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
   ]
 })
 export class SharedModule { }

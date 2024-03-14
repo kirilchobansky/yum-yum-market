@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FoodModule } from './food/food.module';
 import { AccountModule } from './account/account.module';
-import { CoreModule } from '../core/core.module';
 
 
 
@@ -11,7 +10,7 @@ import { CoreModule } from '../core/core.module';
   imports: [
     CommonModule,
     FoodModule,
-    AccountModule
+    AccountModule,
   ]
 })
 export class ModulesModule { }

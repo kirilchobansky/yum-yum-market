@@ -16,7 +16,7 @@ const routes: Routes = [
                 component: DashboardComponent
             },
             {
-                path: 'tag/:tag',
+                path: 'tags/:tag',
                 component: DashboardComponent
             },
             {
