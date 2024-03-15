@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -14,6 +14,9 @@ export class LoginComponent implements OnInit {
   isSubmitted = false;
   returnUrl = '';
 
+  emailControl!: FormControl;
+  passwordControl!: FormControl;
+
   constructor(private formBuilder: FormBuilder,
     private authService: AuthService,
     private activatedRoute: ActivatedRoute,
@@ -26,6 +29,8 @@ export class LoginComponent implements OnInit {
     });
 
     this.returnUrl = this.activatedRoute.snapshot.queryParams.returnUrl;
+    this.emailControl = this.loginForm.get('email') as FormControl;
+    this.passwordControl = this.loginForm.get('password') as FormControl;
   }
 
   get fc(){
