@@ -6,4 +6,4 @@ export const FOODS_TAGS_URL = FOODS_URL + '/tags';
 export const FOODS_BY_TAG_URL = FOODS_URL + '/tags/';
 export const FOODS_BY_ID_URL = FOODS_URL + '/details/';
 
-
+export const USERS_LOGIN_URL = BASE_URL + '/api/auth/login';

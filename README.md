@@ -80,3 +80,29 @@ Angular project with nodeJS @ SoftUni
 - add urs.ts to frontend
 - add httpClient module
 - update food service
+
+12. Login Page
+
+- generate component
+  - add to routes
+  - add ts
+  - add html
+    - import reactive form module
+  - add css
+- add login api
+  - use json
+  - add jsonwebtoken
+- generate auth service
+  - generate user model
+  - add user subject
+  - add login method
+    - add auth urls
+    - generate IUserLOgin interface
+    - add ngx-toastr
+      - import module
+      - import BrowserAnimationsModule
+      - add styles in angular.json
+    - add to header
+    - add local storage methods
+      - ddd logout method
+        - add to header
