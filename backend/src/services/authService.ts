@@ -1,6 +1,7 @@
 import jwt from 'jsonwebtoken';
+import { User } from '../models/User';
 
-export const generateToken = (user: any) => {
+exports.generateToken = (user: any) => {
     const token = jwt.sign({
         email: user.email,
         isAdmin: user.isAdmin
@@ -9,3 +10,5 @@ export const generateToken = (user: any) => {
     user.token = token;
     return user;
 }
+
+exports.findOne = (email: string) => User.findOne({email});

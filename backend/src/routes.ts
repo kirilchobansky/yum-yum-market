@@ -5,6 +5,6 @@ import foodController from './controllers/foodController';
 import authController from './controllers/authController';
 
 router.use('/api/foods', foodController);
-router.use('/api/auth', authController);
+router.use('/api/users', authController);
 
 export default router;

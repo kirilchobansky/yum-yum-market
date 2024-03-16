@@ -1,32 +1,47 @@
 import express from 'express';
 import { sample_foods, sample_tags } from '../data';
+import expressAsyncHandler from 'express-async-handler';
+import { Food } from '../models/Food';
+const foodService = require('../services/foodService');
 const router = express.Router();
 
-router.get('/', (req, res) => {
-    res.send(sample_foods);
-});
+router.get('/seed', expressAsyncHandler(
+    async (req, res) => {
+    const foodsCount = await Food.countDocuments();
+    if(foodsCount > 0){
+        res.send("Seed is already done!");
+        return;
+    }
 
-router.get('/search/:searchName', (req, res) => {
-    const searchName = req.params.searchName;
-    const foods = sample_foods
-        .filter(food => food.name.toLowerCase()
-        .includes(searchName.toLowerCase()));  
+    await Food.create(sample_foods);
+    res.send("Seed is done!");
+}));
+
+router.get('/', async (req, res) => {
+    const foods = await foodService.getAll();
     res.send(foods);
 })
 
-router.get('/tags', (req, res) => {
-    res.send(sample_tags);
+router.get('/search/:searchName', async (req, res) => {
+    const searchName = req.params.searchName;
+    const foods = await foodService.search(searchName);
+    res.send(foods);
+})
+
+router.get('/tags', async (req, res) => {
+    const tags = await foodService.getAllTags();
+    res.send(tags);
 });
 
-router.get('/tags/:tagName', (req, res) => {
+router.get('/tags/:tagName', async (req, res) => {
     const tagName = req.params.tagName;
-    const foods = sample_foods.filter(food => food.tags?.includes(tagName));
+    const foods = await foodService.getAllFoodsByTag(tagName);
     res.send(foods);
 });
 
-router.get('/details/:foodId', (req, res) => {
+router.get('/details/:foodId', async (req, res) => {
     const foodId = req.params.foodId;
-    const food = sample_foods.find(food => food.id === foodId);
+    const food = await foodService.getFoodById(foodId);
     res.send(food);
 })
 

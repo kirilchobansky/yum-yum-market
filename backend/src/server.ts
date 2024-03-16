@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import router from './routes';
+import mongoose from 'mongoose';
 
 
 const app = express();
@@ -14,6 +15,11 @@ app.use(cors({
 app.use(router);
 
 const port = 5000;
-app.listen(port, () => {
-    console.log(`Server is listening on http://localhost:${port}`);
+
+mongoose.connect('mongodb://localhost:27017/yum-yum-market')
+    .then(() => {
+        console.log('DB is successfuly connected');
+        app.listen(port, () => { 
+        console.log(`Server is listening on http://localhost:${port}`) 
+    })
 })
