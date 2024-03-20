@@ -9,5 +9,5 @@ export {
     Tag,
     CartItem,
     Cart,
-    User
+    User,
 }

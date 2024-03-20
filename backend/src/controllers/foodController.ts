@@ -1,21 +1,8 @@
 import express from 'express';
-import { sample_foods, sample_tags } from '../data';
 import expressAsyncHandler from 'express-async-handler';
 import { Food } from '../models/Food';
 const foodService = require('../services/foodService');
 const router = express.Router();
-
-router.get('/seed', expressAsyncHandler(
-    async (req, res) => {
-    const foodsCount = await Food.countDocuments();
-    if(foodsCount > 0){
-        res.send("Seed is already done!");
-        return;
-    }
-
-    await Food.create(sample_foods);
-    res.send("Seed is done!");
-}));
 
 router.get('/', async (req, res) => {
     const foods = await foodService.getAll();

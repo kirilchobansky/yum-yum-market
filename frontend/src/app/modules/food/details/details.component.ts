@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FoodService } from '../food.service';
-import { Food } from 'src/app/shared/models';
+import { Food } from 'src/app/core/models';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CartService } from '../../account/cart/cart.service';
 

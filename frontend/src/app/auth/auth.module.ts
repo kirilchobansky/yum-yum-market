@@ -8,6 +8,7 @@ import { InputValidationsComponent } from './partials/input-validations/input-va
 import { InputContainerComponent } from './partials/input-container/input-container.component';
 import { TextInputComponent } from './partials/text-input/text-input.component';
 import { DefaultButtonComponent } from './partials/default-button/default-button.component';
+import { RegisterComponent } from './register/register.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { DefaultButtonComponent } from './partials/default-button/default-button
     InputValidationsComponent,
     InputContainerComponent,
     TextInputComponent,
-    DefaultButtonComponent
+    DefaultButtonComponent,
+    RegisterComponent
   ],
   exports: [
     LoginComponent,

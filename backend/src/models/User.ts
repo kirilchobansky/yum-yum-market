@@ -1,6 +1,7 @@
 import {Schema, model} from 'mongoose';
+import bcrypt from 'bcrypt';
 
-interface User {
+export interface IUser {
     id: string;
     email: string;
     password: string
@@ -9,7 +10,7 @@ interface User {
     isAdmin: boolean;
 };
 
-const UserSchema = new Schema<User>(
+const userSchema = new Schema<IUser>(
     {
         name: {type: String, required: true},
         email: {type: String, required: true, unique: true},
@@ -24,4 +25,9 @@ const UserSchema = new Schema<User>(
     }
 );
 
-export const User = model<User>('user', UserSchema);
+userSchema.pre('save', async function () {
+    const hash = await bcrypt.hash(this.password, 12);
+    this.password = hash;
+});
+
+export const User = model<IUser>('user', userSchema);

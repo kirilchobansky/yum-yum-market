@@ -4,10 +4,10 @@
 
     <ul>
       <li *ngIf="!isAuth">
-        <a routerLink="/auth/login">Login</a>
+        <a routerLink="/users/login">Login</a>
       </li>
       <li *ngIf="!isAuth">
-        <a routerLink="/auth/register">Register</a>
+        <a routerLink="/users/register">Register</a>
       </li>
       <li>
         <a routerLink="/foods/dashboard">Foods</a>
@@ -15,7 +15,7 @@
       <li *ngIf="isAuth" class="menu-container">
         <a routerLink="/dashboard">{{ user.name }}</a>
         <div class="menu">
-          <a routerLink="/auth/profile">Profile</a>
+          <a routerLink="/users/profile">Profile</a>
           <a routerLink="/orders">Orders</a>
           <a (click)="logout()">Logout</a>
         </div>

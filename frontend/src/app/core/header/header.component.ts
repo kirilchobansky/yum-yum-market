@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { AuthService } from 'src/app/auth/auth.service';
 import { CartService } from 'src/app/modules/account/cart/cart.service';
-import { User } from 'src/app/shared/models';
+import { User } from '../models';
+
 
 @Component({
   selector: 'app-header',
@@ -20,9 +21,9 @@ export class HeaderComponent {
         this.quantity = cart.totalCount;
       })
 
-      this.authService.userObservable.subscribe((user) => {
+      this.authService.userObservable.subscribe((user) => {     
         this.user = user;
-      })
+      });
     }
 
     logout(){

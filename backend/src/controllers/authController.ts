@@ -1,31 +1,33 @@
 import express from 'express';
-import { sample_users } from '../data';
-import expressAsyncHandler from 'express-async-handler';
 import { User } from '../models/User';
 const authService = require('../services/authService');
 const router = express.Router();
 
-router.get('/seed', expressAsyncHandler(
-    async (req, res) => {
-    const foodsCount = await User.countDocuments();
-    if(foodsCount > 0){
-        res.send("Seed is already done!");
-        return;
-    }
-
-    await User.create(sample_users);
-    res.send("Seed is done!");
-}));
-
 router.post('/login', async (req, res) => {
     const { email, password } = req.body;
-    const user = await authService.findOne(email);
-
-    if(!user){
-        res.status(400).send('User email or password is not valid!');
-        return;
+    try {
+      const user = await authService.login(email, password);      
+      res.send(user);
+    } catch (error) {
+        res.status(400).send("Username or password is invalid!");
     }
-    res.send(authService.generateToken(user));
+    
+});
+
+router.post('/register', async (req, res) => {  
+    const {name, email, password, address} = req.body;
+
+    const newUser = {
+      id:'',
+      name,
+      email: email.toLowerCase(),
+      password,
+      address,
+      isAdmin: false
+    }
+
+    const user = await authService.register(newUser);
+    res.send(user); 
 })
 
 export default router;

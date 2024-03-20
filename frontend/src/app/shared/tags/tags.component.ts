@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FoodService } from 'src/app/modules/food/food.service';
-import { Tag } from '../models';
+import { Tag } from '../../core/models';
 
 @Component({
   selector: 'app-tags',

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Food } from 'src/app/shared/models';
+import { Food } from 'src/app/core/models';
 import { FoodService } from '../food.service';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';

@@ -106,7 +106,17 @@ Angular project with nodeJS @ SoftUni
     - add local storage methods
       - ddd logout method
         - add to header
-- make form input partials
-- connecting to mongoDB
-  - create models in backend
-  - adjust controllers with data from database 
+
+13. make form input partials
+
+14. connecting to mongoDB
+
+- create models in backend
+- adjust controllers with data from database
+
+15. Register
+
+- add register api
+- add register service
+- add register link
+- add register component
