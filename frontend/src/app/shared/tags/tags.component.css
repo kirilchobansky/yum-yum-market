@@ -10,10 +10,11 @@ div a {
     margin: 0.2rem 0.15rem;
     border-radius: 10rem;
     font-weight: 600;
-    color: blue;
+    color: dodgerblue;
 }
 
 div a:hover {
     opacity: 0.8;
     background: dodgerblue;
+    color: #fff;
 }

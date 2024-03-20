@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-not-found-page',
+  selector: 'not-found-page',
   templateUrl: './not-found-page.component.html',
   styleUrls: ['./not-found-page.component.css']
 })
