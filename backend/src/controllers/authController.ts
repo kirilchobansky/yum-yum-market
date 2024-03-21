@@ -1,5 +1,4 @@
 import express from 'express';
-import { User } from '../models/User';
 const authService = require('../services/authService');
 const router = express.Router();
 

@@ -120,3 +120,10 @@ Angular project with nodeJS @ SoftUni
 - add register service
 - add register link
 - add register component
+
+16. Loading
+
+- add image
+- add component
+- add service
+- add interceptor

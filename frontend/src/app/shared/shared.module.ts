@@ -10,6 +10,10 @@ import { InputContainerComponent } from './form-elements/input-container/input-c
 import { InputValidationsComponent } from './form-elements/input-validations/input-validations.component';
 import { TextInputComponent } from './form-elements/text-input/text-input.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { LoadingComponent } from './loading/loading.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { LoadingInterceptor } from './interceptors/loading.interceptor';
 
 
 @NgModule({
@@ -21,7 +25,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     DefaultButtonComponent,
     InputContainerComponent,
     InputValidationsComponent,
-    TextInputComponent
+    TextInputComponent,
+    LoadingComponent
   ],
   exports: [
     StarRatingComponent,
@@ -31,12 +36,17 @@ import { ReactiveFormsModule } from '@angular/forms';
     DefaultButtonComponent,
     InputContainerComponent,
     InputValidationsComponent,
-    TextInputComponent
+    TextInputComponent,
+    LoadingComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxSpinnerModule,
+  ],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true } 
   ]
 })
 export class SharedModule { }

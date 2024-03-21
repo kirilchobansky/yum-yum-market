@@ -11,7 +11,6 @@ import { ModulesModule } from './modules/modules.module';
 import { AuthModule } from './auth/auth.module';
 import { ToastrModule } from 'ngx-toastr';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +28,7 @@ import { ToastrModule } from 'ngx-toastr';
       timeOut: 10000,
       positionClass: 'toast-bottom-right',
       newestOnTop: false
-    })
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]
