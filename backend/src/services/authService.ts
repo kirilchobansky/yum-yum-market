@@ -21,9 +21,11 @@ exports.login = async (email: string, password: string) => {
 
 exports.findOne = (email: string) => User.findOne({email}); 
 
-exports.register = (user: any) => {
+exports.register = async (user: any) => {  
+    if(await User.findOne({email: user.email})){
+        throw new Error('Email is already in use');
+    };
     User.create(user);
-
     return generateToken(user);
 }
 
@@ -46,3 +48,4 @@ function generateToken(user: IUser) {
       token: token
     };
 }
+

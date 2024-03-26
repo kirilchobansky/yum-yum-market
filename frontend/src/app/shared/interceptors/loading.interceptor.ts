@@ -24,14 +24,23 @@ export class LoadingInterceptor implements HttpInterceptor {
     }
 
     return next.handle(request).pipe(
-      tap((event: HttpEvent<any>) => {
-        if (event instanceof HttpResponse) {
+      tap(
+        (event: HttpEvent<any>) => {
+          if (event instanceof HttpResponse) {
+            pendingRequests--;
+            if (pendingRequests === 0) {
+              this.spinner.hide();
+            }
+          }
+        },
+        (error: any) => {
           pendingRequests--;
           if (pendingRequests === 0) {
             this.spinner.hide();
           }
+          console.error('HTTP error:', error);
         }
-      })
+      )
     );
   }
 }

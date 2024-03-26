@@ -5,17 +5,18 @@ export const passwordMatchValidator = (passwordControlName: string, rePassContro
         const passwordControl = form.get(passwordControlName);
         const rePassControl = form.get(rePassControlName);
 
-        if(!passwordControl || !rePassControl) return;
+        if (!passwordControl || !rePassControl) return;
 
-        if(passwordControl.value !== rePassControl.value){
-            rePassControl.setErrors({notMatch: true});
-        }else {
+        if (passwordControl.value !== rePassControl.value) {
+            rePassControl.setErrors({ notMatch: true });
+        } else {
             const errors = rePassControl.errors;
-            if(!errors) return;
+            if (!errors) return;
 
             delete errors.notMatch;
             rePassControl.setErrors(errors);
         }
-        return validator;
+        return null;
     }
+    return validator;
 }

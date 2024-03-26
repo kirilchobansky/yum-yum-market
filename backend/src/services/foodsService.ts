@@ -39,4 +39,7 @@ exports.getAllTags = async () => {
 
 exports.getAllFoodsByTag = (tag: string) => Food.find({tags: tag});
 
-exports.getFoodById = (foodId: string) => Food.findById(foodId);
+exports.getFoodById = (foodId: string) => Food.findById(foodId).populate('comments');
+
+// exports.likeFood = (foodId: string, userId: string) => Food.findOneAndUpdate( {_id: foodId}, { $push: {favorite: userId}});
+

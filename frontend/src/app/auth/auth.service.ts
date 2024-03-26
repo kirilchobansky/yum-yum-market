@@ -22,11 +22,11 @@ export class AuthService {
   login(userLogin: IUserLogin): Observable<User>{
     return this.http.post<User>(USERS_LOGIN_URL, userLogin).pipe(
       tap({
-        next: (user) =>{
+        next: (user) => {
           this.setUserToLocalStorage(user);
           this.userSubject.next(user);
           this.toastrService.success(
-            `Welcome to Foodmine ${user.name}!`,
+            `Welcome to Yum Yum ${user.name}!`,
             'Login Successful'
           )
         },
@@ -44,7 +44,7 @@ export class AuthService {
           this.setUserToLocalStorage(user);
           this.userSubject.next(user);
           this.toastrService.success(
-            `Welcome to the Foodmine ${user.name}`,
+            `Welcome to the Yum Yum ${user.name}`,
             'Register Successful'
           )
         },
