@@ -1,0 +1,91 @@
+<div class="comments-section">
+  <div class="comments-section-header">
+    <app-title title="Comments" />
+    <button
+      class="show-hide-btn"
+      *ngIf="comments.length > 3 || (comments.length === 3 && !showAllComments)"
+      (click)="toggleCommentsVisibility()"
+    >
+      {{ showAllComments ? "Hide comments" : "Get all comments" }}
+    </button>
+  </div>
+  <ul class="comment-list">
+    <li class="comment" *ngFor="let comment of comments">
+      <div class="comment-header">
+        <span class="comment-author">
+          <i class="fa-solid fa-user"></i>
+          {{ comment.owner.name }}
+        </span>
+        <span class="comment-date">
+          {{ comment.createdAt | date : "dd/MM/yyyy HH:mm:ss" }}
+        </span>
+        <button
+          class="three-dots-button"
+          [ngClass]="{ active: commentOptionsVisibility[comment.id] }"
+          (click)="toggleOptions(comment.id)"
+        >
+          <i class="fas fa-ellipsis-h"></i>
+        </button>
+      </div>
+      <ng-container *ngIf="!isEditing || editingCommentId !== comment.id">
+        <p class="comment-text">{{ comment.comment }}</p>
+        <div
+          class="options"
+          *ngIf="commentOptionsVisibility[comment.id]"
+          [ngClass]="{ show: commentOptionsVisibility[comment.id] }"
+        >
+          <button
+            class="btn-options"
+            *ngIf="userId === comment.owner.id"
+            (click)="startEditing(comment.id)"
+          >
+            Edit
+          </button>
+          <button
+            class="btn-options"
+            *ngIf="userId === comment.owner.id"
+            (click)="delete(comment.id)"
+          >
+            Delete
+          </button>
+          <p *ngIf="userId !== comment.owner.id">Not the owner!</p>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="isEditing && editingCommentId === comment.id">
+        <p class="comment-text" contenteditable="true" #editableComment>
+          {{ comment.comment }}
+        </p>
+        <div
+          class="options"
+          [ngClass]="{ show: commentOptionsVisibility[comment.id] }"
+        >
+          <button
+            class="btn-options"
+            *ngIf="userId === comment.owner.id"
+            (click)="saveEditedComment(comment.id, editableComment.innerText)"
+          >
+            Save
+          </button>
+          <button
+            class="btn-options"
+            *ngIf="userId === comment.owner.id"
+            (click)="cancelEditing()"
+          >
+            Cancel
+          </button>
+        </div>
+      </ng-container>
+    </li>
+  </ul>
+  <div class="no-comments" *ngIf="comments.length === 0">No Comments Yet!</div>
+
+  <form class="comment-form" (click)="submit()">
+    <text-input
+      [control]="commentControl"
+      [showErrors]="isSubmitted"
+      type="text"
+      label="Your Comment"
+    ></text-input>
+    <default-button text="Comment" />
+  </form>
+</div>

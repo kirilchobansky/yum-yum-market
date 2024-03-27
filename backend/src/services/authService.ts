@@ -15,24 +15,26 @@ exports.login = async (email: string, password: string) => {
     if (!isValid) {
         throw new Error('Cannot find email or password!');
     }
-
+    
     return generateToken(user);
 }
 
 exports.findOne = (email: string) => User.findOne({email}); 
 
 exports.register = async (user: any) => {  
-    if(await User.findOne({email: user.email})){
+     const existingUser = await User.findOne({ email: user.email });
+    if (existingUser) {
         throw new Error('Email is already in use');
-    };
-    User.create(user);
-    return generateToken(user);
+    }
+
+    const createdUser = await User.create(user);
+    return generateToken(createdUser);
 }
 
 function generateToken(user: IUser) {
 
     const payload = {
-        id: user.id,
+        id: user._id,
         email: user.email,
         isAdmin: user.isAdmin
     }
@@ -40,7 +42,7 @@ function generateToken(user: IUser) {
     const token = jwt.sign(payload, SECRET, { expiresIn: '2h' })
   
     return {
-      id: user.id,
+      id: user._id,
       email: user.email,
       name: user.name,
       address: user.address,

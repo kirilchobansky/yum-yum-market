@@ -33,4 +33,8 @@ export class DetailsComponent {
       this.router.navigate(['/cart-page']);
     }
 
+    addToFavorite(){
+      
+    }
+
 }

@@ -1,0 +1,135 @@
+.comments-section {
+    border-top: 1px solid #ccc;
+    padding-top: 20px;
+}
+
+.comment-list {
+    list-style: none;
+    padding: 0;
+}
+
+.comment {
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.comment-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.comment-author {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    color: #333;
+    margin: 0;
+}
+
+.comment-author i {
+    margin-right: 0.5em;
+}
+
+.comment-date {
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.three-dots-button {
+    position: absolute;
+    bottom: -50px;
+    right: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #666;
+    transition: margin 0.3s ease, color 0.3s ease;
+}
+
+.three-dots-button i {
+    font-size: 1.5rem;
+}
+
+.three-dots-button.active {
+    margin-right: 1rem;
+    color: black
+}
+
+.comment-text {
+    color: #444;
+}
+
+.no-comments {
+    display: flex;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 100;
+    height: 5rem;
+}
+
+.options {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.btn-options {
+    margin: 5px;
+    padding: 8px 16px;
+    width: 4rem;
+    height: 1.5rem;
+    border: solid 3px black;
+    border-radius: 5rem;
+    font-weight: bold;
+    font-size: 15px;
+    background-color: white;
+    color: black;
+    cursor: pointer;
+}
+
+.btn-options:hover {
+    background-color: #e2e0e0;
+}
+
+.options.show {
+    animation: slideIn 0.8s forwards;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+.comments-section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.show-hide-btn {
+    margin-left: auto;
+    margin-right: 10px;
+    padding: 8px 16px;
+    border: solid 3px black;
+    border-radius: 5rem;
+    font-weight: bold;
+    font-size: 15px;
+    background-color: white;
+    color: black;
+    cursor: pointer;
+}
+
+.show-hide-btn:hover {
+    background-color: #e2e0e0;
+}

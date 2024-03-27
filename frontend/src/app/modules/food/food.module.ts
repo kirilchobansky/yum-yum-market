@@ -6,16 +6,19 @@ import { FoodRoutingModule } from './food-routing.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { DetailsComponent } from './details/details.component';
 import { CoreModule } from 'src/app/core/core.module';
+import { CommentsComponent } from './comments/comments.component';
 
 
 @NgModule({
   declarations: [
     DashboardComponent,
     DetailsComponent,
+    CommentsComponent,
   ],
   exports: [
     DashboardComponent,
-    DetailsComponent
+    DetailsComponent,
+    CommentsComponent
   ],
   imports: [
     CommonModule,

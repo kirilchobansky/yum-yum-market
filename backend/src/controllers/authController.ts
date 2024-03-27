@@ -27,6 +27,7 @@ router.post('/register', async (req, res) => {
     
     try {
         const user = await authService.register(newUser);
+        
         res.send(user); 
     } catch (error: any) {
         res.status(400).send(error.message);

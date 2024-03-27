@@ -41,6 +41,8 @@ export class AuthService {
     return this.http.post<User>(USERS_REGISTER_URL, userRegiser).pipe(
       tap({
         next: (user) => {
+          console.log(user);
+          
           this.setUserToLocalStorage(user);
           this.userSubject.next(user);
           this.toastrService.success(
@@ -49,8 +51,7 @@ export class AuthService {
           )
         },
         error: (errorResponse) => {
-          this.toastrService.error(errorResponse.error,
-            'Register Failed')
+          this.toastrService.error(errorResponse.error,'Register Failed')
         }
       })
     )
@@ -63,7 +64,7 @@ export class AuthService {
     window.location.reload();
   }
 
-  private setUserToLocalStorage(user:User){
+  private setUserToLocalStorage(user: User){
     localStorage.setItem(USER_KEY, JSON.stringify(user));
   }
 
