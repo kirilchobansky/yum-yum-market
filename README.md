@@ -127,3 +127,14 @@ Angular project with nodeJS @ SoftUni
 - add component
 - add service
 - add interceptor
+
+17. Comments 
+ - add comments references to user and food
+ - make backend routers to handle requests for comments
+    - add comments service 
+    - add comments controller
+ - add comments component
+  - add service
+  - add ts 
+  - add html
+  - add css 
