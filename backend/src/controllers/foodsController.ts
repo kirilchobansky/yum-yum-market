@@ -1,6 +1,6 @@
 import express from 'express';
 import { Food } from '../models/Food';
-import { sample_foods } from '../data';
+import { foods_seed, sample_foods } from '../data';
 const foodsService = require('../services/foodsService');
 const router = express.Router();
 
@@ -11,7 +11,7 @@ router.get('/seed', async (req, res) => {
       return;
     }
 
-    await Food.create(sample_foods);
+    await Food.create(foods_seed);
     res.send('Seed Is Done!');
 });
 
@@ -42,23 +42,5 @@ router.get('/details/:foodId', async (req, res) => {
     const food = await foodsService.getFoodById(foodId);
     res.send(food);
 });
-
-// router.post('/details/:foodId/like', async (req, res) => {
-//     const foodId = req.params.foodId;
-
-//     // Retrieve userId from local storage
-//     const userId = localStorage.getItem('User') ? JSON.parse(localStorage.getItem('User')).id : null;
-
-//     // Check if userId is available
-//     if (!userId) {
-//         return res.status(401).json({ error: 'User not authenticated.' });
-//     }
-
-//     // Call likeFood function with foodId and userId
-//     await foodsService.likeFood(foodId, userId);
-
-//     // Send response
-//     res.status(200).json({ message: 'Food liked successfully.' });
-// });
 
 export default router;

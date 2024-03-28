@@ -51,3 +51,9 @@ function generateToken(user: IUser) {
     };
 }
 
+exports.likeFood = (foodId: string, userId: string) => User.findByIdAndUpdate( userId, { $push: { favoriteFoods: foodId }});
+
+exports.dislikeFood = (foodId: string, userId: string) => User.findByIdAndUpdate( userId, { $pull: { favoriteFoods: foodId }});
+
+exports.getUserById = (userId: string) => User.findById(userId);
+

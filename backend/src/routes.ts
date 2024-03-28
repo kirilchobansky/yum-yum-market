@@ -2,7 +2,7 @@ import express from 'express';
 const router = express.Router();
 
 import foodsController from './controllers/foodsController';
-import authController from './controllers/authController';
+import authController from './controllers/userController';
 import commentController from './controllers/commentsController';
 
 router.use('/api/foods', foodsController);

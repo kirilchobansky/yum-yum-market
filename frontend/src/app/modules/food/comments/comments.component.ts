@@ -119,7 +119,7 @@ export class CommentsComponent implements OnInit {
     }
 
     delete(commentId: string){
-      this.commentsService.deleteComment(commentId).subscribe((response) => {
+      this.commentsService.deleteComment(commentId, this.userId, this.foodId).subscribe((response) => {
         this.toastrService.success(response);
         this.getLatestThreeCommentsByFood();
       });

@@ -11,7 +11,13 @@
       <span class="name">
         {{ food.name }}
       </span>
-      <button (click)="addToFavorite()" class="favorite {{ food.favorite ? '' : 'not' }}">❤</button>
+      <button
+        (click)="likeOrDislikeFood()"
+        class="favorite"
+        [ngClass]="{ not: !isLiked, liked: isLiked }"
+      >
+        ❤
+      </button>
     </div>
     <div class="rating">
       <star-rating [stars]="food.stars" [size]="2" />

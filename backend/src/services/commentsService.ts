@@ -19,6 +19,8 @@ exports.updateFood = (foodId: string, commentId: string) => Food.findByIdAndUpda
 
 exports.deleteComment = (commentId: string) => Comment.findByIdAndDelete(commentId);
 
-exports.editComment = (commentId: string, commentData: string) => {
-    return Comment.findByIdAndUpdate(commentId, { comment: commentData}, { new: true });
-};
+exports.editComment = (commentId: string, commentData: string) => Comment.findByIdAndUpdate(commentId, { comment: commentData}, { new: true });
+
+exports.updateUserDelete = (userId: string, commentId: string) => User.findByIdAndUpdate(userId, { $pull: { comments: commentId } });
+
+exports.updateFoodDelete = (foodId: string, commentId: string) => Food.findByIdAndUpdate(foodId, { $pull: { comments: commentId } });

@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { COMMENTS_ALL_BY_FOOD_URL, COMMENTS_LATEST_BY_FOOD_URL, COMMENTS_URL } from 'src/app/core/constans/urls';
@@ -10,7 +10,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class CommentsService {
 
-  constructor(private http: HttpClient, private toastrService: ToastrService) { }
+  constructor(private http: HttpClient) { }
 
   postComment(foodId: string, comment: string){
     const userJson = localStorage.getItem('User');
@@ -36,7 +36,10 @@ export class CommentsService {
     return this.http.put<string>(COMMENTS_URL + '/' + commentId, { comment: updatedComment });
   }
 
-  deleteComment(commentId: string): Observable<string> {
-    return this.http.delete<string>(COMMENTS_URL + '/' + commentId);
+  deleteComment(commentId: string, userId: string, foodId: string): Observable<string> {
+    const params = new HttpParams()
+    .set('userId', userId)
+    .set('foodId', foodId);
+    return this.http.delete<string>(COMMENTS_URL + '/' + commentId, { params });
   }
 }

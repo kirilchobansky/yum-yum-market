@@ -57,7 +57,12 @@ router.put('/:commentId', async (req, res) => {
 
 router.delete('/:commentId', async (req, res) => {
     const commentId = req.params.commentId;
+    const userId = req.query.userId;
+    const foodId = req.query.foodId;
+    
     await commentsService.deleteComment(commentId);
+    await commentsService.updateUserDelete(userId, commentId);
+    await commentsService.updateFoodDelete(foodId, commentId);
     res.status(200).json('You have successfully DELETED the comment')
 })
 

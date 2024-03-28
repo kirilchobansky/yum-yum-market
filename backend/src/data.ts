@@ -74,3 +74,28 @@ export const sample_foods: any[] = [
     tags: ['FastFood', 'Pizza', 'Lunch'],
   },
 ];
+
+export const foods_seed: any[] = [
+  {
+    id: '3',
+    name: 'Hamburger',
+    price: 5,
+    cookTime: '10-15',
+    favorite: false,
+    origins: ['germany', 'us'],
+    stars: 3.5,
+    imageUrl: 'assets/food-3.jpg',
+    tags: ['FastFood', 'Hamburger'],
+  },
+  {
+    id: '4',
+    name: 'Fried Potatoes',
+    price: 2,
+    cookTime: '15-20',
+    favorite: true,
+    origins: ['belgium', 'france'],
+    stars: 3.3,
+    imageUrl: 'assets/food-4.jpg',
+    tags: ['FastFood', 'Fry'],
+  }
+]
