@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Order } from 'src/app/core/models/Order';
-import { CartService } from '../cart/cart.service';
+import { CartService } from '../services/cart.service';
 import { AuthService } from 'src/app/auth/auth.service';
-import { CheckoutService } from './checkout.service';
 import { Router } from '@angular/router';
+import { OrderService } from '../services/order.service';
 
 @Component({
   selector: 'app-checkout',
@@ -21,7 +21,7 @@ export class CheckoutComponent implements OnInit{
       private formBuilder: FormBuilder,
       private cartService: CartService,
       private authService: AuthService,
-      private checkoutService: CheckoutService,
+      private orderService: OrderService,
       private router: Router,
       private toastrService: ToastrService  ){}
 
@@ -54,7 +54,7 @@ export class CheckoutComponent implements OnInit{
       this.order.name = this.fc.name.value;
       this.order.address = this.fc.address.value;
 
-      this.checkoutService.createOrder(this.order).subscribe({
+      this.orderService.createOrder(this.order).subscribe({
         next: () => {
           this.router.navigate(['/payment'])
         },

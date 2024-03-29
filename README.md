@@ -172,6 +172,7 @@ Angular project with nodeJS @ SoftUni
     - Add CSS
   - Add Auth Guard
 - Save Order
+
   - Add Order Model
   - Add Order Status Enum
   - Add Auth Middleware
@@ -181,3 +182,11 @@ Angular project with nodeJS @ SoftUni
   - Add Order Service
     - Add create Method
   - Add Auth Interceptor
+
+20. Payment Page
+
+- Generate Component
+- Add 'getOrderForCurrentUser' api
+- Add Order Service method
+- Connect Component to Service
+- Make the map component readonly

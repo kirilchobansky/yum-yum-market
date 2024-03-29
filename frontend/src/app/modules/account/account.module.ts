@@ -14,10 +14,12 @@ import { PaymentComponent } from './payment/payment.component';
   declarations: [
     CartComponent,
     CheckoutComponent,
+    PaymentComponent
   ],
   exports: [
     CartComponent,
     CheckoutComponent,
+    PaymentComponent
   ],
   imports: [
     CommonModule,

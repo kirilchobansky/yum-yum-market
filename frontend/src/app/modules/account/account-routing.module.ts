@@ -8,7 +8,9 @@ import { PaymentComponent } from './payment/payment.component';
 
 const routes: Routes = [
   {path: 'cart-page', component: CartComponent},
+  {path: 'users/profile', component: ProfileComponent, canActivate: [AuthGuard]},
   {path: 'checkout', component: CheckoutComponent, canActivate: [AuthGuard]},
+  {path: 'payment', component: PaymentComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({

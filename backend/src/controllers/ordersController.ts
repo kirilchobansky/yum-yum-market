@@ -24,4 +24,13 @@ router.post('/create', async (req: any, res) => {
     }
 });
 
+router.get('/new-order-current-user', async (req: any, res) => {
+    const order = await ordersService.getOrderByUser(req.user.id);
+    if(!order){
+        res.status(401);
+        return;
+    }
+    res.status(200).send(order);
+});
+
 export default router;

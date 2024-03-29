@@ -18,7 +18,10 @@ const deleteExistingOrders = async (userId: string) => {
     }
 };
 
+const getOrderByUser = (userId: string) => Order.findOne({user: userId, status: OrderStatus.NEW});
+
 export default {
     createNewOrder,
-    deleteExistingOrders
+    deleteExistingOrders,
+    getOrderByUser
 }
