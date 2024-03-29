@@ -17,6 +17,7 @@ import { LoadingInterceptor } from './interceptors/loading.interceptor';
 import { OrderItemsListComponent } from './order-items-list/order-items-list.component';
 import { MapComponent } from './map/map.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { PaypalButtonComponent } from './buttons/paypal-button/paypal-button.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
     TextInputComponent,
     LoadingComponent,
     OrderItemsListComponent,
-    MapComponent
+    MapComponent,
+    PaypalButtonComponent
   ],
   exports: [
     StarRatingComponent,
@@ -44,7 +46,8 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
     TextInputComponent,
     LoadingComponent,
     OrderItemsListComponent,
-    MapComponent
+    MapComponent,
+    PaypalButtonComponent
   ],
   imports: [
     CommonModule,

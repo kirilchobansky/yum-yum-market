@@ -190,3 +190,13 @@ Angular project with nodeJS @ SoftUni
 - Add Order Service method
 - Connect Component to Service
 - Make the map component readonly
+
+21. Adding Paypal
+
+- Generate Component
+  - Add to payment page
+- Get Paypal client Id
+- Add Paypal JS to index.html
+- Set up Paypal button
+- Add Pay api to order router
+- Get Paypal sandbox account

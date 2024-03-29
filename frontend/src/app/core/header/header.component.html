@@ -10,11 +10,10 @@
         <a routerLink="/foods/dashboard">Foods</a>
       </li>
       <li *ngIf="isAuth" class="menu-container">
-        <a routerLink="/users/profile"
-          ><i class="fa-solid fa-user"></i> {{ user.name }}</a
+        <a><i class="fa-solid fa-user"></i> {{ user.name }}</a
         >
         <div class="menu">
-          <a routerLink="/users/favorites">Favorites</a>
+          <a routerLink="/users/profile">My Account</a>
           <a routerLink="users/orders">Orders</a>
           <a (click)="logout()">Logout</a>
         </div>

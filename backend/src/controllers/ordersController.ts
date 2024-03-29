@@ -1,6 +1,7 @@
 import express from 'express';
 import isAuth from '../middlewares/isAuth';
 import ordersService from '../services/ordersService';
+import { OrderStatus } from '../constants/order_status';
 
 const router = express.Router();
 
@@ -32,5 +33,20 @@ router.get('/new-order-current-user', async (req: any, res) => {
     }
     res.status(200).send(order);
 });
+
+router.post('/pay', async (req: any, res) => {
+    const { paymentId } = req.body;
+    const order = await ordersService.getOrderByUser(req.user.id);
+    if(!order){
+        res.status(400).send('Order Not Found!');
+        return;
+    }
+    
+    order.paymentId = paymentId;
+    order.status = OrderStatus.PAYED;
+    await order.save();
+
+    res.send(order._id);
+})
 
 export default router;
