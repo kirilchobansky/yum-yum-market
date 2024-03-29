@@ -1,7 +1,7 @@
 import express from 'express';
 import { Food } from '../models/Food';
 import { foods_seed, sample_foods } from '../data';
-const foodsService = require('../services/foodsService');
+import foodsService from '../services/foodsService';
 const router = express.Router();
 
 router.get('/seed', async (req, res) => {

@@ -24,3 +24,15 @@ exports.editComment = (commentId: string, commentData: string) => Comment.findBy
 exports.updateUserDelete = (userId: string, commentId: string) => User.findByIdAndUpdate(userId, { $pull: { comments: commentId } });
 
 exports.updateFoodDelete = (foodId: string, commentId: string) => Food.findByIdAndUpdate(foodId, { $pull: { comments: commentId } });
+
+// export default {
+//     getAllCommentsByFood,
+//     getLatestThreeCommentsByFood,
+//     postComment,
+//     updateFood,
+//     updateUser,
+//     updateFoodDelete,
+//     updateUserDelete,
+//     editComment,
+//     deleteComment
+// }

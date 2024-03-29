@@ -15,3 +15,6 @@ export const USERS_DISLIKE_FOOD = USERS_URL + '/dislike/';
 export const COMMENTS_URL = BASE_URL + '/api/comments';
 export const COMMENTS_ALL_BY_FOOD_URL = COMMENTS_URL + '/all/';
 export const COMMENTS_LATEST_BY_FOOD_URL = COMMENTS_URL + '/latest-three/';
+
+export const ORDERS_URL = BASE_URL + '/api/orders';
+export const ORDERS_CREATE_URL = ORDERS_URL + '/create';

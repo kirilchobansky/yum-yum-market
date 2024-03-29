@@ -4,7 +4,7 @@ import { User, IUser } from '../models/User';
 
 const SECRET = 'ThatIsMyBestSecret';
 
-exports.login = async (email: string, password: string) => {
+const login = async (email: string, password: string) => {
     const user = await User.findOne({ email });
 
     if (!user) {
@@ -19,9 +19,9 @@ exports.login = async (email: string, password: string) => {
     return generateToken(user);
 }
 
-exports.findOne = (email: string) => User.findOne({email}); 
+const findOne = (email: string) => User.findOne({email}); 
 
-exports.register = async (user: any) => {  
+const register = async (user: any) => {  
      const existingUser = await User.findOne({ email: user.email });
     if (existingUser) {
         throw new Error('Email is already in use');
@@ -39,7 +39,7 @@ function generateToken(user: IUser) {
         isAdmin: user.isAdmin
     }
 
-    const token = jwt.sign(payload, SECRET, { expiresIn: '2h' })
+    const token = jwt.sign(payload, SECRET, { expiresIn: '30d' })
   
     return {
       id: user._id,
@@ -51,9 +51,17 @@ function generateToken(user: IUser) {
     };
 }
 
-exports.likeFood = (foodId: string, userId: string) => User.findByIdAndUpdate( userId, { $push: { favoriteFoods: foodId }});
+const likeFood = (foodId: string, userId: string) => User.findByIdAndUpdate( userId, { $push: { favoriteFoods: foodId }});
 
-exports.dislikeFood = (foodId: string, userId: string) => User.findByIdAndUpdate( userId, { $pull: { favoriteFoods: foodId }});
+const dislikeFood = (foodId: string, userId: string) => User.findByIdAndUpdate( userId, { $pull: { favoriteFoods: foodId }});
 
-exports.getUserById = (userId: string) => User.findById(userId);
+const getUserById = (userId: string) => User.findById(userId);
 
+export default {
+    login,
+    register,
+    findOne,
+    likeFood,
+    dislikeFood,
+    getUserById
+}

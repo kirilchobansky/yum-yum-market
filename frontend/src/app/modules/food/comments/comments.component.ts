@@ -109,13 +109,15 @@ export class CommentsComponent implements OnInit {
     saveEditedComment(commentId: string, comment: string) {
       this.commentsService.editComment(commentId, comment).subscribe((response) => {
         this.toastrService.success(response);
+        this.commentOptionsVisibility[commentId] = false;
         this.getLatestThreeCommentsByFood();
       })
       this.isEditing = false;
     }
 
-    cancelEditing() {
+    cancelEditing(commentId: string) {
       this.isEditing = false;
+      this.commentOptionsVisibility[commentId] = false;
     }
 
     delete(commentId: string){

@@ -1,7 +1,9 @@
 import express from 'express';
 import { Comment } from '../models/Comment';
 import { sample_comments } from '../data';
-const commentsService = require('../services/commentsService');
+// import commentsService from '../services/commentsService';
+import isAuth from '../middlewares/isAuth';
+const commentsService = require('../services/commentsService')
 
 const router = express.Router();
 
@@ -26,7 +28,7 @@ router.get('/latest-three/:foodId', async (req, res) => {
     res.send(comments);
 });
 
-router.post('/:foodId', async (req, res) => {
+router.post('/:foodId', isAuth, async (req, res) => {
     try {
         const foodId = req.params.foodId;
         const { comment, userId } = req.body;
@@ -47,7 +49,7 @@ router.post('/:foodId', async (req, res) => {
     }
 });
 
-router.put('/:commentId', async (req, res) => {
+router.put('/:commentId', isAuth, async (req, res) => {
     const commentId = req.params.commentId;
     const updatedComment = req.body.comment; 
 
@@ -55,7 +57,7 @@ router.put('/:commentId', async (req, res) => {
     res.status(200).json('You have successfully UPDATED the comment');
 });
 
-router.delete('/:commentId', async (req, res) => {
+router.delete('/:commentId', isAuth, async (req, res) => {
     const commentId = req.params.commentId;
     const userId = req.query.userId;
     const foodId = req.query.foodId;

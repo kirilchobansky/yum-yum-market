@@ -1,8 +1,10 @@
 import express from 'express';
-const userService = require('../services/userService');
+import userService from '../services/userService'
+import isAuth from '../middlewares/isAuth';
+import isGuest from '../middlewares/isGuest';
 const router = express.Router();
 
-router.post('/login', async (req, res) => {
+router.post('/login', isGuest, async (req, res) => {
     const { email, password } = req.body;
     try {
       const user = await userService.login(email, password);      
@@ -13,7 +15,7 @@ router.post('/login', async (req, res) => {
     
 });
 
-router.post('/register', async (req, res) => {  
+router.post('/register', isGuest, async (req, res) => {  
     const { name, email, password, address } = req.body;
 
     const newUser = {
@@ -34,7 +36,7 @@ router.post('/register', async (req, res) => {
     }
 });
 
-router.post('/like/:foodId', async (req, res) => {
+router.post('/like/:foodId', isAuth, async (req, res) => {
     const foodId = req.params.foodId;
     const { userId } = req.body;
 
@@ -42,7 +44,7 @@ router.post('/like/:foodId', async (req, res) => {
     res.status(200).json('Successfully liked');
 })
 
-router.post('/dislike/:foodId', async (req, res) => {
+router.post('/dislike/:foodId', isAuth, async (req, res) => {
     const foodId = req.params.foodId;
     const { userId } = req.body;
 

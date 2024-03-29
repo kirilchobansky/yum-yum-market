@@ -1,6 +1,6 @@
 import { Schema, model, Types } from 'mongoose';
 
-interface Food {
+export interface Food {
     id: string;
     name: string;
     price: number;
@@ -12,7 +12,7 @@ interface Food {
     comments: Types.ObjectId[]; 
 }
 
-const FoodSchema = new Schema<Food>(
+export const FoodSchema = new Schema<Food>(
     {
         name: {type: String, required: true},
         price: {type: Number, required: true},

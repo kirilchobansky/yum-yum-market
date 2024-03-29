@@ -14,6 +14,9 @@ import { LoadingComponent } from './loading/loading.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoadingInterceptor } from './interceptors/loading.interceptor';
+import { OrderItemsListComponent } from './order-items-list/order-items-list.component';
+import { MapComponent } from './map/map.component';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 
 
 @NgModule({
@@ -26,7 +29,9 @@ import { LoadingInterceptor } from './interceptors/loading.interceptor';
     InputContainerComponent,
     InputValidationsComponent,
     TextInputComponent,
-    LoadingComponent
+    LoadingComponent,
+    OrderItemsListComponent,
+    MapComponent
   ],
   exports: [
     StarRatingComponent,
@@ -37,7 +42,9 @@ import { LoadingInterceptor } from './interceptors/loading.interceptor';
     InputContainerComponent,
     InputValidationsComponent,
     TextInputComponent,
-    LoadingComponent
+    LoadingComponent,
+    OrderItemsListComponent,
+    MapComponent
   ],
   imports: [
     CommonModule,
@@ -46,7 +53,8 @@ import { LoadingInterceptor } from './interceptors/loading.interceptor';
     NgxSpinnerModule,
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true } 
+    { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }  
   ]
 })
 export class SharedModule { }

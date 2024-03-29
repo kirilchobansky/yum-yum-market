@@ -4,4 +4,5 @@ export class Comment {
     owner!: any;
     food!: string;
     createdAt!: Date;
+    updatedAt!: Date;
 }

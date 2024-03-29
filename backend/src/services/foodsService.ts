@@ -1,14 +1,14 @@
 import { Food } from "../models/Food";
 
-exports.getAll = () => Food.find();
+const getAll = () => Food.find();
 
-exports.search = (search: string) => {
+const search = (search: string) => {
     const searchRegEx = new RegExp(search, 'i');
     const foods = Food.find({name: { $regex : searchRegEx }});
     return foods;
 };
 
-exports.getAllTags = async () => {
+const getAllTags = async () => {
     const tags = await Food.aggregate([
       {
         $unwind:'$tags'
@@ -37,8 +37,16 @@ exports.getAllTags = async () => {
     return tags;
 };
 
-exports.getAllFoodsByTag = (tag: string) => Food.find({tags: tag});
+const getAllFoodsByTag = (tag: string) => Food.find({tags: tag});
 
-exports.getFoodById = (foodId: string) => Food.findById(foodId).populate('comments');
+const getFoodById = (foodId: string) => Food.findById(foodId).populate('comments');
+
+export default {
+    getAll,
+    search,
+    getAllTags,
+    getAllFoodsByTag,
+    getFoodById
+}
 
 

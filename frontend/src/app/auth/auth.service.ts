@@ -57,11 +57,14 @@ export class AuthService {
     )
   }
 
-
   logout(){
     this.userSubject.next(new User());
     localStorage.removeItem(USER_KEY);
     window.location.reload();
+  }
+
+  public get currentUser(): User{
+    return this.userSubject.value;
   }
 
   private setUserToLocalStorage(user: User){

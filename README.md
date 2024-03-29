@@ -128,13 +128,56 @@ Angular project with nodeJS @ SoftUni
 - add service
 - add interceptor
 
-17. Comments 
- - add comments references to user and food
- - make backend routers to handle requests for comments
-    - add comments service 
-    - add comments controller
- - add comments component
-  - add service
-  - add ts 
-  - add html
-  - add css 
+17. Comments
+
+- add comments references to user and food
+- make backend routers to handle requests for comments
+  - add comments service
+  - add comments controller
+- add comments component
+- add service
+- add ts
+- add html
+- add css
+
+18. Like
+
+- add routes
+  - add like and dislike in backend
+  - add get user api
+- add methods
+  - in food service
+  - in details
+- add html and css for like
+
+19. Checkout Page
+
+- create order model
+- create checkout page component
+  - add to router
+- add user to user service
+- add Cart to cart service
+- create order items list component
+- Create Order Items List Component
+- Adding Map To The Checkout Page
+  - Add Leaflet npm package
+    - Add @types/leaflet
+    - Add Css to angular.json
+  - Add AddressLatLng to Order Model
+  - Create Map component
+    - Add to checkout page
+    - Add TS
+      - Change app-map selector to map
+    - Add Html
+    - Add CSS
+  - Add Auth Guard
+- Save Order
+  - Add Order Model
+  - Add Order Status Enum
+  - Add Auth Middleware
+  - Add Order Router
+    - Add create API
+  - Add Order Urls to urls.ts
+  - Add Order Service
+    - Add create Method
+  - Add Auth Interceptor
