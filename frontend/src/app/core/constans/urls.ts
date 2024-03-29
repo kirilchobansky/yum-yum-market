@@ -21,3 +21,4 @@ export const ORDERS_CREATE_URL = ORDERS_URL + '/create';
 export const ORDERS_NEW_CURRENT_USER_URL = ORDERS_URL + '/new-order-current-user';
 export const ORDERS_PAY_URL = ORDERS_URL + '/pay';
 export const ORDERS_GET_BY_ID_URL = ORDERS_URL + '/track/';
+export const ORDERS_PAID_URL = ORDERS_URL + '/paid-orders';

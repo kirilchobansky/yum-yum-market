@@ -210,3 +210,13 @@ Angular project with nodeJS @ SoftUni
 - Add method to order.service
 - Add HTML
 - Add CSS
+
+23. Orders page
+
+- Add Backend Apis 
+ - Add Methods In Service
+- Add method in ordersService 
+- Generate Orders List Component
+ - Add ts 
+ - Add html
+ - Add css

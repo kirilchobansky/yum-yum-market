@@ -29,14 +29,17 @@ const payOrder = async (userId: string, paymentId: string) => {
     }
     
     order.paymentId = paymentId;
-    order.status = OrderStatus.PAYED;
+    order.status = OrderStatus.PAID;
     return await order.save();
 }
+
+const getPaidOrders = (userId: string) => Order.find({user: userId, status: OrderStatus.PAID});
 
 export default {
     createNewOrder,
     deleteExistingOrders,
     getOrderByUser,
     payOrder,
-    getOrderById
+    getOrderById,
+    getPaidOrders
 }

@@ -1,0 +1,27 @@
+<div class="container">
+  <app-title title="Unpaid Orders" />
+  <a routerLink="/payment" class="content" *ngIf="order">
+    <h1>Order #{{ order.id }}</h1>
+    <div class="details">
+      <div><strong>Date</strong> {{ order.createdAt | date : "medium" }}</div>
+    </div>
+  </a>
+  <div class="no-orders" *ngIf="!order">No Orders Here!</div>
+</div>
+
+<div class="container">
+  <app-title title="Waiting Orders" />
+  <ng-container *ngIf="paidOrders">
+    <a
+      routerLink="/track/{{ order.id }}"
+      class="content"
+      *ngFor="let order of paidOrders"
+    >
+      <h1>Order #{{ order.id }}</h1>
+      <div class="details">
+        <div><strong>Date</strong> {{ order.createdAt | date : "medium" }}</div>
+      </div>
+    </a>
+  </ng-container>
+  <div class="no-orders" *ngIf="paidOrders.length === 0">No Orders Here!</div>
+</div>

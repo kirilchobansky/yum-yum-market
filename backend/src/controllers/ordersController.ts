@@ -26,11 +26,16 @@ router.post('/create', async (req: any, res) => {
 
 router.get('/new-order-current-user', async (req: any, res) => {
     const order = await ordersService.getOrderByUser(req.user.id);
-    if(!order){
-        res.status(401);
-        return;
+    try {
+        if(!order){
+            res.status(401);
+            throw new Error;
+        }
+        res.status(200).send(order);
+    } catch (error) {
+        res.send('No orders here!');
     }
-    res.status(200).send(order);
+    
 });
 
 router.post('/pay', async (req: any, res) => {
@@ -46,6 +51,11 @@ router.post('/pay', async (req: any, res) => {
 router.get('/track/:orderId', async (req, res) => {
     const order = await ordersService.getOrderById(req.params.orderId);
     res.send(order);
+});
+
+router.get('/paid-orders', async (req: any, res) => {
+    const orders = await ordersService.getPaidOrders(req.user.id);
+    res.send(orders);
 })
 
 export default router;

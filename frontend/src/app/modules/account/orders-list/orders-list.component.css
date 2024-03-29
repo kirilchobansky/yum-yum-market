@@ -1,0 +1,47 @@
+.container {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 0 3rem 1rem 3rem;
+    max-width: 35rem;
+    margin-right: 1rem;
+    border: 3px solid transparent;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease;
+    text-decoration: none;
+    color: inherit;
+}
+
+.content:hover {
+    border-color: #333;
+}
+
+.details {
+    margin-bottom: 1rem;
+}
+
+.details>div {
+    margin-top: 1rem;
+    font-size: 1.1rem;
+}
+
+.details strong {
+    display: inline-block;
+    width: 20%;
+}
+
+.no-orders {
+    display: flex;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 100;
+    height: 5rem;
+}
