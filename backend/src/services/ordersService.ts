@@ -18,10 +18,25 @@ const deleteExistingOrders = async (userId: string) => {
     }
 };
 
+const getOrderById = (orderId: string) => Order.findById(orderId);
+
 const getOrderByUser = (userId: string) => Order.findOne({user: userId, status: OrderStatus.NEW});
+
+const payOrder = async (userId: string, paymentId: string) => {
+    const order = await getOrderByUser(userId);
+    if(!order){
+        throw new Error('Order Not Found!');
+    }
+    
+    order.paymentId = paymentId;
+    order.status = OrderStatus.PAYED;
+    return await order.save();
+}
 
 export default {
     createNewOrder,
     deleteExistingOrders,
-    getOrderByUser
+    getOrderByUser,
+    payOrder,
+    getOrderById
 }

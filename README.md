@@ -200,3 +200,13 @@ Angular project with nodeJS @ SoftUni
 - Set up Paypal button
 - Add Pay api to order router
 - Get Paypal sandbox account
+
+22. Order Track Page
+
+- Generate Component
+  - Add to routes
+- Add API
+  - Add to urls.ts
+- Add method to order.service
+- Add HTML
+- Add CSS

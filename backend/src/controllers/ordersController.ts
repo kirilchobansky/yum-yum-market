@@ -1,7 +1,6 @@
 import express from 'express';
 import isAuth from '../middlewares/isAuth';
 import ordersService from '../services/ordersService';
-import { OrderStatus } from '../constants/order_status';
 
 const router = express.Router();
 
@@ -36,17 +35,17 @@ router.get('/new-order-current-user', async (req: any, res) => {
 
 router.post('/pay', async (req: any, res) => {
     const { paymentId } = req.body;
-    const order = await ordersService.getOrderByUser(req.user.id);
-    if(!order){
-        res.status(400).send('Order Not Found!');
-        return;
+    try {
+        const order = await ordersService.payOrder(req.user.id, paymentId);
+        res.send(order._id);
+    } catch (error: any) {
+        res.send(401).json(error.message);
     }
-    
-    order.paymentId = paymentId;
-    order.status = OrderStatus.PAYED;
-    await order.save();
+});
 
-    res.send(order._id);
+router.get('/track/:orderId', async (req, res) => {
+    const order = await ordersService.getOrderById(req.params.orderId);
+    res.send(order);
 })
 
 export default router;
