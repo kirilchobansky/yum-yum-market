@@ -28,7 +28,6 @@ export class LoginComponent implements OnInit {
       password: ['', [Validators.required]]
     });
 
-    this.returnUrl = this.activatedRoute.snapshot.queryParams.returnUrl;
     this.emailControl = this.loginForm.get('email') as FormControl;
     this.passwordControl = this.loginForm.get('password') as FormControl;
   }
@@ -48,9 +47,15 @@ export class LoginComponent implements OnInit {
         password: this.fc.password.value
       }
       
+      this.returnUrl = this.activatedRoute.snapshot.queryParams.returnUrl;
       this.authService.login(userData).subscribe(() => {
-        this.router.navigateByUrl(this.returnUrl);
-    })
+        if (this.returnUrl) {
+          this.router.navigate([...this.returnUrl]);
+        } else {
+          this.router.navigate(['/foods/dashboard']);
+          window.location.reload();
+        }
+    });
   }
   
 }

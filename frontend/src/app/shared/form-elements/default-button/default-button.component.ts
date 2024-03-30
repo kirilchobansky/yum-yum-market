@@ -25,6 +25,9 @@ export class DefaultButtonComponent {
   @Input()
   widthRem = 12;
 
+  @Input()
+  heightRem = 3.5;
+
   @Output()
   onClick= new EventEmitter();
 }

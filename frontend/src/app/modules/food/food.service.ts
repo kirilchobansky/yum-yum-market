@@ -41,7 +41,5 @@ export class FoodService {
     return this.http.post<string>(USERS_DISLIKE_FOOD + foodId, { userId }); 
   }
 
-  getUser(userId: string): Observable<User>{
-    return this.http.get<User>(USERS_URL + '/' + userId);
-  }
+  
 }

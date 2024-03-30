@@ -1,0 +1,122 @@
+.container {
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+}
+
+.profile-picture img {
+    border: 2px solid #fff;
+    width: 10rem;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    filter: brightness(1.2) saturate(1.2);
+    filter: grayscale(100%);
+    transition: filter 0.3s ease;
+}
+
+.profile-picture img:hover {
+    transform: scale(1.1);
+}
+
+.details {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 5px;
+    width: 30rem;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.details input[type="text"] {
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    padding: 8px;
+    width: 100%;
+}
+
+.details-row {
+    margin-bottom: 15px;
+    width: 11rem;
+}
+
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.p-name {
+    text-align: center;
+    font-family: Arial, sans-serif;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    transition: color 0.3s ease;
+    animation: slideIn 0.5s ease;
+    text-transform: uppercase;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+default-button {
+    margin: 3rem 0 0 2.3rem;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+
+.container-favorite {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 10rem;
+}
+
+.list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+}
+
+.content {
+    height: 14rem;
+    width: 14rem;
+    position: relative;
+}
+
+.food-image {
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.food-image:hover {
+    transform: scale(1.2);
+    box-shadow: 0 2rem 1rem rgba(0, 0, 0, 0.3);
+}
+
+.no-orders {
+    display: flex;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 100;
+    height: 5rem;
+}

@@ -1,0 +1,58 @@
+<div class="container">
+  <div class="profile-picture">
+    <img
+      src="https://bootdey.com/img/Content/avatar/avatar6.png"
+      alt="Admin"
+      class="rounded-circle p-1 bg-primary"
+      width="110"
+    />
+    <div class="p-name">
+      <h4>{{ user.name }}</h4>
+    </div>
+  </div>
+  <form class="details" [formGroup]="profileDetailsGroup" (ngSubmit)="submit()">
+    <div class="details-row">
+      <div class="col-sm-3">
+        <h6 class="mb-0">Full Name</h6>
+      </div>
+      <div class="col-sm-9 text-secondary">
+        <input type="text" class="form-control" formControlName="name" />
+      </div>
+    </div>
+    <div class="details-row">
+      <div class="col-sm-3">
+        <h6 class="mb-0">Email</h6>
+      </div>
+      <div class="col-sm-9 text-secondary">
+        <input type="text" class="form-control" formControlName="email" />
+      </div>
+    </div>
+    <div class="details-row">
+      <div class="col-sm-3">
+        <h6 class="mb-0">Address</h6>
+      </div>
+      <div class="col-sm-9 text-secondary">
+        <input type="text" class="form-control" formControlName="address" />
+      </div>
+    </div>
+    <default-button
+      text="Save Changes"
+      [fontSizeRem]="0.7"
+      [widthRem]="6"
+      [heightRem]="1.5"
+    />
+  </form>
+</div>
+
+<div class="container-favorite">
+  <app-title title="Favorite Foods"></app-title>
+  <div *ngIf="favoriteFoods" class="list">
+    <a *ngFor="let food of favoriteFoods" routerLink="/foods/details/{{ food.id }}" class="content">
+      <img [src]="food.imageUrl" alt="{{ food.name }}" class="food-image">
+    </a>
+  </div>
+  <div class="no-orders" *ngIf="favoriteFoods.length === 0">Go Like Some Foods!</div>
+</div>
+
+
+

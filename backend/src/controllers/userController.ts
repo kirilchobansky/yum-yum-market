@@ -29,7 +29,6 @@ router.post('/register', isGuest, async (req, res) => {
     
     try {
         const user = await userService.register(newUser);
-        
         res.send(user); 
     } catch (error: any) {
         res.status(400).send(error.message);
@@ -55,6 +54,30 @@ router.post('/dislike/:foodId', isAuth, async (req, res) => {
 router.get('/:userId', async (req, res) => {
     const user = await userService.getUserById(req.params.userId);
     res.send(user);
-})
+});
+
+router.post('/update-user-details', async (req: any, res) => {
+    const { name, email, address, userId } = req.body;
+
+    const user = await userService.updateUserDetails(userId, name, email, address);
+    res.send(user);
+});
+
+router.get('/favorite-foods/:userId', async (req: any, res) => {
+    try {
+        const userId = req.params.userId;
+        const user = await userService.getUserByIdWithFoods(userId);
+
+        if (!user) {
+            return res.status(404).json({ error: 'User not found' });
+        }
+
+        const favoriteFoods = user.favoriteFoods;
+        res.send(favoriteFoods);
+    } catch (error) {
+        console.error('Error retrieving favorite foods:');
+        res.status(500).send({ error: 'Internal server error' });
+    }
+});
 
 export default router;

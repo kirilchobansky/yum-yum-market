@@ -57,11 +57,17 @@ const dislikeFood = (foodId: string, userId: string) => User.findByIdAndUpdate( 
 
 const getUserById = (userId: string) => User.findById(userId);
 
+const updateUserDetails = (userId: string, name: string, email: string, address: string ) => User.findByIdAndUpdate(userId, { name, email, address }, { new: true});
+
+const getUserByIdWithFoods = (userId: string) => User.findById(userId).populate('favoriteFoods');
+
 export default {
     login,
     register,
     findOne,
     likeFood,
     dislikeFood,
-    getUserById
+    getUserById,
+    updateUserDetails,
+    getUserByIdWithFoods
 }

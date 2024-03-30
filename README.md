@@ -220,3 +220,13 @@ Angular project with nodeJS @ SoftUni
  - Add ts 
  - Add html
  - Add css
+
+24. Profile page
+
+- Create Apis in backend
+- Add methods in frontend
+- Generate Component 
+ - Add ts
+ - Add html 
+ - Add css
+

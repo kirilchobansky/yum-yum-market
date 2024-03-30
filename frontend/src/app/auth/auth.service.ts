@@ -3,7 +3,7 @@ import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { User } from '../core/models';
 import { IUserLogin } from '../core/interfaces/IUserLogin';
 import { HttpClient } from '@angular/common/http';
-import { USERS_LOGIN_URL, USERS_REGISTER_URL } from '../core/constans/urls';
+import { USERS_LOGIN_URL, USERS_REGISTER_URL, USERS_URL } from '../core/constans/urls';
 import { ToastrService } from 'ngx-toastr';
 import { IUserRegister } from '../core/interfaces/IUserRegister';
 
@@ -41,8 +41,6 @@ export class AuthService {
     return this.http.post<User>(USERS_REGISTER_URL, userRegiser).pipe(
       tap({
         next: (user) => {
-          console.log(user);
-          
           this.setUserToLocalStorage(user);
           this.userSubject.next(user);
           this.toastrService.success(
@@ -67,7 +65,11 @@ export class AuthService {
     return this.userSubject.value;
   }
 
-  private setUserToLocalStorage(user: User){
+  getUser(userId: string): Observable<User>{
+    return this.http.get<User>(USERS_URL + '/' + userId);
+  }
+
+  public setUserToLocalStorage(user: User){
     localStorage.setItem(USER_KEY, JSON.stringify(user));
   }
 

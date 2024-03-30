@@ -7,25 +7,34 @@ import { CoreModule } from 'src/app/core/core.module';
 import { ProfileComponent } from './profile/profile.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { PaymentComponent } from './payment/payment.component';
+import { OrderTrackComponent } from './order-track/order-track.component';
+import { OrdersListComponent } from './orders-list/orders-list.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
 @NgModule({
   declarations: [
     CartComponent,
+    ProfileComponent,
     CheckoutComponent,
-    PaymentComponent
+    PaymentComponent,
+    OrderTrackComponent,
+    OrdersListComponent
   ],
   exports: [
     CartComponent,
+    ProfileComponent,
     CheckoutComponent,
-    PaymentComponent
+    PaymentComponent,
+    OrderTrackComponent
   ],
   imports: [
     CommonModule,
     AccountRoutingModule,
     SharedModule,
-    CoreModule
+    CoreModule,
+    ReactiveFormsModule
   ],
 
 })

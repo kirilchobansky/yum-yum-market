@@ -11,6 +11,8 @@ export const USERS_LOGIN_URL = USERS_URL + '/login';
 export const USERS_REGISTER_URL = USERS_URL + '/register';
 export const USERS_LIKE_FOOD = USERS_URL + '/like/';
 export const USERS_DISLIKE_FOOD = USERS_URL + '/dislike/';
+export const USERS_UPDATE_URL = USERS_URL + '/update-user-details';
+export const USERS_FAVORITE_FOODS_URL = USERS_URL + '/favorite-foods';
 
 export const COMMENTS_URL = BASE_URL + '/api/comments';
 export const COMMENTS_ALL_BY_FOOD_URL = COMMENTS_URL + '/all/';

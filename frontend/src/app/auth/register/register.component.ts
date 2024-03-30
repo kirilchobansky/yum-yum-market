@@ -33,7 +33,6 @@ export class RegisterComponent implements OnInit {
     },{
       validators: passwordMatchValidator('password', 'rePass')
     });
-    this.returnUrl = this.activatedRoute.snapshot.queryParams.returnUrl;
   }
 
   get fc(){
@@ -56,8 +55,14 @@ export class RegisterComponent implements OnInit {
       address: fv.address
     };
     
+    this.returnUrl = this.activatedRoute.snapshot.queryParams.returnUrl;
     this.authService.register(user).subscribe(() => {
-      this.router.navigateByUrl(this.returnUrl);
+      if (this.returnUrl) {
+        this.router.navigate([...this.returnUrl]);
+      } else {
+        this.router.navigate(['/foods/dashboard']);
+        window.location.reload();
+      }
     })
   }
 
