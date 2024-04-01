@@ -16,5 +16,5 @@ button {
 
 button:hover {
     cursor: pointer;
-    opacity: 0.8;
+    box-shadow: 0 3px 8px;
 }

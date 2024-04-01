@@ -30,11 +30,11 @@ export class DetailsComponent implements OnInit {
         if (params['id']) {
           this.foodService.getFoodById(params['id']).subscribe((food) => {
             this.food = food;
+            this.getUser();
           });
         }
         this.getUserData();
       });
-      this.getUser();
       this.returnUrl = this.activatedRoute.snapshot.queryParams.returnUrl;
     }
 
@@ -47,10 +47,11 @@ export class DetailsComponent implements OnInit {
     }
 
     getUser(){
-      this.authService.getUser(this.userId).subscribe((user) => {
-        this.isLiked = user.favoriteFoods.includes(this.food.id);
-      });
-    }
+      if (this.userId) {
+        this.authService.getUser(this.userId).subscribe((user) => {
+          this.isLiked = user.favoriteFoods.includes(this.food.id);
+        });
+      }}
 
     addToCart() {
       this.cartService.addToCart(this.food);

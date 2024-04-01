@@ -1,26 +1,25 @@
 <header>
   <div class="container">
     <a routerLink="/" class="logo">YumYumMarket</a>
-
     <ul>
       <li *ngIf="!isAuth">
-        <a routerLink="/users/login">Login</a>
+        <a routerLink="/users/login">Log In</a>
       </li>
       <li>
-        <a routerLink="/foods/dashboard">Foods</a>
+        <a routerLink="/foods/dashboard">Menu</a>
       </li>
       <li *ngIf="isAuth" class="menu-container">
-        <a><i class="fa-solid fa-user"></i> {{ user.name }}</a
-        >
+        <a><i class="fa-solid fa-user"></i> {{ user.name }}</a>
         <div class="menu">
           <a routerLink="/users/profile">My Account</a>
           <a routerLink="/orders">Orders</a>
           <a (click)="logout()">Logout</a>
         </div>
       </li>
-      <li>
+      <li class="cart">
         <a routerLink="/cart-page">
-          Cart <span>{{ quantity }}</span>
+          <i class="fas fa-shopping-cart"></i>
+          <span class="price">{{ price | currency : "EUR" }}</span>
         </a>
       </li>
     </ul>

@@ -1,6 +1,6 @@
 <div class="container">
   <div class="details">
-    <app-title title="Register" />
+    <app-title title="Sign Up" />
     <form [formGroup]="registerForm" (ngSubmit)="submit()">
       <text-input [control]="fc.name" [showErrors]="isSubmitted" label="Name" />
       <text-input
@@ -26,7 +26,7 @@
         [showErrors]="isSubmitted"
         label="Address"
       />
-      <default-button text="Register" />
+      <default-button text="Sign Up" />
       <div class="login">
         Already have an account? &nbsp;
         <a routerLink="/users/login" [queryParams]="{returnUrl}">Log In</a>

@@ -3,7 +3,7 @@
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    margin: 3rem;
+    margin: 0 3rem 3rem 3rem;
 }
 
 .container>* {
@@ -43,7 +43,7 @@ img {
     color: #e72929;
     font-size: 2.5rem;
     padding: 0;
-    background-color: #fff;
+    background-color: #ebe7e6;
     transition: transform 0.2s ease;
 }
 
@@ -69,6 +69,7 @@ img {
     animation: heartbeat 0.5s ease;
 }
 
+
 .origins {
     display: flex;
     flex-wrap: wrap;
@@ -80,7 +81,7 @@ img {
     font-size: 1.2rem;
     margin: 0.5rem 0.5rem 0.5rem 0;
     border-radius: 2rem;
-    background-color: aliceblue;
+    background-color: #ebe7e6;
 }
 
 .tags {
@@ -94,7 +95,7 @@ img {
     margin: 0.2rem 0.15rem;
     border-radius: 10rem;
     font-weight: 600;
-    color: dodgerblue;
+    color: black;
 }
 
 .cook-time {
@@ -118,9 +119,9 @@ img {
     color: darkgrey;
 }
 
-button {
-    color: white;
-    background: dodgerblue;
+button.add {
+    color: black;
+    background: #eb6f50;
     border: none;
     font-size: 1.2rem;
     padding: 1rem;
@@ -128,7 +129,15 @@ button {
     outline: none;
 }
 
+button.add:hover {
+    box-shadow: 0 3px 8px;
+    cursor: pointer;
+}
+
+button {
+    border: none;
+}
+
 button:hover {
-    opacity: 0.8;
     cursor: pointer;
 }

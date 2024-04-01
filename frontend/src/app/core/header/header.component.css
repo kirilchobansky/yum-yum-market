@@ -1,17 +1,30 @@
-header {
+/* header {
     position: relative;
-    background: #fff;
+    background-color: #ebe7e6;
     padding: 0 2rem;
-    border-bottom: 1px solid dodgerblue;
+} */
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #ebe7e6;
+    padding: 0 2rem;
+    z-index: 1000;
+}
+
+app-search {
+    margin-top: 1rem;
 }
 
 a {
-    color: dodgerblue;
+    color: black;
 }
 
 a:hover {
-    background: dodgerblue;
-    color: #fff;
+    font-weight: 600;
+    box-shadow: 0 6px 16px;
     cursor: pointer;
 }
 
@@ -37,19 +50,6 @@ ul a {
     display: inline-block;
 }
 
-a span {
-    background: dodgerblue;
-    color: #fff;
-    padding: 0.1rem 0.45rem;
-    border-radius: 50%;
-    font-size: 0.9rem;
-}
-
-.container:hover span {
-    background: #fff;
-    color: dodgerblue;
-}
-
 .menu-container {
     position: relative;
 }
@@ -68,4 +68,18 @@ a span {
 .menu a {
     width: 100%;
     min-width: 8rem;
+}
+
+.cart i {
+    width: 30px;
+    height: 30px;
+    filter: brightness(0%);
+    vertical-align: middle;
+}
+
+.price {
+    font-size: 1rem;
+    color: #333;
+    margin-left: 10px;
+    vertical-align: middle;
 }

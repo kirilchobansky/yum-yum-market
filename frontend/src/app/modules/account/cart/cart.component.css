@@ -37,6 +37,10 @@ li img {
     object-fit: cover;
 }
 
+li div a {
+    color: black;
+}
+
 li div {
     padding: 1rem;
 }
@@ -45,7 +49,7 @@ li div:not(:first-child) {
     flex-basis: 18%;
 }
 
-li select {
+li input {
     width: 3rem;
     outline: none;
     border: none;
@@ -56,15 +60,17 @@ li select {
 
 li .remove-button {
     border-radius: 1rem;
+    font-size: 20px;
     border: none;
-    padding: 0.5rem;
+    font-weight: bold;
+    padding: 0.7rem;
     color: #e72929;
     opacity: 0.7;
     outline: none;
 }
 
 li .remove-button:hover {
-    opacity: 1;
+    box-shadow: 0 3px 8px;
     cursor: pointer;
 }
 

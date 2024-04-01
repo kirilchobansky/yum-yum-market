@@ -30,7 +30,7 @@
     </div>
 
     <div class="tags">
-      <a *ngFor="let tag of food.tags" routerLink="/tag/{{ tag }}">
+      <a *ngFor="let tag of food.tags" routerLink="/foods/tags/{{ tag }}">
         {{ tag }}
       </a>
     </div>
@@ -43,11 +43,11 @@
 
     <div class="price">
       <span>
-        {{ food.price | currency }}
+        {{ food.price | currency: 'EUR' }}
       </span>
     </div>
 
-    <button (click)="addToCart()">Add To Cart</button>
+    <button class="add" (click)="addToCart()">Add To Cart</button>
   </div>
 </div>
 <app-comments />

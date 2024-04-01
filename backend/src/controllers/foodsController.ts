@@ -1,17 +1,17 @@
 import express from 'express';
 import { Food } from '../models/Food';
-import { foods_seed, sample_foods } from '../data';
+import { sample_foods } from '../data';
 import foodsService from '../services/foodsService';
 const router = express.Router();
 
 router.get('/seed', async (req, res) => {
     const commentsCount = await Food.countDocuments();
-    if (commentsCount > 0) {
-      res.send('Seed is already done!');
-      return;
-    }
+    // if (commentsCount > 0) {
+    //   res.send('Seed is already done!');
+    //   return;
+    // }
 
-    await Food.create(foods_seed);
+    await Food.create(sample_foods);
     res.send('Seed Is Done!');
 });
 

@@ -11,7 +11,7 @@
     </div>
   </div>
   <form class="details" [formGroup]="profileDetailsGroup" (ngSubmit)="submit()">
-    <div class="details-row">
+    <div class="details-field">
       <div class="col-sm-3">
         <h6 class="mb-0">Full Name</h6>
       </div>
@@ -19,7 +19,7 @@
         <input type="text" class="form-control" formControlName="name" />
       </div>
     </div>
-    <div class="details-row">
+    <div class="details-field">
       <div class="col-sm-3">
         <h6 class="mb-0">Email</h6>
       </div>
@@ -27,7 +27,7 @@
         <input type="text" class="form-control" formControlName="email" />
       </div>
     </div>
-    <div class="details-row">
+    <div class="details-field">
       <div class="col-sm-3">
         <h6 class="mb-0">Address</h6>
       </div>
@@ -35,12 +35,14 @@
         <input type="text" class="form-control" formControlName="address" />
       </div>
     </div>
-    <default-button
-      text="Save Changes"
-      [fontSizeRem]="0.7"
-      [widthRem]="6"
-      [heightRem]="1.5"
-    />
+    <div class="details-field">
+      <default-button
+        text="Save Changes"
+        [fontSizeRem]="0.7"
+        [widthRem]="6"
+        [heightRem]="1.5"
+      />
+    </div>
   </form>
 </div>
 

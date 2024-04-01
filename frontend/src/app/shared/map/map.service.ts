@@ -20,6 +20,9 @@ export class MapService {
         },
         (error) => {
           observer.error(error);
+        },
+        {
+          enableHighAccuracy: true
         }
       )
     })

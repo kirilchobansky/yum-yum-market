@@ -3,6 +3,7 @@ import { Food } from 'src/app/core/models';
 import { FoodService } from '../food.service';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
+import { CartService } from '../../account/services/cart.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,7 +13,10 @@ import { Observable } from 'rxjs';
 export class DashboardComponent implements OnInit {
   foods: Food[] = [];
 
-  constructor(private foodServices: FoodService, private activatedRoute: ActivatedRoute) { }
+  constructor(
+    private foodServices: FoodService, 
+    private activatedRoute: ActivatedRoute,
+    private cartService: CartService) { }
 
   ngOnInit(): void {
     let foodObservable: Observable<Food[]>;
@@ -29,5 +33,9 @@ export class DashboardComponent implements OnInit {
         this.foods = foods;
       });
     });
+  }
+
+  addToCart(food: Food){
+    this.cartService.addToCart(food);
   }
 }

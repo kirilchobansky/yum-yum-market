@@ -28,25 +28,27 @@
     width: 30rem;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
 }
 
 .details input[type="text"] {
     border: 1px solid #ced4da;
     border-radius: 4px;
     padding: 8px;
-    width: 100%;
 }
 
-.details-row {
-    margin-bottom: 15px;
+.details-field {
+    position: relative;
     width: 11rem;
 }
 
-
-.btn-primary {
-    background-color: #007bff;
-    border-color: #007bff;
+default-button {
+    position: absolute;
+    bottom: 0;
+    left: 0;
 }
+
 
 .p-name {
     text-align: center;
@@ -70,10 +72,6 @@
     }
 }
 
-default-button {
-    margin: 3rem 0 0 2.3rem;
-}
-
 .btn-primary:hover {
     background-color: #0056b3;
     border-color: #0056b3;
@@ -93,6 +91,8 @@ default-button {
     display: flex;
     flex-wrap: wrap;
     gap: 3rem;
+    justify-content: space-around;
+    margin: 0 2rem 0 2rem;
 }
 
 .content {

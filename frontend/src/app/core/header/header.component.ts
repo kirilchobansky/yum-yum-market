@@ -11,14 +11,14 @@ import { User } from '../models';
 })
 export class HeaderComponent {
 
-    quantity: number = 0;
+    price: number = 0;
     user!: User;
 
     constructor(private cartService: CartService,
       private authService: AuthService){
 
       this.cartService.getCartObservable().subscribe(cart => {
-        this.quantity = cart.totalCount;
+        this.price = cart.totalPrice;
       })
 
       this.authService.userObservable.subscribe((user) => {     
