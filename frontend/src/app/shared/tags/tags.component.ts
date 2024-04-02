@@ -8,10 +8,10 @@ import { Tag } from '../../core/models';
   styleUrls: ['./tags.component.css']
 })
 export class TagsComponent {
-    tags?:Tag[];
+    tags?: Tag[];
     constructor(foodService:FoodService) {
       foodService.getAllTags().subscribe((tags) => {
-        this.tags = tags;
+        this.tags = tags.slice(0, 10);
       });
     }
 }

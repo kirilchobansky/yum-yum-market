@@ -20,7 +20,13 @@ export const COMMENTS_LATEST_BY_FOOD_URL = COMMENTS_URL + '/latest-three/';
 
 export const ORDERS_URL = BASE_URL + '/api/orders';
 export const ORDERS_CREATE_URL = ORDERS_URL + '/create';
-export const ORDERS_NEW_CURRENT_USER_URL = ORDERS_URL + '/new-order-current-user';
 export const ORDERS_PAY_URL = ORDERS_URL + '/pay';
 export const ORDERS_GET_BY_ID_URL = ORDERS_URL + '/track/';
-export const ORDERS_PAID_URL = ORDERS_URL + '/paid-orders';
+export const ORDERS_GET_NEW_BY_USER_URL = ORDERS_URL + '/new-orders-by-user';
+export const ORDERS_GET_PAID_BY_USER_URL = ORDERS_URL + '/paid-orders-by-user';
+export const ORDERS_GET_CANCELLED_BY_USER_URL = ORDERS_URL + '/cancelled-orders-by-user';
+export const ORDERS_GET_SHIPPED_BY_USER_URL = ORDERS_URL + '/shipped-orders-by-user';
+export const ORDERS_GET_RETURNED_BY_USER_URL = ORDERS_URL + '/returned-orders-by-user';
+export const ORDERS_PATCH_CANCELLED_URL = ORDERS_URL + '/cancel-order';
+export const ORDERS_PATCH_SHIPPED_URL = ORDERS_URL + '/shipped-order';
+export const ORDERS_PATCH_RETURNED_URL = ORDERS_URL + '/return-order';

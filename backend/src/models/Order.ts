@@ -43,7 +43,7 @@ export interface IOrder{
     updatedAt: Date
   }
 
-  const orderSchema = new Schema<IOrder>({
+    const orderSchema = new Schema<IOrder>({
       name: {type: String, required: true},
       address: {type: String, required: true},
       addressLatLng: {type: LatLngSchema, required: true},
@@ -58,4 +58,11 @@ export interface IOrder{
       toObject:{ virtuals: true }
   });
 
-  export const Order = model('Order', orderSchema);
+export const Order = model('Order', orderSchema);
+
+export interface foodOrdersItem {
+    food: {
+        id: string;
+    };
+    quantity: number;
+}

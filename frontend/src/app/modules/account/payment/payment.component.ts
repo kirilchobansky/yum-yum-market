@@ -1,23 +1,29 @@
 import { Component, OnInit } from '@angular/core';
 import { OrderService } from '../services/order.service';
 import { Order } from 'src/app/core/models/Order';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-payment',
   templateUrl: './payment.component.html',
   styleUrls: ['./payment.component.css']
 })
-export class PaymentComponent implements OnInit{
+export class PaymentComponent{
 
   order: Order = new Order();
-  constructor(private orderService: OrderService, private router: Router){}
+  constructor(
+    private ordersService: OrderService, 
+    private router: Router,
+    private activatedRoute: ActivatedRoute){}
 
   ngOnInit(): void {
-    this.orderService.getNewOrderForCurrentUser().subscribe({
+    const params = this.activatedRoute.snapshot.params;
+    if(!params.orderId) return;
+
+    this.ordersService.getOrderById(params.orderId).subscribe({
       next: (order) => {
         this.order = order;
-      },
+      }, 
       error: () => {
         this.router.navigate(['/checkout']);
       }

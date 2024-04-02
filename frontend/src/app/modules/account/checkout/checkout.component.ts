@@ -55,8 +55,9 @@ export class CheckoutComponent implements OnInit{
       this.order.address = this.fc.address.value;
 
       this.orderService.createOrder(this.order).subscribe({
-        next: () => {
-          this.router.navigate(['/payment'])
+        next: (order) => {
+          this.cartService.clearCart();
+          this.router.navigate(['/payment', order.id])
         },
         error: (errorResponse) => {
           this.toastrService.error(errorResponse.error, 'Error Occurs');

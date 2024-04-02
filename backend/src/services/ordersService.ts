@@ -1,4 +1,5 @@
 import { OrderStatus } from "../constants/order_status";
+import { Food } from "../models/Food";
 import { Order } from "../models/Order";
 
 const createNewOrder = async (orderData: any) => {
@@ -10,22 +11,33 @@ const createNewOrder = async (orderData: any) => {
     }
 };
 
-const deleteExistingOrders = async (userId: string) => {
-    try {
-        await Order.deleteMany({ user: userId, status: OrderStatus.NEW });
-    } catch (error) {
-        throw new Error("Error deleting existing orders");
-    }
-};
+// const deleteExistingOrders = async (userId: string) => {
+//     try {
+//         await Order.deleteMany({ user: userId, status: OrderStatus.NEW });
+//     } catch (error) {
+//         throw new Error("Error deleting existing orders");
+//     }
+// };
 
 const getOrderById = (orderId: string) => Order.findById(orderId);
 
-const getOrderByUser = (userId: string) => Order.findOne({user: userId, status: OrderStatus.NEW});
 
-const payOrder = async (userId: string, paymentId: string) => {
-    const order = await getOrderByUser(userId);
+const payOrder = async (orderId: string, paymentId: string,  foodOrdersCount: { [key: string]: number }) => {
+    const order = await getOrderById(orderId);
     if(!order){
         throw new Error('Order Not Found!');
+    };
+    
+    for (const foodId in foodOrdersCount) {
+        if (Object.prototype.hasOwnProperty.call(foodOrdersCount, foodId)) {
+            const quantity = foodOrdersCount[foodId];    
+            const food = await Food.findById(foodId);
+            if (!food) {
+                throw new Error(`Food with ID ${foodId} not found!`);
+            }
+            food.ordersCount += quantity; 
+            await food.save();
+        }
     }
     
     order.paymentId = paymentId;
@@ -33,13 +45,34 @@ const payOrder = async (userId: string, paymentId: string) => {
     return await order.save();
 }
 
-const getPaidOrders = (userId: string) => Order.find({user: userId, status: OrderStatus.PAID});
+const getNewOrdersByUser = (userId: string) => Order.find({user: userId, status: OrderStatus.NEW}).sort({ createdAt: -1});
+
+const getPaidOrdersByUser = (userId: string) => Order.find({user: userId, status: OrderStatus.PAID}).sort({ createdAt: -1});
+
+const getCancelledOrdersByUser = (userId: string) => Order.find({user: userId, status: OrderStatus.CANCELLED}).sort({ createdAt: -1});
+
+const getShippedOrdersByUser = (userId: string) => Order.find({user: userId, status: OrderStatus.SHIPPED}).sort({ createdAt: -1});
+
+const getReturnedOrdersByUser = (userId: string) => Order.find({user: userId, status: OrderStatus.RETURNED}).sort({ createdAt: -1});
+
+const markAsCancelledOrder = (orderId: string) => Order.findByIdAndUpdate(orderId, { status: OrderStatus.CANCELLED });
+
+const markAsShippedOrder = (orderId: string) => Order.findByIdAndUpdate(orderId, { status: OrderStatus.SHIPPED });
+
+const markAsReturnedOrder = (orderId: string) => Order.findByIdAndUpdate(orderId, { status: OrderStatus.RETURNED });
+
 
 export default {
     createNewOrder,
-    deleteExistingOrders,
-    getOrderByUser,
+    // deleteExistingOrders,
+    getNewOrdersByUser,
     payOrder,
     getOrderById,
-    getPaidOrders
+    getPaidOrdersByUser,
+    markAsCancelledOrder,
+    markAsShippedOrder,
+    markAsReturnedOrder,
+    getCancelledOrdersByUser,
+    getShippedOrdersByUser,
+    getReturnedOrdersByUser
 }

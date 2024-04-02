@@ -10,6 +10,7 @@ export interface Food {
     origins: string[];
     cookTime: string;
     comments: Types.ObjectId[]; 
+    ordersCount: number
 }
 
 export const FoodSchema = new Schema<Food>(
@@ -21,7 +22,8 @@ export const FoodSchema = new Schema<Food>(
         imageUrl: {type: String, required: true},
         origins: {type: [String], required: true},
         cookTime: {type: String, required: true},
-        comments: [{ type: Schema.Types.ObjectId, ref: 'Comment' }] 
+        comments: [{ type: Schema.Types.ObjectId, ref: 'Comment' }],
+        ordersCount: {type: Number}
     },
     {
         toJSON: { virtuals: true },

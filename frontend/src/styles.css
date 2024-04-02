@@ -10,13 +10,13 @@ html {
 
 html,
 button {
-    font-family: "Quicksand", sans-serif;
+    font-family: "Ariel", sans-serif;
 }
 
 body {
     margin: 0;
     background-color: #ebe7e6;
-    padding-top: 3rem;
+    padding: 4rem 0;
 }
 
 a {

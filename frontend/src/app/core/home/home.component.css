@@ -1,26 +1,46 @@
-.content {
-    padding: 20px;
-    text-align: center;
+.container {
+    display: flex;
+    padding: 2rem 0 0 5rem;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
 
-.content h2 {
-    color: dodgerblue;
+.left-side {
+    width: 700px;
 }
 
-.content p {
-    color: #666;
-}
-
-.content a {
-    background-color: dodgerblue;
-    color: white;
+.left-side button {
     border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-size: 16px;
-    border-radius: 5px;
+    background-color: #eb6f50;
+    font-size: 1.1rem;
+    padding: 0.5rem;
+    width: 10rem;
+    border-radius: 4rem;
+    margin-top: 1rem;
 }
 
-.content button:hover {
-    background-color: dodgerblue;
+.left-side button:hover {
+    box-shadow: 0 0 10px;
+    cursor: pointer;
 }
+
+.stake {
+    margin-right: -600px;
+}
+
+
+.right-side-image img {
+    mix-blend-mode: multiply;
+    height: 550px;
+}
+
+.popular-list {
+    padding: 0 6rem;
+    margin: 0;
+}
+
+.popular-list .title {
+    margin-top: -40px;
+    color: #555;
+}
+

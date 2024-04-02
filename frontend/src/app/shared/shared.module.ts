@@ -18,6 +18,8 @@ import { OrderItemsListComponent } from './order-items-list/order-items-list.com
 import { MapComponent } from './map/map.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { PaypalButtonComponent } from './buttons/paypal-button/paypal-button.component';
+import { FoodListComponent } from './food-list/food-list.component';
+import { OrdersListComponent } from './orders-list/orders-list.component';
 
 
 @NgModule({
@@ -33,7 +35,9 @@ import { PaypalButtonComponent } from './buttons/paypal-button/paypal-button.com
     LoadingComponent,
     OrderItemsListComponent,
     MapComponent,
-    PaypalButtonComponent
+    PaypalButtonComponent,
+    FoodListComponent,
+    OrdersListComponent
   ],
   exports: [
     StarRatingComponent,
@@ -47,7 +51,9 @@ import { PaypalButtonComponent } from './buttons/paypal-button/paypal-button.com
     LoadingComponent,
     OrderItemsListComponent,
     MapComponent,
-    PaypalButtonComponent
+    PaypalButtonComponent,
+    FoodListComponent,
+    OrdersListComponent
   ],
   imports: [
     CommonModule,

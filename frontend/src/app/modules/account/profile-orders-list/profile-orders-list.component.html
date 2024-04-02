@@ -1,0 +1,24 @@
+<div class="container">
+  <app-title title="Unpaid Orders ({{ newOrders.length }})" />
+  <app-orders-list [orders]="newOrders" [path]="'payment'" />
+</div>
+
+<div class="container">
+  <app-title title="Paid Orders ({{ paidOrders.length }})" />
+  <app-orders-list [orders]="paidOrders" />
+</div>
+
+<div class="container">
+  <app-title title="Cancelled Orders ({{ cancelledOrders.length }})" />
+  <app-orders-list [orders]="cancelledOrders" />
+</div>
+
+<div class="container">
+  <app-title title="Shipped Orders ({{ shippedOrders.length }})" />
+  <app-orders-list [orders]="shippedOrders" />
+</div>
+
+<div class="container">
+  <app-title title="Returned Orders ({{ returnedOrders.length }})" />
+  <app-orders-list [orders]="returnedOrders" />
+</div>

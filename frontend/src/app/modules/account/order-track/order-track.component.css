@@ -27,3 +27,11 @@
     display: inline-block;
     width: 20%;
 }
+
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    width: 810px;
+    justify-content: center;
+    gap: 1rem;
+}

@@ -1,9 +1,3 @@
-/* header {
-    position: relative;
-    background-color: #ebe7e6;
-    padding: 0 2rem;
-} */
-
 header {
     position: fixed;
     top: 0;
@@ -12,20 +6,7 @@ header {
     background-color: #ebe7e6;
     padding: 0 2rem;
     z-index: 1000;
-}
-
-app-search {
-    margin-top: 1rem;
-}
-
-a {
-    color: black;
-}
-
-a:hover {
-    font-weight: 600;
-    box-shadow: 0 6px 16px;
-    cursor: pointer;
+    box-shadow: 0 0 10px;
 }
 
 .container {
@@ -33,6 +14,37 @@ a:hover {
     display: flex;
     justify-content: space-between;
 }
+
+.container-img {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 170px;
+    width: 300px;
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+    background-color: #ebe7e6;
+    box-shadow: 0 0 10px;
+}
+
+
+.container-img img {
+    mix-blend-mode: multiply;
+    height: 130px;
+}
+
+a {
+    color: black;
+}
+
+a:hover {
+    box-shadow: 0 6px 16px;
+    cursor: pointer;
+}
+
 
 a.logo {
     font-weight: bold;

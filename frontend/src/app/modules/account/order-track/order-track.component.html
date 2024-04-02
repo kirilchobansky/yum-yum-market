@@ -1,13 +1,13 @@
 <div class="container">
   <div class="content" *ngIf="order">
-    <h1>Order #{{order.id}}</h1>
+    <h1>Order #{{ order.id }}</h1>
     <div class="details">
-      <div><strong>Date</strong> {{order.createdAt | date:'medium'}}</div>
-      <div><strong>Name</strong> {{order.name}}</div>
-      <div><strong>Address</strong> {{order.address}}</div>
-      <div><strong>Status</strong> {{order.status}}</div>
+      <div><strong>Date</strong> {{ order.createdAt | date : "medium" }}</div>
+      <div><strong>Name</strong> {{ order.name }}</div>
+      <div><strong>Address</strong> {{ order.address }}</div>
+      <div><strong>Status</strong> {{ order.status }}</div>
       <div *ngIf="order.paymentId">
-        <strong>Payment ID</strong> {{order.paymentId}}
+        <strong>Payment ID</strong> {{ order.paymentId }}
       </div>
     </div>
 
@@ -17,5 +17,10 @@
   <div>
     <app-title title="Shipping Address" />
     <app-map [order]="order" [readonly]="true" />
+    <div class="buttons">
+      <default-button *ngIf="order.status !== 'CANCELLED'" text="Mark as cancelled" (onClick)="cancelOrder()"/>
+      <default-button *ngIf="isAdmin && order.status !== 'SHIPPED'" text="Mark as shipped" (onClick)="shippedOrder()"/>
+      <default-button *ngIf="isAdmin && order.status !== 'RETURNED'" text="Mark as returned" (onClick)="returnOrder()"/>
+    </div>
   </div>
 </div>

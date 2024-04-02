@@ -34,8 +34,4 @@ export class DashboardComponent implements OnInit {
       });
     });
   }
-
-  addToCart(food: Food){
-    this.cartService.addToCart(food);
-  }
 }

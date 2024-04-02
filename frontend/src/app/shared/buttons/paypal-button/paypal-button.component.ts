@@ -49,7 +49,6 @@ export class PaypalButtonComponent implements OnInit {
         self.orderService.pay(this.order).subscribe(
           {
             next: (orderId) => {
-              this.cartService.clearCart();
               this.router.navigateByUrl('/track/' + orderId);
               this.toastrService.success(
                 'Payment Saved Successfully',

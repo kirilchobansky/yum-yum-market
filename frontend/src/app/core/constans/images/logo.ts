@@ -1,0 +1,1 @@
+export const logoImageUrl = 'https://static.vecteezy.com/system/resources/thumbnails/019/940/406/small/yum-yum-icon-on-transparent-background-free-png.png'

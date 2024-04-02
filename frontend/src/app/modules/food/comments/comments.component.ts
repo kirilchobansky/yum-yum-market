@@ -134,7 +134,7 @@ export class CommentsComponent implements OnInit {
       }
       
       this.commentsService.postComment(this.foodId, this.fc.comment.value).subscribe(() => {
-        this.router.navigateByUrl(this.returnUrl);
+        this.router.navigate([...this.returnUrl]);
     });
   }
 }

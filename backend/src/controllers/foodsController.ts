@@ -6,10 +6,10 @@ const router = express.Router();
 
 router.get('/seed', async (req, res) => {
     const commentsCount = await Food.countDocuments();
-    // if (commentsCount > 0) {
-    //   res.send('Seed is already done!');
-    //   return;
-    // }
+    if (commentsCount > 0) {
+      res.send('Seed is already done!');
+      return;
+    }
 
     await Food.create(sample_foods);
     res.send('Seed Is Done!');
