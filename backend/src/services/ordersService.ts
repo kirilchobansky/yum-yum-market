@@ -45,26 +45,6 @@ const payOrder = async (orderId: string, paymentId: string,  foodOrdersCount: { 
     return await order.save();
 }
 
-const getNewOrdersByUser = (userId: string) => Order.find({user: userId, status: OrderStatus.NEW}).sort({ createdAt: -1});
-
-const getPaidOrdersByUser = (userId: string) => Order.find({user: userId, status: OrderStatus.PAID}).sort({ createdAt: -1});
-
-const getCancelledOrdersByUser = (userId: string) => Order.find({user: userId, status: OrderStatus.CANCELLED}).sort({ createdAt: -1});
-
-const getShippedOrdersByUser = (userId: string) => Order.find({user: userId, status: OrderStatus.SHIPPED}).sort({ createdAt: -1});
-
-const getReturnedOrdersByUser = (userId: string) => Order.find({user: userId, status: OrderStatus.RETURNED}).sort({ createdAt: -1});
-
-const getNewOrders = () => Order.find({status: OrderStatus.NEW}).sort({ createdAt: -1});
-
-const getPaidOrders = () => Order.find({status: OrderStatus.PAID}).sort({ createdAt: -1});
-
-const getCancelledOrders = () => Order.find({status: OrderStatus.CANCELLED}).sort({ createdAt: -1});
-
-const getShippedOrders = () => Order.find({status: OrderStatus.SHIPPED}).sort({ createdAt: -1});
-
-const getReturnedOrders = () => Order.find({status: OrderStatus.RETURNED}).sort({ createdAt: -1});
-
 const deleteOrder = (orderId: string) => Order.findByIdAndDelete(orderId);
 
 const markAsPaidOrder = (orderId: string) => Order.findByIdAndUpdate(orderId, { status: OrderStatus.PAID });
@@ -85,23 +65,13 @@ const getAll = () => Order.find();
 export default {
     createNewOrder,
     // deleteExistingOrders,
-    getNewOrdersByUser,
     payOrder,
     getOrderById,
-    getPaidOrdersByUser,
     markAsPaidOrder,
     markAsCancelledOrder,
     markAsShippedOrder,
     markAsReturnedOrder,
-    getCancelledOrdersByUser,
-    getShippedOrdersByUser,
-    getReturnedOrdersByUser,
     deleteOrder,
-    getNewOrders,
-    getPaidOrders,
-    getCancelledOrders,
-    getShippedOrders,
-    getReturnedOrders,
     search,
     getAll
 }
