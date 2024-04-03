@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:5000';
+const BASE_URL = 'http://localhost:3000';
 
 export const FOODS_URL = BASE_URL + '/api/foods';
 export const FOODS_BY_SEARCH_URL = FOODS_URL + '/search/';
@@ -27,6 +27,13 @@ export const ORDERS_GET_PAID_BY_USER_URL = ORDERS_URL + '/paid-orders-by-user';
 export const ORDERS_GET_CANCELLED_BY_USER_URL = ORDERS_URL + '/cancelled-orders-by-user';
 export const ORDERS_GET_SHIPPED_BY_USER_URL = ORDERS_URL + '/shipped-orders-by-user';
 export const ORDERS_GET_RETURNED_BY_USER_URL = ORDERS_URL + '/returned-orders-by-user';
+export const ORDERS_PATCH_PAID_URL = ORDERS_URL + '/pay-order-as-admin';
 export const ORDERS_PATCH_CANCELLED_URL = ORDERS_URL + '/cancel-order';
 export const ORDERS_PATCH_SHIPPED_URL = ORDERS_URL + '/shipped-order';
 export const ORDERS_PATCH_RETURNED_URL = ORDERS_URL + '/return-order';
+export const ORDERS_DELETE_ONE_URL = ORDERS_URL + '/delete-order/';
+export const ORDERS_GET_NEW_URL = ORDERS_URL + '/new-orders';
+export const ORDERS_GET_PAID_URL = ORDERS_URL + '/paid-orders';
+export const ORDERS_GET_CANCELLED_URL = ORDERS_URL + '/cancelled-orders';
+export const ORDERS_GET_SHIPPED_URL = ORDERS_URL + '/shipped-orders';
+export const ORDERS_GET_RETURNED_URL = ORDERS_URL + '/returned-orders';

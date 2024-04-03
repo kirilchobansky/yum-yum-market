@@ -55,6 +55,20 @@ const getShippedOrdersByUser = (userId: string) => Order.find({user: userId, sta
 
 const getReturnedOrdersByUser = (userId: string) => Order.find({user: userId, status: OrderStatus.RETURNED}).sort({ createdAt: -1});
 
+const getNewOrders = () => Order.find({status: OrderStatus.NEW}).sort({ createdAt: -1});
+
+const getPaidOrders = () => Order.find({status: OrderStatus.PAID}).sort({ createdAt: -1});
+
+const getCancelledOrders = () => Order.find({status: OrderStatus.CANCELLED}).sort({ createdAt: -1});
+
+const getShippedOrders = () => Order.find({status: OrderStatus.SHIPPED}).sort({ createdAt: -1});
+
+const getReturnedOrders = () => Order.find({status: OrderStatus.RETURNED}).sort({ createdAt: -1});
+
+const deleteOrder = (orderId: string) => Order.findByIdAndDelete(orderId);
+
+const markAsPaidOrder = (orderId: string) => Order.findByIdAndUpdate(orderId, { status: OrderStatus.PAID });
+
 const markAsCancelledOrder = (orderId: string) => Order.findByIdAndUpdate(orderId, { status: OrderStatus.CANCELLED });
 
 const markAsShippedOrder = (orderId: string) => Order.findByIdAndUpdate(orderId, { status: OrderStatus.SHIPPED });
@@ -69,10 +83,17 @@ export default {
     payOrder,
     getOrderById,
     getPaidOrdersByUser,
+    markAsPaidOrder,
     markAsCancelledOrder,
     markAsShippedOrder,
     markAsReturnedOrder,
     getCancelledOrdersByUser,
     getShippedOrdersByUser,
-    getReturnedOrdersByUser
+    getReturnedOrdersByUser,
+    deleteOrder,
+    getNewOrders,
+    getPaidOrders,
+    getCancelledOrders,
+    getShippedOrders,
+    getReturnedOrders
 }

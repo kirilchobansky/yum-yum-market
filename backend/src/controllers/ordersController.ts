@@ -112,6 +112,76 @@ router.get('/returned-orders-by-user', async (req: any, res) => {
     }
 });
 
+router.get('/new-orders', async (req: any, res) => {
+    const orders = await ordersService.getNewOrders();
+    try {
+        if(!orders){
+            res.status(401);
+            throw new Error;
+        }
+        res.status(200).send(orders);
+    } catch (error) {
+        res.send('No orders here!');
+    }
+});
+
+router.get('/paid-orders', async (req: any, res) => {
+    const orders = await ordersService.getPaidOrders();
+    try {
+        if(!orders){
+            res.status(401);
+            throw new Error;
+        }
+        res.status(200).send(orders);
+    } catch (error) {
+        res.send('No orders here!');
+    }
+});
+
+router.get('/cancelled-orders', async (req: any, res) => {
+    const orders = await ordersService.getCancelledOrders();
+    try {
+        if(!orders){
+            res.status(401);
+            throw new Error;
+        }
+        res.status(200).send(orders);
+    } catch (error) {
+        res.send('No orders here!');
+    }
+});
+
+router.get('/shipped-orders', async (req: any, res) => {
+    const orders = await ordersService.getShippedOrders();
+    try {
+        if(!orders){
+            res.status(401);
+            throw new Error;
+        }
+        res.status(200).send(orders);
+    } catch (error) {
+        res.send('No orders here!');
+    }
+});
+
+router.get('/returned-orders', async (req: any, res) => {
+    const orders = await ordersService.getReturnedOrders();
+    try {
+        if(!orders){
+            res.status(401);
+            throw new Error;
+        }
+        res.status(200).send(orders);
+    } catch (error) {
+        res.send('No orders here!');
+    }
+});
+
+router.delete('/delete-order/:orderId', async (req, res) => {
+    await ordersService.deleteOrder(req.params.orderId);
+    res.status(200).json('Order was DELETED successfully');
+});
+
 router.patch('/cancel-order', async (req, res) => {
     await ordersService.markAsCancelledOrder(req.body.orderId);
     res.status(200).json('Order was CANCELLED successfully');
@@ -125,6 +195,11 @@ router.patch('/shipped-order', async (req, res) => {
 router.patch('/return-order', async (req, res) => {
     await ordersService.markAsReturnedOrder(req.body.orderId);
     res.status(200).json('Order was RETURNED successfully');
+});
+
+router.patch('/pay-order-as-admin', async (req, res) => {
+    await ordersService.markAsPaidOrder(req.body.orderId);
+    res.status(200).json('Order was PAID successfully');
 });
 
 export default router;

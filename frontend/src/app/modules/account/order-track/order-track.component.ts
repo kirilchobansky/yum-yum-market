@@ -28,12 +28,19 @@ export class OrderTrackComponent implements OnInit {
 
     this.ordersService.getOrderById(params.orderId).subscribe({
       next: (order) => {
-        if(!order) return;
+        if(!order || !order.status) return;
         this.order = order;
       }
     })
     this.isAdmin = this.authService.currentUser.isAdmin;
-  }
+  };
+
+  payOrderAsAdmin(){
+    this.ordersService.payOrderAsAdmin(this.order.id).subscribe(() => {
+      this.router.navigate(['/orders']);
+      this.toastrService.success('Order was PAID', 'Success');
+    })
+  };
 
   cancelOrder(){
     this.ordersService.cancelOrder(this.order.id).subscribe(() => {
@@ -55,5 +62,12 @@ export class OrderTrackComponent implements OnInit {
       this.toastrService.success('Order was RETURNED', 'Success');
     })
   };
+
+  deleteOrder(){
+    this.ordersService.deleteOrder(this.order.id).subscribe(() => {
+      this.router.navigate(['/orders']);
+      this.toastrService.success('Order was DELETED', 'Success');
+    })
+  }
 
 }

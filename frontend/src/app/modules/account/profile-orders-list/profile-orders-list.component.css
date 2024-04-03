@@ -1,6 +1,47 @@
+.title {
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0 0 0;
+
+}
+
 .container {
     margin-top: 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.title-container {
+    display: flex;
+}
+
+.toggle-icon-container {
+    height: 30px;
+    width: 30px;
+    position: relative;
+    top: 45px;
+    left: 20px;
+}
+
+.toggle-icon {
+    color: #333;
+    margin: 0;
+    position: absolute;
+}
+
+.show-beak-right {
+    transform: rotate(90deg);
+}
+
+.show-beak-bottom {
+    transform: rotate(0deg);
+}
+
+.title-container .toggle-icon-container:hover .toggle-icon {
+    cursor: pointer;
+}
+
+app-orders-list.hide {
+    display: none;
 }

@@ -7,6 +7,7 @@ import { AuthGuard } from 'src/app/auth/guards/auth.guard';
 import { PaymentComponent } from './payment/payment.component';
 import { OrderTrackComponent } from './order-track/order-track.component';
 import { ProfileOrdersListComponent } from './profile-orders-list/profile-orders-list.component';
+import { isAdminGuard } from 'src/app/auth/guards/isAdmin.guard';
 
 const routes: Routes = [
   {path: 'cart-page', component: CartComponent},
