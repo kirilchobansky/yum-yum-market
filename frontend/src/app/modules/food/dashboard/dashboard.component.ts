@@ -14,7 +14,7 @@ export class DashboardComponent implements OnInit {
   foods: Food[] = [];
 
   constructor(
-    private foodServices: FoodService, 
+    private foodsServices: FoodService, 
     private activatedRoute: ActivatedRoute,
     private cartService: CartService) { }
 
@@ -22,11 +22,11 @@ export class DashboardComponent implements OnInit {
     let foodObservable: Observable<Food[]>;
     this.activatedRoute.params.subscribe((params) => {
       if (params['search']) {
-        foodObservable = this.foodServices.getFoodBySearch(params['search']);
+        foodObservable = this.foodsServices.getFoodBySearch(params['search']);
       } else if (params['tag']) {
-        foodObservable = this.foodServices.getAllFoodsByTag(params['tag']);
+        foodObservable = this.foodsServices.getAllFoodsByTag(params['tag']);
       } else {
-        foodObservable = this.foodServices.getAll();
+        foodObservable = this.foodsServices.getAll();
       }
 
       foodObservable.subscribe((foods) => {

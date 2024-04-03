@@ -37,3 +37,5 @@ export const ORDERS_GET_PAID_URL = ORDERS_URL + '/paid-orders';
 export const ORDERS_GET_CANCELLED_URL = ORDERS_URL + '/cancelled-orders';
 export const ORDERS_GET_SHIPPED_URL = ORDERS_URL + '/shipped-orders';
 export const ORDERS_GET_RETURNED_URL = ORDERS_URL + '/returned-orders';
+export const OREDRS_BY_SEARCH_URL = ORDERS_URL + '/search/';
+export const OREDRS_GET_ALL_URL = ORDERS_URL + '/all';

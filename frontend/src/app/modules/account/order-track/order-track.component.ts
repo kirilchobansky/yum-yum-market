@@ -37,28 +37,28 @@ export class OrderTrackComponent implements OnInit {
 
   payOrderAsAdmin(){
     this.ordersService.payOrderAsAdmin(this.order.id).subscribe(() => {
-      this.router.navigate(['/orders']);
+      this.router.navigate(['/orders/dashboard']);
       this.toastrService.success('Order was PAID', 'Success');
     })
   };
 
   cancelOrder(){
     this.ordersService.cancelOrder(this.order.id).subscribe(() => {
-      this.router.navigate(['/orders']);
+      this.router.navigate(['/orders/dashboard']);
       this.toastrService.success('Order was CANCELLED', 'Success');
     })
   };
 
   shippedOrder(){
     this.ordersService.shippedOrder(this.order.id).subscribe(() => {
-      this.router.navigate(['/orders']);
+      this.router.navigate(['/orders/dashboard']);
       this.toastrService.success('Order was SHIPPED', 'Success');
     })
   };
 
   returnOrder(){
     this.ordersService.returnOrder(this.order.id).subscribe(() => {
-      this.router.navigate(['/orders']);
+      this.router.navigate(['/orders/dashboard']);
       this.toastrService.success('Order was RETURNED', 'Success');
     })
   };

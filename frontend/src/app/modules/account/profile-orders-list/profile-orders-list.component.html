@@ -1,14 +1,10 @@
-<div class="title">
-  <app-title *ngIf="isAdmin" title="Total ({{ totalOrders }})" />
-  <app-title *ngIf="!isAdmin" title="Total ({{ totalOrdersByUser }})" />
+<div class="header-container">
+  <app-title title="Total ({{ totalOrders }})" />
+  <app-search [type]="'orders'" />
 </div>
 <div class="container">
   <div class="title-container">
-    <app-title *ngIf="isAdmin" title="Unpaid Orders ({{ newOrders.length }})" />
-    <app-title
-      *ngIf="!isAdmin"
-      title="Unpaid Orders ({{ newOrdersByUser.length }})"
-    />
+    <app-title title="Unpaid Orders ({{ newOrders.length }})" />
     <div class="toggle-icon-container" (click)="toggleOrdersVisibility('new')">
       <i
         class="toggle-icon"
@@ -21,25 +17,16 @@
     </div>
   </div>
   <app-orders-list
-    *ngIf="!isAdmin"
-    [orders]="newOrdersByUser"
-    [path]="'payment'"
-    [ngClass]="{ hide: !showNewOrders }"
-  ></app-orders-list>
-  <app-orders-list
-    *ngIf="isAdmin"
     [orders]="newOrders"
     [ngClass]="{ hide: !showNewOrders }"
+    [path]="path"
+    [searchQuery]="searchQuery"
   ></app-orders-list>
 </div>
 
 <div class="container">
   <div class="title-container">
-    <app-title *ngIf="isAdmin" title="Paid Orders ({{ paidOrders.length }})" />
-    <app-title
-      *ngIf="!isAdmin"
-      title="Paid Orders ({{ paidOrdersByUser.length }})"
-    />
+    <app-title title="Paid Orders ({{ paidOrders.length }})" />
     <div class="toggle-icon-container" (click)="toggleOrdersVisibility('paid')">
       <i
         class="toggle-icon"
@@ -51,22 +38,19 @@
       >
     </div>
   </div>
-
-  <app-orders-list *ngIf="!isAdmin" [orders]="paidOrdersByUser" [ngClass]="{ hide: !showPaidOrders }"/>
-  <app-orders-list *ngIf="isAdmin" [orders]="paidOrders" [ngClass]="{ hide: !showPaidOrders }"/>
+  <app-orders-list
+    [orders]="paidOrders"
+    [ngClass]="{ hide: !showPaidOrders }"
+  />
 </div>
 
 <div class="container">
   <div class="title-container">
-    <app-title
-      *ngIf="isAdmin"
-      title="Cancelled Orders ({{ cancelledOrders.length }})"
-    />
-    <app-title
-      *ngIf="!isAdmin"
-      title="Cancelled Orders ({{ cancelledOrdersByUser.length }})"
-    />
-    <div class="toggle-icon-container" (click)="toggleOrdersVisibility('cancelled')">
+    <app-title title="Cancelled Orders ({{ cancelledOrders.length }})" />
+    <div
+      class="toggle-icon-container"
+      (click)="toggleOrdersVisibility('cancelled')"
+    >
       <i
         class="toggle-icon"
         [ngClass]="{
@@ -77,21 +61,19 @@
       >
     </div>
   </div>
-  <app-orders-list *ngIf="!isAdmin" [orders]="cancelledOrdersByUser" [ngClass]="{ hide: !showCancelledOrders }"/>
-  <app-orders-list *ngIf="isAdmin" [orders]="cancelledOrders" [ngClass]="{ hide: !showCancelledOrders }" />
+  <app-orders-list
+    [orders]="cancelledOrders"
+    [ngClass]="{ hide: !showCancelledOrders }"
+  />
 </div>
 
 <div class="container">
   <div class="title-container">
-    <app-title
-      *ngIf="isAdmin"
-      title="Shipped Orders ({{ shippedOrders.length }})"
-    />
-    <app-title
-      *ngIf="!isAdmin"
-      title="Shipped Orders ({{ shippedOrdersByUser.length }})"
-    />
-    <div class="toggle-icon-container" (click)="toggleOrdersVisibility('shipped')">
+    <app-title title="Shipped Orders ({{ shippedOrders.length }})" />
+    <div
+      class="toggle-icon-container"
+      (click)="toggleOrdersVisibility('shipped')"
+    >
       <i
         class="toggle-icon"
         [ngClass]="{
@@ -102,22 +84,19 @@
       >
     </div>
   </div>
-
-  <app-orders-list *ngIf="!isAdmin" [orders]="shippedOrdersByUser" [ngClass]="{ hide: !showShippedOrders }"/>
-  <app-orders-list *ngIf="isAdmin" [orders]="shippedOrders" [ngClass]="{ hide: !showShippedOrders }"/>
+  <app-orders-list
+    [orders]="shippedOrders"
+    [ngClass]="{ hide: !showShippedOrders }"
+  />
 </div>
 
 <div class="container">
   <div class="title-container">
-    <app-title
-      *ngIf="isAdmin"
-      title="Returned Orders ({{ returnedOrders.length }})"
-    />
-    <app-title
-      *ngIf="!isAdmin"
-      title="Returned Orders ({{ returnedOrdersByUser.length }})"
-    />
-    <div class="toggle-icon-container" (click)="toggleOrdersVisibility('returned')">
+    <app-title title="Returned Orders ({{ returnedOrders.length }})" />
+    <div
+      class="toggle-icon-container"
+      (click)="toggleOrdersVisibility('returned')"
+    >
       <i
         class="toggle-icon"
         [ngClass]="{
@@ -128,7 +107,8 @@
       >
     </div>
   </div>
-
-  <app-orders-list *ngIf="!isAdmin" [orders]="returnedOrdersByUser" [ngClass]="{ hide: !showReturnedOrders }"/>
-  <app-orders-list *ngIf="isAdmin" [orders]="returnedOrders" [ngClass]="{ hide: !showReturnedOrders }"/>
+  <app-orders-list
+    [orders]="returnedOrders"
+    [ngClass]="{ hide: !showReturnedOrders }"
+  />
 </div>

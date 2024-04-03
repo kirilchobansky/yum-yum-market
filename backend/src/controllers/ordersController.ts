@@ -202,4 +202,15 @@ router.patch('/pay-order-as-admin', async (req, res) => {
     res.status(200).json('Order was PAID successfully');
 });
 
+router.get('/search/:searchText', async (req, res) => {
+    const searchText = req.params.searchText;
+    const orders = await ordersService.search(searchText);    
+    res.send(orders);
+});
+
+router.get('/all', async (req, res) => {
+    const orders = await ordersService.getAll(); 
+    res.send(orders);
+})
+
 export default router;

@@ -7,7 +7,6 @@ import { AuthGuard } from 'src/app/auth/guards/auth.guard';
 import { PaymentComponent } from './payment/payment.component';
 import { OrderTrackComponent } from './order-track/order-track.component';
 import { ProfileOrdersListComponent } from './profile-orders-list/profile-orders-list.component';
-import { isAdminGuard } from 'src/app/auth/guards/isAdmin.guard';
 
 const routes: Routes = [
   {path: 'cart-page', component: CartComponent},
@@ -15,7 +14,8 @@ const routes: Routes = [
   {path: 'checkout', component: CheckoutComponent, canActivate: [AuthGuard]},
   {path: 'payment/:orderId', component: PaymentComponent, canActivate: [AuthGuard]},
   {path: 'track/:orderId', component: OrderTrackComponent, canActivate: [AuthGuard]},
-  {path: 'orders', component: ProfileOrdersListComponent, canActivate: [AuthGuard]}
+  {path: 'orders/dashboard', component: ProfileOrdersListComponent, canActivate: [AuthGuard]},
+  {path: 'orders/search/:searchText', component: ProfileOrdersListComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({

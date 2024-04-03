@@ -75,6 +75,12 @@ const markAsShippedOrder = (orderId: string) => Order.findByIdAndUpdate(orderId,
 
 const markAsReturnedOrder = (orderId: string) => Order.findByIdAndUpdate(orderId, { status: OrderStatus.RETURNED });
 
+const search = (search: string) => {
+    const orders = Order.find({ $where: `this._id.toString().includes('${search}')` });
+    return orders;
+};
+
+const getAll = () => Order.find();
 
 export default {
     createNewOrder,
@@ -95,5 +101,7 @@ export default {
     getPaidOrders,
     getCancelledOrders,
     getShippedOrders,
-    getReturnedOrders
+    getReturnedOrders,
+    search,
+    getAll
 }

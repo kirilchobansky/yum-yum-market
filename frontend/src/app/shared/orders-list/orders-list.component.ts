@@ -12,5 +12,19 @@ export class OrdersListComponent {
   orders!: Order[];
 
   @Input()
-  path: 'payment' | 'track' = 'track';
+  path: string = 'track';
+
+  @Input() 
+  searchQuery: string = '';
+
+  highlightMatchedText(order: any): any[] {
+    const searchTerm = this.searchQuery;
+    const text = order.id;
+    const regex = new RegExp(searchTerm, 'gi');
+    const parts = text.split(regex);
+    const highlightedParts = parts.map((part: string) => {
+        return { text: part, isMatched: regex.test(part) };
+    });
+    return highlightedParts;
+  }
 }

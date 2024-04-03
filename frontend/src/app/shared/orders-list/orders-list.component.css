@@ -46,3 +46,7 @@ h1 span {
     font-weight: 100;
     height: 3rem;
 }
+
+.highlight {
+    background-color: red;
+}

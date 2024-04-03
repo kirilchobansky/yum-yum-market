@@ -2,29 +2,28 @@ import { Component, OnInit } from '@angular/core';
 import { OrderService } from '../services/order.service';
 import { Order } from 'src/app/core/models/Order';
 import { AuthService } from 'src/app/auth/auth.service';
-import { forkJoin } from 'rxjs';
+import { Observable, forkJoin, map, switchMap } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-profile-orders-list',
   templateUrl: './profile-orders-list.component.html',
-  styleUrls: ['./profile-orders-list.component.css']
+  styleUrls: ['./profile-orders-list.component.css'],
 })
 export class ProfileOrdersListComponent implements OnInit {
-
-  newOrdersByUser: Order[] | [] = [];
-  paidOrdersByUser: Order[] | [] = [];
-  cancelledOrdersByUser: Order[] | [] = [];
-  shippedOrdersByUser: Order[] | [] = [];
-  returnedOrdersByUser: Order[] | [] = [];
   newOrders: Order[] | [] = [];
   paidOrders: Order[] | [] = [];
   cancelledOrders: Order[] | [] = [];
   shippedOrders: Order[] | [] = [];
   returnedOrders: Order[] | [] = [];
-  isAdmin: boolean = false;
-  totalOrders!: number;
-  totalOrdersByUser!: number;
+  ordersBySearch: Order[] | [] = [];
 
+  totalOrders: number = 0;
+  
+  path = 'payment';
+  searchQuery: string = '';
+  
+  isAdmin: boolean = false;
   showNewOrders: boolean = false;
   showPaidOrders: boolean = false;
   showCancelledOrders: boolean = false;
@@ -33,46 +32,58 @@ export class ProfileOrdersListComponent implements OnInit {
 
   constructor(
     private ordersService: OrderService,
-    private authService: AuthService){}
+    private authService: AuthService,
+    private activatedRoute: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
     this.isAdmin = this.authService.currentUser.isAdmin;
+    if (this.isAdmin) this.path = 'track';
 
-    forkJoin([
-      this.ordersService.getNewOrdersByUser(),
-      this.ordersService.getPaidOrdersByUser(),
-      this.ordersService.getCancelledOrdersByUser(),
-      this.ordersService.getShippedOrdersByUser(),
-      this.ordersService.getReturnedOrdersByUser(),
-      this.ordersService.getNewOrders(),
-      this.ordersService.getPaidOrders(),
-      this.ordersService.getCancelledOrders(),
-      this.ordersService.getShippedOrders(),
-      this.ordersService.getReturnedOrders()
-    ]).subscribe({
-      next: ([newOrdersByUser, paidOrdersByUser, cancelledOrdersByUser, shippedOrdersByUser, returnedOrdersByUser,
-               newOrders, paidOrders, cancelledOrders, shippedOrders, returnedOrders]) => {
-        this.totalOrders = newOrders.length + paidOrders.length + cancelledOrders.length +
-                           shippedOrders.length + returnedOrders.length;
-        this.totalOrdersByUser = newOrdersByUser.length + paidOrdersByUser.length + cancelledOrdersByUser.length +
-                           shippedOrdersByUser.length + returnedOrdersByUser.length;                   
-        this.newOrdersByUser = newOrdersByUser;
-        this.paidOrdersByUser = paidOrdersByUser;
-        this.cancelledOrdersByUser = cancelledOrdersByUser;
-        this.shippedOrdersByUser = shippedOrdersByUser;
-        this.returnedOrdersByUser = returnedOrdersByUser;
-        this.newOrders = newOrders;
-        this.paidOrders = paidOrders;
-        this.cancelledOrders = cancelledOrders;
-        this.shippedOrders = shippedOrders;
-        this.returnedOrders = returnedOrders;
-      },
-      error: (error) => {
-        console.error('Error fetching orders:', error);
-      }
+    const orderTypes: string[] = [
+      'new',
+      'paid',
+      'cancelled',
+      'shipped',
+      'returned',
+    ];
+
+    const orderObservables: { [key: string]: Observable<Order[]> } = {};
+    orderTypes.forEach((type) => {
+      orderObservables[type] = this.activatedRoute.params.pipe(
+        switchMap((params) => {
+          const searchParam = params['searchText'];
+          if (searchParam) {
+            return this.ordersService.getOrdersBySearch(searchParam);
+          } else {
+            return this.ordersService.getAll();
+          }
+        })
+      );
     });
+
+    let totalOrdersCount = 0;
+    Object.keys(orderObservables).forEach(
+      (type: keyof typeof orderObservables) => {
+        orderObservables[type].subscribe((orders: Order[]) => {
+          (this as any)[type + 'Orders'] = this.filterOrders(orders, type.toString().toUpperCase());
+          totalOrdersCount += (this as any)[type + 'Orders'].length;
+          this.totalOrders = totalOrdersCount;
+        });
+      });
   }
 
+  filterOrders(orders: Order[], status: string): Order[] {
+    if (this.isAdmin) {
+      return orders.filter((order) => order.status === status);
+    } else {
+      return orders.filter(
+        (order) =>
+          order.status === status.toUpperCase() &&
+          order.user === this.authService.currentUser.id
+      );
+    }
+  }
 
   toggleOrdersVisibility(section: string) {
     switch (section) {

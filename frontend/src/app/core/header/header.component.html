@@ -15,7 +15,7 @@
         <a><i class="fa-solid fa-user"></i> {{ user.name }} <span *ngIf="isAdmin">(Admin)</span></a>
         <div class="menu">
           <a routerLink="/users/profile">My Account</a>
-          <a routerLink="/orders">Orders</a>
+          <a routerLink="/orders/dashboard">Orders</a>
           <a (click)="logout()">Logout</a>
         </div>
       </li>

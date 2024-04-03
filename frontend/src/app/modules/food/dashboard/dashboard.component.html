@@ -1,5 +1,5 @@
 <div class="container">
-  <app-search />
+  <app-search [type]="'foods'"/>
   <app-tags />
   <not-found-page
     [visible]="!foods || !foods.length"
