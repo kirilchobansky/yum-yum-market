@@ -7,6 +7,13 @@
     margin-top: 2rem;
 }
 
+.profile-picture {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .profile-picture img {
     border: 2px solid #fff;
     width: 10rem;

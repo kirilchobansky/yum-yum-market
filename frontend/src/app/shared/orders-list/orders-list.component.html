@@ -5,7 +5,11 @@
     *ngFor="let order of orders"
   >
     <h1>
-      Order <span>#{{order.id}}</span>
+      Order <span>
+        <ng-container *ngFor="let part of highlightMatchedText(order)">
+          <span [style.background-color]="getHighlightColor(part.isMatched)">{{ part.text }}</span>
+        </ng-container>
+      </span>
     </h1>
     <div class="details">
       <div><strong>Date:</strong> {{ order.createdAt | date : "medium" }}</div>

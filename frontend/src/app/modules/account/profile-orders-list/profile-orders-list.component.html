@@ -41,6 +41,7 @@
   <app-orders-list
     [orders]="paidOrders"
     [ngClass]="{ hide: !showPaidOrders }"
+    [searchQuery]="searchQuery"
   />
 </div>
 
@@ -64,6 +65,7 @@
   <app-orders-list
     [orders]="cancelledOrders"
     [ngClass]="{ hide: !showCancelledOrders }"
+    [searchQuery]="searchQuery"
   />
 </div>
 
@@ -87,6 +89,7 @@
   <app-orders-list
     [orders]="shippedOrders"
     [ngClass]="{ hide: !showShippedOrders }"
+    [searchQuery]="searchQuery"
   />
 </div>
 
@@ -110,5 +113,6 @@
   <app-orders-list
     [orders]="returnedOrders"
     [ngClass]="{ hide: !showReturnedOrders }"
+    [searchQuery]="searchQuery"
   />
 </div>

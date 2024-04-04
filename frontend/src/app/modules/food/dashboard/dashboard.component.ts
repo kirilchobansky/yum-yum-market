@@ -15,8 +15,7 @@ export class DashboardComponent implements OnInit {
 
   constructor(
     private foodsServices: FoodService, 
-    private activatedRoute: ActivatedRoute,
-    private cartService: CartService) { }
+    private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     let foodObservable: Observable<Food[]>;

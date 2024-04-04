@@ -11,18 +11,18 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./profile-orders-list.component.css'],
 })
 export class ProfileOrdersListComponent implements OnInit {
-  newOrders: Order[] | [] = [];
-  paidOrders: Order[] | [] = [];
-  cancelledOrders: Order[] | [] = [];
-  shippedOrders: Order[] | [] = [];
-  returnedOrders: Order[] | [] = [];
-  ordersBySearch: Order[] | [] = [];
+  newOrders: Order[] = [];
+  paidOrders: Order[] = [];
+  cancelledOrders: Order[] = [];
+  shippedOrders: Order[] = [];
+  returnedOrders: Order[] = [];
+  ordersBySearch: Order[] = [];
 
   totalOrders: number = 0;
-  
+
   path = 'payment';
   searchQuery: string = '';
-  
+
   isAdmin: boolean = false;
   showNewOrders: boolean = false;
   showPaidOrders: boolean = false;
@@ -53,6 +53,7 @@ export class ProfileOrdersListComponent implements OnInit {
       orderObservables[type] = this.activatedRoute.params.pipe(
         switchMap((params) => {
           const searchParam = params['searchText'];
+          this.searchQuery = searchParam;
           if (searchParam) {
             return this.ordersService.getOrdersBySearch(searchParam);
           } else {
@@ -62,15 +63,34 @@ export class ProfileOrdersListComponent implements OnInit {
       );
     });
 
-    let totalOrdersCount = 0;
+    this.activatedRoute.params.pipe(
+      switchMap((params) => {
+        const searchParam = params['searchText'];
+        this.searchQuery = searchParam;
+        if (searchParam) {
+          return this.ordersService.getOrdersBySearch(searchParam);
+        } else {
+          return this.ordersService.getAll();
+        }
+      })
+    ).subscribe((orders: Order[]) => {
+      if(!this.isAdmin){
+        orders = orders.filter((order) => order.user === this.authService.currentUser.id);
+      }  
+      this.totalOrders = orders.length;
+    });
+
     Object.keys(orderObservables).forEach(
       (type: keyof typeof orderObservables) => {
         orderObservables[type].subscribe((orders: Order[]) => {
-          (this as any)[type + 'Orders'] = this.filterOrders(orders, type.toString().toUpperCase());
-          totalOrdersCount += (this as any)[type + 'Orders'].length;
-          this.totalOrders = totalOrdersCount;
+          const filteredOrders = this.filterOrders(
+            orders,
+            type.toString().toUpperCase()
+          );
+          (this as any)[type + 'Orders'] = filteredOrders;
         });
-      });
+      }
+    );
   }
 
   filterOrders(orders: Order[], status: string): Order[] {
@@ -83,7 +103,7 @@ export class ProfileOrdersListComponent implements OnInit {
           order.user === this.authService.currentUser.id
       );
     }
-  }
+  };
 
   toggleOrdersVisibility(section: string) {
     switch (section) {
