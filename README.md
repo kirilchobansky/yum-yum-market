@@ -1,4 +1,34 @@
+<<<<<<< HEAD
 # Frontend
+=======
+# 🛒 Yum-Yum Market
+
+A full-stack, enterprise-structured food delivery web application built using **Angular (v16)**, **Node.js/Express**, and **MongoDB**. This project utilizes modular architectural design patterns (Core, Shared, and Feature modules) to ensure scalability and clean code separation.
+
+---
+
+## 🌟 Key Features
+
+- **Dynamic Food Catalog:** Complete search indexing, custom tag filtering, and dynamic parameter-based routing for detailed recipe/food information.
+- **State-Managed Cart & Checkout:** Integrated shopping cart mechanics with local storage persistence and automated price calculation.
+- **Secure Authentication & Guarded Routes:** Robust sign-up and login workflows with secure JSON Web Tokens (JWT) handling, centralized user states, and active route guards.
+- **Geographic Address Pinning:** Implemented open-source mapping with **Leaflet.js** allowing customers to visual-map their exact delivery coordinates.
+- **Interactive Feedback:** Multi-user comments engine tied to active database records, as well as a like/dislike rating system.
+- **Seamless Payments:** Full checkout integrations configured through the **PayPal Sandbox API**.
+- **Modern User Experience:** Intercepted loading states with `ngx-spinner` and dynamic app notifications via `ngx-toastr`.
+
+---
+
+## 🛠️ Technology Stack
+
+- **Frontend:** Angular 16, TypeScript, RxJS, HTML5, SCSS/CSS
+- **Backend:** Node.js, Express.js (REST API), TypeScript
+- **Database:** MongoDB (via Mongoose ODM)
+- **External Dependencies:** Leaflet.js, OpenStreetMap, PayPal SDK
+- **Utilities:** `ngx-spinner`, `ngx-toastr` (notifications)
+
+---
+>>>>>>> fdbfcb92039ecd6a1074855ee60b104f23d88f86
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.12.
 
