@@ -1,11 +1,10 @@
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 import { User, IUser } from '../models/User';
-
-const SECRET = 'ThatIsMyBestSecret';
+import { JWT_SECRET } from '../config';
 
 const login = async (email: string, password: string) => {
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ email }).select('+password');
 
     if (!user) {
         throw new Error('Cannot find email or password!');
@@ -39,7 +38,7 @@ function generateToken(user: IUser) {
         isAdmin: user.isAdmin
     }
 
-    const token = jwt.sign(payload, SECRET, { expiresIn: '30d' })
+    const token = jwt.sign(payload, JWT_SECRET, { expiresIn: '30d' })
   
     return {
       id: user._id,

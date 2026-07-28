@@ -1,16 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { Food } from '../models';
 import { FoodService } from 'src/app/modules/food/food.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+    selector: 'app-home',
+    templateUrl: './home.component.html',
+    styleUrls: ['./home.component.css'],
+    standalone: false
 })
 export class HomeComponent implements OnInit{
 
   foods!: Food[];
-  constructor(private foodService: FoodService){}
+  constructor(@Inject(FoodService) private foodService: FoodService){}
 
   ngOnInit(): void {
     this.foodService.getAll().subscribe((foods) => {

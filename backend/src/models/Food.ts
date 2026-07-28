@@ -9,21 +9,21 @@ export interface Food {
     imageUrl: string;
     origins: string[];
     cookTime: string;
-    comments: Types.ObjectId[]; 
+    comments: Types.ObjectId[];
     ordersCount: number
 }
 
 export const FoodSchema = new Schema<Food>(
     {
-        name: {type: String, required: true},
-        price: {type: Number, required: true},
-        tags: {type: [String], required: true},
-        stars: {type: Number, required: true},
-        imageUrl: {type: String, required: true},
-        origins: {type: [String], required: true},
-        cookTime: {type: String, required: true},
+        name: { type: String, required: true },
+        price: { type: Number, required: true },
+        tags: { type: [String], required: true },
+        stars: { type: Number, required: true },
+        imageUrl: { type: String, required: true },
+        origins: { type: [String], required: true },
+        cookTime: { type: String, required: true },
         comments: [{ type: Schema.Types.ObjectId, ref: 'Comment' }],
-        ordersCount: {type: Number}
+        ordersCount: { type: Number }
     },
     {
         toJSON: { virtuals: true },

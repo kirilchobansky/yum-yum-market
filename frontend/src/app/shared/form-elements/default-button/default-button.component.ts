@@ -1,9 +1,10 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
-  selector: 'default-button',
-  templateUrl: './default-button.component.html',
-  styleUrls: ['./default-button.component.css']
+    selector: 'default-button',
+    templateUrl: './default-button.component.html',
+    styleUrls: ['./default-button.component.css'],
+    standalone: false
 })
 export class DefaultButtonComponent {
 

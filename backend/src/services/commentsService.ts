@@ -2,12 +2,14 @@ import { Comment } from '../models/Comment';
 import { Food } from '../models/Food';
 import { User } from '../models/User';
 
-exports.getAllCommentsByFood = (foodId: string) => Comment.find({food: foodId}).populate(['owner']).sort({ createdAt: -1});
+exports.getById = (commentId: string) => Comment.findById(commentId);
+
+exports.getAllCommentsByFood = (foodId: string) => Comment.find({food: foodId}).populate('owner', 'name').sort({ createdAt: -1});
 
 exports.getLatestThreeCommentsByFood = (foodId: string) => {
     return Comment
-        .find({food: foodId}).populate(['owner'])
-        .sort({ createdAt: -1 }) 
+        .find({food: foodId}).populate('owner', 'name')
+        .sort({ createdAt: -1 })
         .limit(3);
 }
 

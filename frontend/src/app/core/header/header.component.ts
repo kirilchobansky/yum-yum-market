@@ -1,14 +1,14 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, Inject, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/auth/auth.service';
 import { CartService } from 'src/app/modules/account/services/cart.service';
 import { User } from '../models';
-import { logoImageUrl } from '../constans/images/logo';
-
+import { logoImageUrl } from '../constants/images/logo';
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+    selector: 'app-header',
+    templateUrl: './header.component.html',
+    styleUrls: ['./header.component.css'],
+    standalone: false
 })
 export class HeaderComponent implements OnInit{
 
@@ -18,8 +18,8 @@ export class HeaderComponent implements OnInit{
     isAdmin: boolean = false;
 
     constructor(
-      private cartService: CartService,
-      private authService: AuthService,
+      @Inject(CartService) private cartService: CartService,
+      @Inject(AuthService) private authService: AuthService,
       private cdr: ChangeDetectorRef){}
 
     ngOnInit(): void {

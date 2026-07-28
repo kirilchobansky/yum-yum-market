@@ -4,9 +4,10 @@ import { Order } from 'src/app/core/models/Order';
 import { MapService } from './map.service';
 
 @Component({
-  selector: 'app-map',
-  templateUrl: './map.component.html',
-  styleUrls: ['./map.component.css']
+    selector: 'app-map',
+    templateUrl: './map.component.html',
+    styleUrls: ['./map.component.css'],
+    standalone: false
 })
 export class MapComponent implements OnChanges {
   
@@ -67,7 +68,7 @@ export class MapComponent implements OnChanges {
     m.boxZoom.disable();
     m.keyboard.disable();
     m.off('click');
-    m.tap?.disable();
+    (m as any).tap?.disable();
     this.currentMarker.dragging?.disable();
   }
 

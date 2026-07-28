@@ -5,14 +5,25 @@ import foodsService from '../services/foodsService';
 const router = express.Router();
 
 router.get('/seed', async (req, res) => {
-    const commentsCount = await Food.countDocuments();
-    if (commentsCount > 0) {
-      res.send('Seed is already done!');
-      return;
+    const foodsCount = await Food.countDocuments();
+    if (foodsCount > 0) {
+        res.send('Seed is already done!');
+        return;
     }
 
     await Food.create(sample_foods);
     res.send('Seed Is Done!');
+});
+
+router.get('/seed/delete', async (req, res) => {
+    const foodsCount = await Food.countDocuments();
+    if (foodsCount == 0) {
+        res.send('Tere is no data to delete!');
+        return;
+    }
+
+    await Food.deleteMany({});
+    res.send('You have deleted all data!');
 });
 
 router.get('/', async (req, res) => {

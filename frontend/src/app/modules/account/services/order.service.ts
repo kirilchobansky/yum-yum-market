@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Order } from 'src/app/core/models/Order';
-import { ORDERS_CREATE_URL, ORDERS_GET_BY_ID_URL, ORDERS_PAY_URL, ORDERS_PATCH_CANCELLED_URL, ORDERS_PATCH_SHIPPED_URL, ORDERS_PATCH_RETURNED_URL, ORDERS_DELETE_ONE_URL, ORDERS_PATCH_PAID_URL, OREDRS_BY_SEARCH_URL, OREDRS_GET_ALL_URL } from 'src/app/core/constans/urls';
+import { ORDERS_CREATE_URL, ORDERS_GET_BY_ID_URL, ORDERS_PAY_URL, ORDERS_PATCH_CANCELLED_URL, ORDERS_PATCH_SHIPPED_URL, ORDERS_PATCH_RETURNED_URL, ORDERS_DELETE_ONE_URL, ORDERS_PATCH_PAID_URL, OREDRS_BY_SEARCH_URL, OREDRS_GET_ALL_URL } from 'src/app/core/constants/urls';
 import { Observable } from 'rxjs';
 
 @Injectable({

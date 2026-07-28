@@ -2,9 +2,10 @@ import { Component, Input } from '@angular/core';
 import { AbstractControl, FormControl } from '@angular/forms';
 
 @Component({
-  selector: 'text-input',
-  templateUrl: './text-input.component.html',
-  styleUrls: ['./text-input.component.css']
+    selector: 'text-input',
+    templateUrl: './text-input.component.html',
+    styleUrls: ['./text-input.component.css'],
+    standalone: false
 })
 export class TextInputComponent {
   

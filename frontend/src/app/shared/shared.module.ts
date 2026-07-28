@@ -13,6 +13,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { LoadingComponent } from './loading/loading.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { LoadingInterceptor } from './interceptors/loading.interceptor';
 import { OrderItemsListComponent } from './order-items-list/order-items-list.component';
 import { MapComponent } from './map/map.component';
@@ -40,6 +41,8 @@ import { OrdersListComponent } from './orders-list/orders-list.component';
     OrdersListComponent
   ],
   exports: [
+    CommonModule,
+    RouterModule,
     StarRatingComponent,
     SearchComponent,
     TagsComponent,

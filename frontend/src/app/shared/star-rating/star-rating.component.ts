@@ -1,9 +1,10 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'star-rating',
-  templateUrl: './star-rating.component.html',
-  styleUrls: ['./star-rating.component.css']
+    selector: 'star-rating',
+    templateUrl: './star-rating.component.html',
+    styleUrls: ['./star-rating.component.css'],
+    standalone: false
 })
 export class StarRatingComponent {
 

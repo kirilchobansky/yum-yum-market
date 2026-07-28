@@ -3,7 +3,7 @@ import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { User } from '../core/models';
 import { IUserLogin } from '../core/interfaces/IUserLogin';
 import { HttpClient } from '@angular/common/http';
-import { USERS_LOGIN_URL, USERS_REGISTER_URL, USERS_URL } from '../core/constans/urls';
+import { USERS_LOGIN_URL, USERS_REGISTER_URL, USERS_URL } from '../core/constants/urls';
 import { ToastrService } from 'ngx-toastr';
 import { IUserRegister } from '../core/interfaces/IUserRegister';
 

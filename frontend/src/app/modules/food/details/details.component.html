@@ -1,8 +1,4 @@
-<not-found-page
-  [visible]="!food"
-  notFoundMessage="Food Not Found!"
-  resetLinkText="Back To Foods"
-/>
+<not-found-page [visible]="!food" notFoundMessage="Food Not Found!" resetLinkText="Back To Foods"></not-found-page>
 <div *ngIf="food" class="container">
   <img [src]="food.imageUrl" [alt]="food.name" />
 
@@ -11,16 +7,12 @@
       <span class="name">
         {{ food.name }}
       </span>
-      <button
-        (click)="likeOrDislikeFood()"
-        class="favorite"
-        [ngClass]="{ not: !isLiked, liked: isLiked }"
-      >
+      <button (click)="likeOrDislikeFood()" class="favorite" [ngClass]="{ not: !isLiked, liked: isLiked }">
         ❤
       </button>
     </div>
     <div class="rating">
-      <star-rating [stars]="food.stars" [size]="2" />
+      <star-rating [stars]="food.stars" [size]="2"></star-rating>
     </div>
 
     <div class="origins">

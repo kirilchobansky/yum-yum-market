@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { OrderService } from '../services/order.service';
 import { Order } from 'src/app/core/models/Order';
 import { AuthService } from 'src/app/auth/auth.service';
@@ -6,11 +6,15 @@ import { Observable, forkJoin, map, switchMap } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-profile-orders-list',
-  templateUrl: './profile-orders-list.component.html',
-  styleUrls: ['./profile-orders-list.component.css'],
+    selector: 'app-profile-orders-list',
+    templateUrl: './profile-orders-list.component.html',
+    styleUrls: ['./profile-orders-list.component.css'],
+    standalone: false
 })
 export class ProfileOrdersListComponent implements OnInit {
+  private ordersService = inject(OrderService);
+  private authService = inject(AuthService);
+  private activatedRoute = inject(ActivatedRoute);
   newOrders: Order[] = [];
   paidOrders: Order[] = [];
   cancelledOrders: Order[] = [];
@@ -29,12 +33,6 @@ export class ProfileOrdersListComponent implements OnInit {
   showCancelledOrders: boolean = false;
   showShippedOrders: boolean = false;
   showReturnedOrders: boolean = false;
-
-  constructor(
-    private ordersService: OrderService,
-    private authService: AuthService,
-    private activatedRoute: ActivatedRoute
-  ) {}
 
   ngOnInit(): void {
     this.isAdmin = this.authService.currentUser.isAdmin;

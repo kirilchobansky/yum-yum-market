@@ -1,16 +1,17 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Inject, Input, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Order } from 'src/app/core/models/Order';
 import { CartService } from 'src/app/modules/account/services/cart.service';
 import { OrderService } from 'src/app/modules/account/services/order.service';
-
-declare const paypal: any;
+import { PaypalSdkLoaderService } from './paypal-sdk-loader.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'paypal-button',
   templateUrl: './paypal-button.component.html',
-  styleUrls: ['./paypal-button.component.css']
+  styleUrls: ['./paypal-button.component.css'],
+  standalone: false
 })
 export class PaypalButtonComponent implements OnInit {
 
@@ -21,12 +22,21 @@ export class PaypalButtonComponent implements OnInit {
   paypalElement!: ElementRef;
 
   constructor(
-      private orderService: OrderService,
-      private cartService: CartService,
-      private router: Router,
-      private toastrService: ToastrService) { }
+      @Inject(OrderService) private orderService: OrderService,
+      @Inject(Router) private router: Router,
+      @Inject(ToastrService) private toastrService: ToastrService,
+      @Inject(PaypalSdkLoaderService) private paypalSdkLoader: PaypalSdkLoaderService) { }
 
   ngOnInit(): void {
+    this.paypalSdkLoader.load().then((paypal) => {
+      this.renderButtons(paypal);
+    }).catch((error) => {
+      console.error(error);
+      this.toastrService.error('Payment is currently unavailable', 'Error');
+    });
+  }
+
+  private renderButtons(paypal: any): void {
     const self = this;
     paypal
     .Buttons({
@@ -35,7 +45,7 @@ export class PaypalButtonComponent implements OnInit {
           purchase_units: [
             {
               amount: {
-                currency_code: 'EUR',
+                currency_code: environment.paypalCurrency,
                 value: self.order.totalPrice,
               },
             },

@@ -6,9 +6,10 @@ import { passwordMatchValidator } from 'src/app/core/validators/passwordMatchVal
 import { IUserRegister } from 'src/app/core/interfaces/IUserRegister';
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+    selector: 'app-register',
+    templateUrl: './register.component.html',
+    styleUrls: ['./register.component.css'],
+    standalone: false
 })
 export class RegisterComponent implements OnInit {
 

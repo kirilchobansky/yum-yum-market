@@ -35,31 +35,33 @@ router.post('/register', isGuest, async (req, res) => {
     }
 });
 
-router.post('/like/:foodId', isAuth, async (req, res) => {
+router.post('/like/:foodId', isAuth, async (req: any, res) => {
     const foodId = req.params.foodId;
-    const { userId } = req.body;
 
-    await userService.likeFood(foodId, userId);
+    await userService.likeFood(foodId, req.user.id);
     res.status(200).json('Successfully liked');
 })
 
-router.post('/dislike/:foodId', isAuth, async (req, res) => {
+router.post('/dislike/:foodId', isAuth, async (req: any, res) => {
     const foodId = req.params.foodId;
-    const { userId } = req.body;
 
-    await userService.dislikeFood(foodId, userId);
+    await userService.dislikeFood(foodId, req.user.id);
     res.status(200).json('Successfully disliked');
 });
 
-router.get('/:userId', async (req, res) => {
+router.get('/:userId', isAuth, async (req: any, res) => {
+    if (req.params.userId !== req.user.id && !req.user.isAdmin) {
+        res.status(403).send();
+        return;
+    }
     const user = await userService.getUserById(req.params.userId);
     res.send(user);
 });
 
-router.post('/update-user-details', async (req: any, res) => {
-    const { name, email, address, userId } = req.body;
+router.post('/update-user-details', isAuth, async (req: any, res) => {
+    const { name, email, address } = req.body;
 
-    const user = await userService.updateUserDetails(userId, name, email, address);
+    const user = await userService.updateUserDetails(req.user.id, name, email, address);
     res.send(user);
 });
 

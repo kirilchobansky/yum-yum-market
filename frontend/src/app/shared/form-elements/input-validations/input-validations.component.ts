@@ -8,9 +8,10 @@ const VALIDATOR_MESSAGES: any = {
   notMatch: 'Password does not match'
 }
 @Component({
-  selector: 'input-validations',
-  templateUrl: './input-validations.component.html',
-  styleUrls: ['./input-validations.component.css']
+    selector: 'input-validations',
+    templateUrl: './input-validations.component.html',
+    styleUrls: ['./input-validations.component.css'],
+    standalone: false
 })
 export class InputValidationsComponent implements OnInit, OnChanges{
   

@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, inject } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommentsService } from './comments.service';
@@ -6,12 +6,19 @@ import { Comment } from 'src/app/core/models';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
-  selector: 'app-comments',
-  templateUrl: './comments.component.html',
-  styleUrls: ['./comments.component.css']
+    selector: 'app-comments',
+    templateUrl: './comments.component.html',
+    styleUrls: ['./comments.component.css'],
+    standalone: false
 })
 export class CommentsComponent implements OnInit {
   
+    private formBuilder = inject(FormBuilder);
+    private activatedRoute = inject(ActivatedRoute);
+    private commentsService = inject(CommentsService);
+    private router = inject(Router);
+    private toastrService = inject(ToastrService);
+
     commentForm!: FormGroup;
     isSubmitted = false;
     returnUrl = '';
@@ -25,13 +32,6 @@ export class CommentsComponent implements OnInit {
     commentOptionsVisibility: { [commentId: string]: boolean } = {};
 
     commentControl!: FormControl;
-
-    constructor(
-      private formBuilder: FormBuilder,
-      private activatedRoute: ActivatedRoute,
-      private commentsService: CommentsService,
-      private router: Router,
-      private toastrService: ToastrService){}
 
     @ViewChild('editableComment') editableComment!: ElementRef;
     

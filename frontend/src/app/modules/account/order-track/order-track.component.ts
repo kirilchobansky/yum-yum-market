@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Order } from 'src/app/core/models/Order';
 import { OrderService } from '../services/order.service';
@@ -6,21 +6,21 @@ import { AuthService } from 'src/app/auth/auth.service';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
-  selector: 'app-order-track',
-  templateUrl: './order-track.component.html',
-  styleUrls: ['./order-track.component.css']
+    selector: 'app-order-track',
+    templateUrl: './order-track.component.html',
+    styleUrls: ['./order-track.component.css'],
+    standalone: false
 })
 export class OrderTrackComponent implements OnInit {
 
+  private activatedRoute = inject(ActivatedRoute);
+  private ordersService = inject(OrderService);
+  private router = inject(Router);
+  private authService = inject(AuthService);
+  private toastrService = inject(ToastrService);
+
   order!: Order;
   isAdmin: boolean = false;
-
-  constructor( 
-    private activatedRoute: ActivatedRoute,
-    private ordersService: OrderService,
-    private router: Router,
-    private authService: AuthService,
-    private toastrService: ToastrService){}
 
   ngOnInit(): void {
     const params = this.activatedRoute.snapshot.params;

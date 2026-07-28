@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Order } from 'src/app/core/models/Order';
@@ -8,22 +8,22 @@ import { Router } from '@angular/router';
 import { OrderService } from '../services/order.service';
 
 @Component({
-  selector: 'app-checkout',
-  templateUrl: './checkout.component.html',
-  styleUrls: ['./checkout.component.css']
+    selector: 'app-checkout',
+    templateUrl: './checkout.component.html',
+    styleUrls: ['./checkout.component.css'],
+    standalone: false
 })
 export class CheckoutComponent implements OnInit{
 
+    private formBuilder = inject(FormBuilder);
+    private cartService = inject(CartService);
+    private authService = inject(AuthService);
+    private orderService = inject(OrderService);
+    private router = inject(Router);
+    private toastrService = inject(ToastrService);
+
     order: Order = new Order();
     checkoutForm!: FormGroup;
-
-    constructor(
-      private formBuilder: FormBuilder,
-      private cartService: CartService,
-      private authService: AuthService,
-      private orderService: OrderService,
-      private router: Router,
-      private toastrService: ToastrService  ){}
 
     ngOnInit(): void {
       const cart = this.cartService.getCart();

@@ -16,7 +16,7 @@ const userSchema = new Schema<IUser>(
     {
         name: {type: String, required: true},
         email: {type: String, required: true, unique: true},
-        password: {type: String, required: true},
+        password: {type: String, required: true, select: false},
         address: {type: String, required: true},
         isAdmin: {type: Boolean, required: true},
         favoriteFoods: [{ type: Schema.Types.ObjectId, ref: 'Food' }],

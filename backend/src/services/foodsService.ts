@@ -1,9 +1,10 @@
 import { Food } from "../models/Food";
+import { escapeRegex } from "../utils/regex";
 
 const getAll = () => Food.find();
 
 const search = (search: string) => {
-    const searchRegEx = new RegExp(search, 'i');
+    const searchRegEx = new RegExp(escapeRegex(search), 'i');
     const foods = Food.find({name: { $regex : searchRegEx }});
     return foods;
 };

@@ -1,15 +1,6 @@
-import { Food } from './Food';
-import { Tag } from './Tag';
-import { CartItem } from './CartIten';
-import { Cart } from './Cart';
-import { User } from './User'
-import { Comment } from './Comment';
-
-export {    
-    Food,
-    Tag,
-    CartItem,
-    Cart,
-    User,
-    Comment,
-}
+export * from './Food';
+export * from './Tag';
+export * from './CartItem';
+export * from './Cart';
+export * from './User';
+export * from './Comment';

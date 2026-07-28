@@ -1,11 +1,12 @@
-import { Component, Input } from '@angular/core';
+import { Component, Inject, Input } from '@angular/core';
 import { Food } from 'src/app/core/models';
 import { CartService } from 'src/app/modules/account/services/cart.service';
 
 @Component({
-  selector: 'app-food-list',
-  templateUrl: './food-list.component.html',
-  styleUrls: ['./food-list.component.css']
+    selector: 'app-food-list',
+    templateUrl: './food-list.component.html',
+    styleUrls: ['./food-list.component.css'],
+    standalone: false
 })
 export class FoodListComponent {
 
@@ -18,7 +19,7 @@ export class FoodListComponent {
   @Input()
   margin? = '2rem 3rem 0 3rem'
 
-  constructor(private cartService: CartService){}
+  constructor(@Inject(CartService) private cartService: CartService){}
 
   addToCart(food: Food){
     this.cartService.addToCart(food);

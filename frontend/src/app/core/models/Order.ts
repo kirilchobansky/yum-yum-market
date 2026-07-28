@@ -1,5 +1,5 @@
 import { LatLng } from "leaflet";
-import { CartItem } from "./CartIten";
+import { CartItem } from "./CartItem";
 
 export class Order{
   id!: string;

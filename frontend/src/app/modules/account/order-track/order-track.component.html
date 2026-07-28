@@ -19,12 +19,16 @@
     <app-title title="Shipping Address" />
     <app-map [order]="order" [readonly]="true" />
     <div class="buttons">
-      <default-button *ngIf="isAdmin && order?.status === 'NEW'" text="Mark as paid" (onClick)="payOrderAsAdmin()"/>
-      <default-button *ngIf="!isAdmin && order?.status === 'PAID' && order?.status !== 'NEW'" text="Cancel" (onClick)="cancelOrder()"/>
-      <default-button *ngIf="isAdmin && order?.status !== 'CANCELLED' && order?.status !== 'NEW'" text="Mark as cancelled" (onClick)="cancelOrder()"/>
-      <default-button *ngIf="isAdmin && order?.status !== 'SHIPPED' && order?.status !== 'NEW'" text="Mark as shipped" (onClick)="shippedOrder()"/>
-      <default-button *ngIf="isAdmin && order?.status !== 'RETURNED' && order?.status !== 'NEW'" text="Mark as returned" (onClick)="returnOrder()"/>
-      <default-button *ngIf="isAdmin" text="Delete" (onClick)="deleteOrder()"/>
+      <default-button *ngIf="isAdmin && order?.status === 'NEW'" text="Mark as paid" (onClick)="payOrderAsAdmin()" />
+      <default-button *ngIf="!isAdmin && order?.status === 'PAID' && order?.status !== 'NEW'" text="Cancel"
+        (onClick)="cancelOrder()" />
+      <default-button *ngIf="isAdmin && order?.status !== 'CANCELLED' && order?.status !== 'NEW'"
+        text="Mark as cancelled" (onClick)="cancelOrder()" />
+      <default-button *ngIf="isAdmin && order?.status !== 'SHIPPED' && order?.status !== 'NEW'" text="Mark as shipped"
+        (onClick)="shippedOrder()" />
+      <default-button *ngIf="isAdmin && order?.status !== 'RETURNED' && order?.status !== 'NEW'" text="Mark as returned"
+        (onClick)="returnOrder()" />
+      <default-button *ngIf="isAdmin" text="Delete" (onClick)="deleteOrder()" />
     </div>
   </div>
 </div>

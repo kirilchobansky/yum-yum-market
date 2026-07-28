@@ -1,6 +1,10 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { Cart, CartItem, Food } from 'src/app/core/models';
+import { Cart } from 'src/app/core/models';
+import { CartItem } from 'src/app/core/models';
+import { Food } from 'src/app/core/models';
+
+// import { Cart, CartItem, Food } from 'src/app/core/models';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +23,7 @@ export class CartService {
         cartItem.quantity++;
         this.changeQuantity(food.id, cartItem.quantity);
       } else {
-        this.cart.items.push(new CartItem(food));
+        this.cart.items.push(new CartItem (food));
       }
       this.setCartToLocalStorage();
     }

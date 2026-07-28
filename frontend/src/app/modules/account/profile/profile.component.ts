@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/auth.service';
@@ -6,11 +6,18 @@ import { Food, User } from 'src/app/core/models';
 import { AccountService } from '../services/account.service';
 
 @Component({
-  selector: 'app-profile',
-  templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css']
+    selector: 'app-profile',
+    templateUrl: './profile.component.html',
+    styleUrls: ['./profile.component.css'],
+    standalone: false
 })
 export class ProfileComponent implements OnInit{
+
+  private authService = inject(AuthService);
+  private formBuilder = inject(FormBuilder);
+  private activatedRoute = inject(ActivatedRoute);
+  private router = inject(Router);
+  private accountService = inject(AccountService);
 
   user!: User;
   profileDetailsGroup!: FormGroup;
@@ -18,13 +25,6 @@ export class ProfileComponent implements OnInit{
   returnUrl = '';
   favoriteFoods: Food[] | [] = [];
   userId = this.authService.currentUser.id;
-
-  constructor(
-    private authService: AuthService,
-    private formBuilder: FormBuilder,
-    private activatedRoute: ActivatedRoute,
-    private router: Router,
-    private accountService: AccountService){}
 
   ngOnInit(): void {
     this.user = this.authService.currentUser;

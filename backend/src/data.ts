@@ -1,10 +1,10 @@
 export const sample_comments = [
-    {
-        id: 1,
-        comment: 'That pizza was delicious!',
-        owner: '65f5cd4c19bb35ea9eb90d44',
-        food: '65f565b695f556d6fbaa4e25'
-    }
+  {
+    id: 1,
+    comment: 'That pizza was delicious!',
+    owner: '65f5cd4c19bb35ea9eb90d44',
+    food: '65f565b695f556d6fbaa4e25'
+  }
 ]
 
 export const sample_foods: any[] = [

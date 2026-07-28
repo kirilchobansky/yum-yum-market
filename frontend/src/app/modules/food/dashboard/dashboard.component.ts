@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { Food } from 'src/app/core/models';
 import { FoodService } from '../food.service';
 import { ActivatedRoute } from '@angular/router';
@@ -6,16 +6,16 @@ import { Observable } from 'rxjs';
 import { CartService } from '../../account/services/cart.service';
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+    selector: 'app-dashboard',
+    templateUrl: './dashboard.component.html',
+    styleUrls: ['./dashboard.component.css'],
+    standalone: false
 })
 export class DashboardComponent implements OnInit {
-  foods: Food[] = [];
+  private foodsServices = inject(FoodService);
+  private activatedRoute = inject(ActivatedRoute);
 
-  constructor(
-    private foodsServices: FoodService, 
-    private activatedRoute: ActivatedRoute) { }
+  foods: Food[] = [];
 
   ngOnInit(): void {
     let foodObservable: Observable<Food[]>;

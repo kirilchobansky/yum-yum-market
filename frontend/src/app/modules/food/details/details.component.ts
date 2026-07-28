@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { FoodService } from '../food.service';
 import { Food } from 'src/app/core/models';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -6,24 +6,23 @@ import { CartService } from '../../account/services/cart.service';
 import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
-  selector: 'app-details',
-  templateUrl: './details.component.html',
-  styleUrls: ['./details.component.css']
+    selector: 'app-details',
+    templateUrl: './details.component.html',
+    styleUrls: ['./details.component.css'],
+    standalone: false
 })
 export class DetailsComponent implements OnInit {
+
+    private activatedRoute = inject(ActivatedRoute);
+    private foodService = inject(FoodService);
+    private cartService = inject(CartService);
+    private authService = inject(AuthService);
+    private router = inject(Router);
 
     food!: Food;
     userId = '';
     returnUrl = '';
     isLiked: boolean = false; 
-
-    constructor(
-      private activatedRoute: ActivatedRoute,
-      private foodService: FoodService,
-      private cartService: CartService,
-      private authService: AuthService,
-      private router: Router
-    ) {}
 
     ngOnInit(): void {
       this.activatedRoute.params.subscribe(params => {
