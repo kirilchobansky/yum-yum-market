@@ -5,7 +5,7 @@ export const sample_comments = [
     owner: '65f5cd4c19bb35ea9eb90d44',
     food: '65f565b695f556d6fbaa4e25'
   }
-]
+];
 
 export const sample_foods: any[] = [
   {
@@ -15,7 +15,7 @@ export const sample_foods: any[] = [
     price: 15,
     origins: ['Italy'],
     stars: 4.2,
-    imageUrl: 'assets/food-1.jpg',
+    imageUrl: 'assets/foods/food-1.jpg',
     tags: ['Fast Food', 'Pizza'],
     comments: []
   },
@@ -26,7 +26,7 @@ export const sample_foods: any[] = [
     price: 10,
     origins: ['Mexico'],
     stars: 4.5,
-    imageUrl: 'assets/food-2.jpg',
+    imageUrl: 'assets/foods/food-2.jpg',
     tags: ['Street Food', 'Taco'],
     comments: []
   },
@@ -37,7 +37,7 @@ export const sample_foods: any[] = [
     price: 20,
     origins: ['Japan'],
     stars: 4.7,
-    imageUrl: 'assets/food-3.jpg',
+    imageUrl: 'assets/foods/food-3.jpg',
     tags: ['Seafood', 'Japanese Cuisine'],
     comments: []
   },
@@ -48,7 +48,7 @@ export const sample_foods: any[] = [
     price: 18,
     origins: ['India'],
     stars: 4.4,
-    imageUrl: 'assets/food-4.jpg',
+    imageUrl: 'assets/foods/food-4.jpg',
     tags: ['Spicy', 'Curry'],
     comments: []
   },
@@ -59,7 +59,7 @@ export const sample_foods: any[] = [
     price: 17,
     origins: ['China'],
     stars: 4.3,
-    imageUrl: 'assets/food-5.jpg',
+    imageUrl: 'assets/foods/food-5.jpg',
     tags: ['Stir Fry', 'Chinese Cuisine'],
     comments: []
   },
@@ -70,7 +70,7 @@ export const sample_foods: any[] = [
     price: 12,
     origins: ['Greece'],
     stars: 4.6,
-    imageUrl: 'assets/food-6.jpg',
+    imageUrl: 'assets/foods/food-6.jpg',
     tags: ['Healthy', 'Salad'],
     comments: []
   },
@@ -81,7 +81,7 @@ export const sample_foods: any[] = [
     price: 16,
     origins: ['Thailand'],
     stars: 4.8,
-    imageUrl: 'assets/food-7.jpg',
+    imageUrl: 'assets/foods/food-7.jpg',
     tags: ['Noodles', 'Thai Cuisine'],
     comments: []
   },
@@ -92,7 +92,7 @@ export const sample_foods: any[] = [
     price: 25,
     origins: ['France', 'Spain'],
     stars: 4.5,
-    imageUrl: 'assets/food-8.jpg',
+    imageUrl: 'assets/foods/food-8.jpg',
     tags: ['Seafood', 'Rice Dish'],
     comments: []
   },
@@ -103,7 +103,7 @@ export const sample_foods: any[] = [
     price: 14,
     origins: ['United States'],
     stars: 4.4,
-    imageUrl: 'assets/food-9.jpg',
+    imageUrl: 'assets/foods/food-9.jpg',
     tags: ['Fast Food', 'Burger'],
     comments: []
   },
@@ -114,7 +114,7 @@ export const sample_foods: any[] = [
     price: 22,
     origins: ['Spain'],
     stars: 4.6,
-    imageUrl: 'assets/food-10.jpg',
+    imageUrl: 'assets/foods/food-10.jpg',
     tags: ['Seafood', 'Spanish Cuisine'],
     comments: []
   },
@@ -125,7 +125,7 @@ export const sample_foods: any[] = [
     price: 18,
     origins: ['India'],
     stars: 4.7,
-    imageUrl: 'assets/food-11.jpg',
+    imageUrl: 'assets/foods/food-11.jpg',
     tags: ['Spicy', 'Rice Dish'],
     comments: []
   },
@@ -136,7 +136,7 @@ export const sample_foods: any[] = [
     price: 16,
     origins: ['Italy'],
     stars: 4.4,
-    imageUrl: 'assets/food-12.jpg',
+    imageUrl: 'assets/foods/food-12.jpg',
     tags: ['Pasta', 'Italian Cuisine'],
     comments: []
   },
@@ -147,7 +147,7 @@ export const sample_foods: any[] = [
     price: 12,
     origins: ['Mexico'],
     stars: 4.5,
-    imageUrl: 'assets/food-13.jpg',
+    imageUrl: 'assets/foods/food-13.jpg',
     tags: ['Street Food', 'Burrito'],
     comments: []
   },
@@ -158,7 +158,7 @@ export const sample_foods: any[] = [
     price: 18,
     origins: ['Japan'],
     stars: 4.6,
-    imageUrl: 'assets/food-14.jpg',
+    imageUrl: 'assets/foods/food-14.jpg',
     tags: ['Noodles', 'Japanese Cuisine'],
     comments: []
   },
@@ -169,7 +169,7 @@ export const sample_foods: any[] = [
     price: 15,
     origins: ['China'],
     stars: 4.3,
-    imageUrl: 'assets/food-15.jpg',
+    imageUrl: 'assets/foods/food-15.jpg',
     tags: ['Dim Sum', 'Chinese Cuisine'],
     comments: []
   },
@@ -180,7 +180,7 @@ export const sample_foods: any[] = [
     price: 20,
     origins: ['Greece'],
     stars: 4.6,
-    imageUrl: 'assets/food-16.jpg',
+    imageUrl: 'assets/foods/food-16.jpg',
     tags: ['Comfort Food', 'Greek Cuisine'],
     comments: []
   },
@@ -191,7 +191,7 @@ export const sample_foods: any[] = [
     price: 18,
     origins: ['Thailand'],
     stars: 4.7,
-    imageUrl: 'assets/food-17.jpg',
+    imageUrl: 'assets/foods/food-17.jpg',
     tags: ['Spicy', 'Curry'],
     comments: []
   },
@@ -202,7 +202,7 @@ export const sample_foods: any[] = [
     price: 10,
     origins: ['France'],
     stars: 4.8,
-    imageUrl: 'assets/food-18.jpg',
+    imageUrl: 'assets/foods/food-18.jpg',
     tags: ['Breakfast', 'French Cuisine'],
     comments: []
   },
@@ -213,7 +213,7 @@ export const sample_foods: any[] = [
     price: 28,
     origins: ['United States'],
     stars: 4.7,
-    imageUrl: 'assets/food-19.jpg',
+    imageUrl: 'assets/foods/food-19.jpg',
     tags: ['Grilled', 'American Cuisine'],
     comments: []
   },
@@ -224,9 +224,8 @@ export const sample_foods: any[] = [
     price: 20,
     origins: ['Spain'],
     stars: 4.5,
-    imageUrl: 'assets/food-20.jpg',
+    imageUrl: 'assets/foods/food-20.jpg',
     tags: ['Appetizer', 'Spanish Cuisine'],
     comments: []
   }
 ];
-

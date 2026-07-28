@@ -1,9 +1,6 @@
-<<<<<<< HEAD
-# Frontend
-=======
 # 🛒 Yum-Yum Market
 
-A full-stack, enterprise-structured food delivery web application built using **Angular (v16)**, **Node.js/Express**, and **MongoDB**. This project utilizes modular architectural design patterns (Core, Shared, and Feature modules) to ensure scalability and clean code separation.
+A full-stack, enterprise-structured food delivery web application built using **Angular (v20)**, **Node.js/Express**, and **MongoDB**. This project utilizes modular architectural design patterns (Core, Shared, and Feature modules) to ensure scalability, lazy-loading performance, and clean code separation.
 
 ---
 
@@ -21,37 +18,28 @@ A full-stack, enterprise-structured food delivery web application built using **
 
 ## 🛠️ Technology Stack
 
-- **Frontend:** Angular 16, TypeScript, RxJS, HTML5, SCSS/CSS
-- **Backend:** Node.js, Express.js (REST API), TypeScript
+- **Frontend:** Angular 20, TypeScript, RxJS, HTML5, SCSS/CSS
+- **Backend:** Node.js (v22), Express.js (REST API), TypeScript
 - **Database:** MongoDB (via Mongoose ODM)
 - **External Dependencies:** Leaflet.js, OpenStreetMap, PayPal SDK
-- **Utilities:** `ngx-spinner`, `ngx-toastr` (notifications)
+- **Utilities:** `ngx-spinner`, `ngx-toastr`
 
 ---
->>>>>>> fdbfcb92039ecd6a1074855ee60b104f23d88f86
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.12.
+## 🚀 Getting Started
 
-## Development server
+### Prerequisites
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Ensure you have the following installed locally:
 
-## Code scaffolding
+- **Node.js:** v22.x
+- **npm:** v11.x
+- **Angular CLI:** v20.x (`npm install -g @angular/cli`)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Installation & Setup
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+1. **Clone the repository:**
+   ```bash
+   git clone [https://github.com/kirilchobansky/yum-yum-market.git](https://github.com/kirilchobansky/yum-yum-market.git)
+   cd yum-yum-market
+   ```

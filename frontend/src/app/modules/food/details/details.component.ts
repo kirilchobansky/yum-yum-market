@@ -35,6 +35,9 @@ export class DetailsComponent implements OnInit {
         this.getUserData();
       });
       this.returnUrl = this.activatedRoute.snapshot.queryParams.returnUrl;
+      console.log(this.food.imageUrl);
+      console.log('hello');
+      
     }
 
     getUserData(): void {
