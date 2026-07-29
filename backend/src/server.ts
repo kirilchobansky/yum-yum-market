@@ -14,6 +14,7 @@ app.use(cors({
 
 app.use(router);
 
+console.log("DEBUG: Render is seeing this URI ->", process.env.MONGO_URI);
 mongoose.connect(MONGO_URL)
     .then(() => {
         console.log('DB is successfuly connected');
