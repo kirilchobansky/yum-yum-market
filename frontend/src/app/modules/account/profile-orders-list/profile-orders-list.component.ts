@@ -38,10 +38,10 @@ export class ProfileOrdersListComponent implements OnInit {
     this.isAdmin = this.authService.currentUser.isAdmin;
     if (this.isAdmin) this.path = 'track';
 
-    this.activatedRoute.params
+    this.activatedRoute.queryParams
       .pipe(
-        switchMap((params) => {
-          this.searchQuery = params['searchText'] || '';
+        switchMap((queryParams) => {
+          this.searchQuery = queryParams['search'] || '';
           if (this.searchQuery) {
             return this.ordersService.getOrdersBySearch(this.searchQuery);
           } else {
@@ -72,6 +72,14 @@ export class ProfileOrdersListComponent implements OnInit {
         this.cancelledOrders = this.filterOrders(orders, 'CANCELLED');
         this.shippedOrders = this.filterOrders(orders, 'SHIPPED');
         this.returnedOrders = this.filterOrders(orders, 'RETURNED');
+
+        if (this.searchQuery) {
+          this.showNewOrders = this.newOrders.length > 0;
+          this.showPaidOrders = this.paidOrders.length > 0;
+          this.showCancelledOrders = this.cancelledOrders.length > 0;
+          this.showShippedOrders = this.shippedOrders.length > 0;
+          this.showReturnedOrders = this.returnedOrders.length > 0;
+        }
       });
   }
 

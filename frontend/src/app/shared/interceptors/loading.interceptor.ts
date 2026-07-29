@@ -23,6 +23,7 @@ export class LoadingInterceptor implements HttpInterceptor {
     this.pendingRequests++;
 
     if (this.pendingRequests === 1) {
+      this.clearPendingHide();
       this.spinner.show();
     }
 

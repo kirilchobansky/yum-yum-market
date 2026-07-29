@@ -1,7 +1,6 @@
 import {
   provideHttpClient,
   withInterceptorsFromDi,
-  HTTP_INTERCEPTORS,
 } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -14,7 +13,6 @@ import { ModulesModule } from './modules/modules.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthModule } from './auth/auth.module';
 import { ToastrModule } from 'ngx-toastr';
-import { LoadingInterceptor } from './shared/interceptors/loading.interceptor';
 
 @NgModule({
   declarations: [AppComponent],
@@ -35,11 +33,6 @@ import { LoadingInterceptor } from './shared/interceptors/loading.interceptor';
   providers: [
     provideHttpClient(withInterceptorsFromDi()),
     provideAnimationsAsync(), // 2. Add it here in providers
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: LoadingInterceptor,
-      multi: true,
-    },
   ],
 })
 export class AppModule {}

@@ -14,8 +14,7 @@ const routes: Routes = [
   {path: 'checkout', component: CheckoutComponent, canActivate: [AuthGuard]},
   {path: 'payment/:orderId', component: PaymentComponent, canActivate: [AuthGuard]},
   {path: 'track/:orderId', component: OrderTrackComponent, canActivate: [AuthGuard]},
-  {path: 'orders/dashboard', component: ProfileOrdersListComponent, canActivate: [AuthGuard]},
-  {path: 'orders/search/:searchText', component: ProfileOrdersListComponent, canActivate: [AuthGuard]}
+  {path: 'orders/dashboard', component: ProfileOrdersListComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({

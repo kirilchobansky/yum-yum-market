@@ -2,7 +2,7 @@ import { Component, OnInit, inject } from '@angular/core';
 import { Food } from 'src/app/core/models';
 import { FoodService } from '../food.service';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, combineLatest } from 'rxjs';
 import { CartService } from '../../account/services/cart.service';
 
 @Component({
@@ -18,10 +18,15 @@ export class DashboardComponent implements OnInit {
   foods: Food[] = [];
 
   ngOnInit(): void {
-    let foodObservable: Observable<Food[]>;
-    this.activatedRoute.params.subscribe((params) => {
-      if (params['search']) {
-        foodObservable = this.foodsServices.getFoodBySearch(params['search']);
+    combineLatest([
+      this.activatedRoute.params,
+      this.activatedRoute.queryParams,
+    ]).subscribe(([params, queryParams]) => {
+      let foodObservable: Observable<Food[]>;
+      if (queryParams['search']) {
+        foodObservable = this.foodsServices.getFoodBySearch(
+          queryParams['search'],
+        );
       } else if (params['tag']) {
         foodObservable = this.foodsServices.getAllFoodsByTag(params['tag']);
       } else {

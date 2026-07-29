@@ -12,10 +12,6 @@ const routes: Routes = [
                 component: DashboardComponent
             },
             {
-                path: 'search/:search',
-                component: DashboardComponent
-            },
-            {
                 path: 'tags/:tag',
                 component: DashboardComponent
             },
