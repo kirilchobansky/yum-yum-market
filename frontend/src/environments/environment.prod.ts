@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  apiBaseUrl: 'http://localhost:3000',
+  apiBaseUrl: 'https://yum-yum-market.onrender.com',
   paypalClientId: '',
   paypalCurrency: 'EUR',
 };
