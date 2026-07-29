@@ -63,6 +63,8 @@ export class ProfileComponent implements OnInit{
     this.accountService.updateUserDetails({...userData, userId: this.userId}).subscribe(() => {
       this.router.navigate([...this.returnUrl]);
     })
+    console.log(this.returnUrl);
+    
   }
 
 }

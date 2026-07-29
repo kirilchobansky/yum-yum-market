@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
-import { environment } from 'src/environments/environment';
+import { environment } from 'src/environments/environment.local';
 
 declare const paypal: any;
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PaypalSdkLoaderService {
-
   private loadPromise: Promise<any> | null = null;
 
   load(): Promise<any> {
@@ -20,7 +19,8 @@ export class PaypalSdkLoaderService {
         const script = document.createElement('script');
         script.src = `https://www.paypal.com/sdk/js?currency=${environment.paypalCurrency}&client-id=${environment.paypalClientId}`;
         script.onload = () => resolve(paypal);
-        script.onerror = () => reject(new Error('Failed to load the PayPal SDK'));
+        script.onerror = () =>
+          reject(new Error('Failed to load the PayPal SDK'));
         document.body.appendChild(script);
       });
     }

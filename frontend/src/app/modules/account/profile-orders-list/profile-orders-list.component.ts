@@ -2,14 +2,14 @@ import { Component, OnInit, inject } from '@angular/core';
 import { OrderService } from '../services/order.service';
 import { Order } from 'src/app/core/models/Order';
 import { AuthService } from 'src/app/auth/auth.service';
-import { Observable, forkJoin, map, switchMap } from 'rxjs';
+import { switchMap } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-    selector: 'app-profile-orders-list',
-    templateUrl: './profile-orders-list.component.html',
-    styleUrls: ['./profile-orders-list.component.css'],
-    standalone: false
+  selector: 'app-profile-orders-list',
+  templateUrl: './profile-orders-list.component.html',
+  styleUrls: ['./profile-orders-list.component.css'],
+  standalone: false,
 })
 export class ProfileOrdersListComponent implements OnInit {
   private ordersService = inject(OrderService);
@@ -38,70 +38,60 @@ export class ProfileOrdersListComponent implements OnInit {
     this.isAdmin = this.authService.currentUser.isAdmin;
     if (this.isAdmin) this.path = 'track';
 
-    const orderTypes: string[] = [
-      'new',
-      'paid',
-      'cancelled',
-      'shipped',
-      'returned',
-    ];
-
-    const orderObservables: { [key: string]: Observable<Order[]> } = {};
-    orderTypes.forEach((type) => {
-      orderObservables[type] = this.activatedRoute.params.pipe(
+    this.activatedRoute.params
+      .pipe(
         switchMap((params) => {
-          const searchParam = params['searchText'];
-          this.searchQuery = searchParam;
-          if (searchParam) {
-            return this.ordersService.getOrdersBySearch(searchParam);
+          this.searchQuery = params['searchText'] || '';
+          if (this.searchQuery) {
+            return this.ordersService.getOrdersBySearch(this.searchQuery);
           } else {
             return this.ordersService.getAll();
           }
-        })
-      );
-    });
-
-    this.activatedRoute.params.pipe(
-      switchMap((params) => {
-        const searchParam = params['searchText'];
-        this.searchQuery = searchParam;
-        if (searchParam) {
-          return this.ordersService.getOrdersBySearch(searchParam);
-        } else {
-          return this.ordersService.getAll();
+        }),
+      )
+      .subscribe((orders: Order[]) => {
+        if (!this.isAdmin) {
+          orders = orders.filter((order) => {
+            const orderUserId =
+              typeof order.user === 'object'
+                ? (order.user as any)._id || (order.user as any).id
+                : order.user;
+            return orderUserId === this.authService.currentUser.id;
+          });
         }
-      })
-    ).subscribe((orders: Order[]) => {
-      if(!this.isAdmin){
-        orders = orders.filter((order) => order.user === this.authService.currentUser.id);
-      }  
-      this.totalOrders = orders.length;
-    });
+        this.totalOrders = orders.length;
 
-    Object.keys(orderObservables).forEach(
-      (type: keyof typeof orderObservables) => {
-        orderObservables[type].subscribe((orders: Order[]) => {
-          const filteredOrders = this.filterOrders(
-            orders,
-            type.toString().toUpperCase()
-          );
-          (this as any)[type + 'Orders'] = filteredOrders;
-        });
-      }
-    );
+        if (this.searchQuery) {
+          this.ordersBySearch = orders;
+        } else {
+          this.ordersBySearch = [];
+        }
+
+        this.newOrders = this.filterOrders(orders, 'NEW');
+        this.paidOrders = this.filterOrders(orders, 'PAID');
+        this.cancelledOrders = this.filterOrders(orders, 'CANCELLED');
+        this.shippedOrders = this.filterOrders(orders, 'SHIPPED');
+        this.returnedOrders = this.filterOrders(orders, 'RETURNED');
+      });
   }
 
   filterOrders(orders: Order[], status: string): Order[] {
     if (this.isAdmin) {
       return orders.filter((order) => order.status === status);
     } else {
-      return orders.filter(
-        (order) =>
+      return orders.filter((order) => {
+        const orderUserId =
+          typeof order.user === 'object'
+            ? (order.user as any)._id || (order.user as any).id
+            : order.user;
+
+        return (
           order.status === status.toUpperCase() &&
-          order.user === this.authService.currentUser.id
-      );
+          orderUserId === this.authService.currentUser.id
+        );
+      });
     }
-  };
+  }
 
   toggleOrdersVisibility(section: string) {
     switch (section) {

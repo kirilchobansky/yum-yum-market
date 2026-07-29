@@ -6,13 +6,12 @@ import { passwordMatchValidator } from 'src/app/core/validators/passwordMatchVal
 import { IUserRegister } from 'src/app/core/interfaces/IUserRegister';
 
 @Component({
-    selector: 'app-register',
-    templateUrl: './register.component.html',
-    styleUrls: ['./register.component.css'],
-    standalone: false
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.css'],
+  standalone: false,
 })
 export class RegisterComponent implements OnInit {
-
   registerForm!: FormGroup;
   isSubmitted = false;
   returnUrl = '';
@@ -21,30 +20,33 @@ export class RegisterComponent implements OnInit {
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private activatedRoute: ActivatedRoute,
-    private router: Router
-  ){}
+    private router: Router,
+  ) {}
 
   ngOnInit(): void {
-    this.registerForm = this.formBuilder.group({
-      name: ['', [Validators.required, Validators.minLength(4)]],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(4)]],
-      rePass: ['', [Validators.required]],
-      address: ['', [Validators.required, Validators.minLength(4)]],
-    },{
-      validators: passwordMatchValidator('password', 'rePass')
-    });
+    this.registerForm = this.formBuilder.group(
+      {
+        name: ['', [Validators.required, Validators.minLength(4)]],
+        email: ['', [Validators.required, Validators.email]],
+        password: ['', [Validators.required, Validators.minLength(4)]],
+        rePass: ['', [Validators.required]],
+        address: ['', [Validators.required, Validators.minLength(4)]],
+      },
+      {
+        validators: passwordMatchValidator('password', 'rePass'),
+      },
+    );
   }
 
-  get fc(){
+  get fc() {
     return this.registerForm.controls;
   }
 
-  submit(){
+  submit() {
     this.isSubmitted = true;
 
-    if(!this.registerForm.valid) {
-          return;
+    if (!this.registerForm.valid) {
+      return;
     }
 
     const fv = this.registerForm.value;
@@ -53,19 +55,16 @@ export class RegisterComponent implements OnInit {
       email: fv.email,
       password: fv.password,
       rePass: fv.rePass,
-      address: fv.address
+      address: fv.address,
     };
-    
-    this.returnUrl = this.activatedRoute.snapshot.queryParams.returnUrl;
+
+    this.returnUrl = this.activatedRoute.snapshot.queryParams['returnUrl'];
     this.authService.register(user).subscribe(() => {
       if (this.returnUrl) {
-        this.router.navigate([...this.returnUrl]);
+        this.router.navigateByUrl(this.returnUrl);
       } else {
         this.router.navigate(['/foods/dashboard']);
-        window.location.reload();
       }
-    })
+    });
   }
-
-  
 }

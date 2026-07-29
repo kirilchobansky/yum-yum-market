@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { COMMENTS_ALL_BY_FOOD_URL, COMMENTS_LATEST_BY_FOOD_URL, COMMENTS_URL } from 'src/app/core/constants/urls';
 import { Comment } from 'src/app/core/models';
-import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
