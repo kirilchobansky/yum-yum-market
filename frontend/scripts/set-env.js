@@ -2,7 +2,7 @@ const fs = require('fs');
 const targetPath = './src/environments/environment.prod.ts';
 const envConfigFile = `export const environment = {
   production: true,
-  apiBaseUrl: '${process.env.API_BASE_URL || 'http://localhost:3000'}',
+  apiBaseUrl: '${process.env.API_BASE_URL || 'https://yum-yum-market.onrender.com'}',
   paypalClientId: '${process.env.PAYPAL_CLIENT_ID || ''}',
   paypalCurrency: '${process.env.PAYPAL_CURRENCY || 'EUR'}'
 };
