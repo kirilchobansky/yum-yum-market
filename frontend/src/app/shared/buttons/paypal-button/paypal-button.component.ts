@@ -11,7 +11,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Order } from 'src/app/core/models/Order';
 import { OrderService } from 'src/app/modules/account/services/order.service';
 import { PaypalSdkLoaderService } from './paypal-sdk-loader.service';
-import { environment } from 'src/environments/environment.local';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'paypal-button',

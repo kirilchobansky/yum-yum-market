@@ -4,7 +4,9 @@
   "scripts": {
     "ng": "npx ng",
     "start": "npx ng serve",
+    "prebuild": "node scripts/set-env.js",
     "build": "npx ng build",
+    "vercel-build": "node scripts/set-env.js && npx ng build",
     "watch": "npx ng build --watch --configuration development",
     "test": "npx ng test"
   },
