@@ -102,6 +102,13 @@ npm start
 
 The app will be available at `http://localhost:4200`.
 
+## 👑 Admin Credentials
+
+| Field    | Value            |
+| -------- | ---------------- |
+| Email    | admin@gmail.com  |
+| Password | 123asd           |
+
 ## 🔑 Environment Variables
 
 **Backend** (`backend/.env`):

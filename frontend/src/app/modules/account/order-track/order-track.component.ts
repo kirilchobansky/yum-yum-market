@@ -65,7 +65,7 @@ export class OrderTrackComponent implements OnInit {
 
   deleteOrder(){
     this.ordersService.deleteOrder(this.order.id).subscribe(() => {
-      this.router.navigate(['/orders']);
+      this.router.navigate(['/orders/dashboard']);
       this.toastrService.success('Order was DELETED', 'Success');
     })
   }

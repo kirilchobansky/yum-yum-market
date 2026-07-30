@@ -20,7 +20,7 @@
     <app-map [order]="order" [readonly]="true" />
     <div class="buttons">
       <default-button *ngIf="isAdmin && order?.status === 'NEW'" text="Mark as paid" (onClick)="payOrderAsAdmin()" />
-      <default-button *ngIf="!isAdmin && order?.status === 'PAID' && order?.status !== 'NEW'" text="Cancel"
+      <default-button *ngIf="!isAdmin && order?.status === 'PAID'" text="Cancel"
         (onClick)="cancelOrder()" />
       <default-button *ngIf="isAdmin && order?.status !== 'CANCELLED' && order?.status !== 'NEW'"
         text="Mark as cancelled" (onClick)="cancelOrder()" />
