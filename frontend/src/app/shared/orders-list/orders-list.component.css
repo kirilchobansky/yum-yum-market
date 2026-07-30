@@ -9,6 +9,7 @@
     display: flex;
     flex-direction: column;
     width: 420px;
+    max-width: 100%;
     border: 3px solid transparent;
     border-radius: 10px;
     padding: 1rem;
@@ -16,6 +17,12 @@
     transition: border-color 0.3s ease;
     text-decoration: none;
     color: inherit;
+}
+
+@media (max-width: 480px) {
+    .container {
+        margin: 0 1rem;
+    }
 }
 
 .content:hover {

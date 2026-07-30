@@ -16,6 +16,7 @@ export class HeaderComponent implements OnInit{
     user!: User;
     logoImageUrl = logoImageUrl;
     isAdmin: boolean = false;
+    isMenuOpen: boolean = false;
 
     constructor(
       @Inject(CartService) private cartService: CartService,
@@ -36,6 +37,14 @@ export class HeaderComponent implements OnInit{
 
     logout(){
       this.authService.logout();
+    }
+
+    toggleMenu(){
+      this.isMenuOpen = !this.isMenuOpen;
+    }
+
+    closeMenu(){
+      this.isMenuOpen = false;
     }
 
     get isAuth(){

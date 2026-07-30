@@ -4,23 +4,32 @@
     <div class="container-img">
       <img src="{{ logoImageUrl }}" alt="logo" />
     </div>
-    <ul>
+    <button
+      class="hamburger"
+      type="button"
+      aria-label="Toggle navigation"
+      [class.active]="isMenuOpen"
+      (click)="toggleMenu()"
+    >
+      <i class="fas" [ngClass]="isMenuOpen ? 'fa-times' : 'fa-bars'"></i>
+    </button>
+    <ul [class.open]="isMenuOpen">
       <li>
-        <a routerLink="/foods/dashboard">Menu</a>
+        <a routerLink="/foods/dashboard" (click)="closeMenu()">Menu</a>
       </li>
       <li *ngIf="!isAuth">
-        <a routerLink="/users/login">Log In</a>
+        <a routerLink="/users/login" (click)="closeMenu()">Log In</a>
       </li>
       <li *ngIf="isAuth" class="menu-container">
         <a><i class="fa-solid fa-user"></i> {{ user.name }} <span *ngIf="isAdmin">(Admin)</span></a>
         <div class="menu">
-          <a routerLink="/users/profile">My Account</a>
-          <a routerLink="/orders/dashboard">Orders</a>
-          <a (click)="logout()">Logout</a>
+          <a routerLink="/users/profile" (click)="closeMenu()">My Account</a>
+          <a routerLink="/orders/dashboard" (click)="closeMenu()">Orders</a>
+          <a (click)="logout(); closeMenu()">Logout</a>
         </div>
       </li>
       <li class="cart">
-        <a routerLink="/cart-page">
+        <a routerLink="/cart-page" (click)="closeMenu()">
           <i class="fas fa-shopping-cart"></i>
           <span class="price">{{ price | currency : "EUR" }}</span>
         </a>

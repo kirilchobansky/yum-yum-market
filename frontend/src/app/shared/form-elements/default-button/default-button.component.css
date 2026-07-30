@@ -6,6 +6,7 @@
 
 button {
     height: 3.5rem;
+    min-height: 44px;
     border: none;
     outline: none;
     font-weight: 100;
@@ -17,4 +18,14 @@ button {
 button:hover {
     cursor: pointer;
     box-shadow: 0 3px 8px;
+}
+
+@media (max-width: 480px) {
+    .container {
+        width: 100%;
+    }
+
+    button {
+        width: 100% !important;
+    }
 }

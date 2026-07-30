@@ -128,3 +128,32 @@ default-button {
     font-weight: 100;
     height: 5rem;
 }
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+        padding: 1rem;
+    }
+
+    .details {
+        width: 100%;
+        max-width: 26rem;
+    }
+
+    .details-field {
+        width: 100%;
+        max-width: 11rem;
+    }
+
+    .list {
+        margin: 0 1rem;
+        gap: 1.5rem;
+    }
+
+    .content {
+        height: 9rem;
+        width: 9rem;
+    }
+}

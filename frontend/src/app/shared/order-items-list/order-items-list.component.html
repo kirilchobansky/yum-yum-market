@@ -1,35 +1,37 @@
-<table>
-  <tr>
-    <td colspan="5">
-      <h3>Order Items:</h3>
-    </td>
-  </tr>
-  <tr *ngFor="let item of order.items">
-    <td>
-      <a routerLink="/foods/details/{{ item.food.id }}">
-        <img [src]="item.food.imageUrl" />
-      </a>
-    </td>
-    <td>
-      {{ item.food.name }}
-    </td>
-    <td>
-      {{ item.food.price | currency: 'EUR' }}
-    </td>
-    <td>x {{ item.quantity }}</td>
-    <td>
-      {{ item.price | currency: 'EUR' }}
-    </td>
-  </tr>
-  <tr>
-    <td colspan="3"></td>
-    <td>
-      <strong> Total : </strong>
-    </td>
-    <td>
-      <strong>
-        {{ order.totalPrice | currency: 'EUR' }}
-      </strong>
-    </td>
-  </tr>
-</table>
+<div class="table-scroll">
+  <table>
+    <tr>
+      <td colspan="5">
+        <h3>Order Items:</h3>
+      </td>
+    </tr>
+    <tr *ngFor="let item of order.items">
+      <td>
+        <a routerLink="/foods/details/{{ item.food.id }}">
+          <img [src]="item.food.imageUrl" />
+        </a>
+      </td>
+      <td>
+        {{ item.food.name }}
+      </td>
+      <td>
+        {{ item.food.price | currency: 'EUR' }}
+      </td>
+      <td>x {{ item.quantity }}</td>
+      <td>
+        {{ item.price | currency: 'EUR' }}
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3"></td>
+      <td>
+        <strong> Total : </strong>
+      </td>
+      <td>
+        <strong>
+          {{ order.totalPrice | currency: 'EUR' }}
+        </strong>
+      </td>
+    </tr>
+  </table>
+</div>

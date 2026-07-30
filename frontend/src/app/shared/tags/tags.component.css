@@ -5,6 +5,12 @@ div {
     margin: 0 2rem;
 }
 
+@media (max-width: 768px) {
+    div {
+        margin: 0 1rem;
+    }
+}
+
 div a {
     background-color: #f0f0f0;
     padding: 0.3rem 1rem;

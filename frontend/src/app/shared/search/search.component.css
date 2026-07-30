@@ -10,12 +10,15 @@ input {
     border: none;
     height: 2rem;
     width: 20rem;
+    max-width: 100%;
     background-color: #ebe7e6;
     font-size: 1rem;
     font-weight: 500;
     padding: 1rem;
     outline: none;
     box-shadow: 0 3px 8px;
+    min-height: 44px;
+    box-sizing: border-box;
 }
 
 div button {
@@ -28,6 +31,7 @@ div button {
     color: black;
     opacity: 0.8;
     outline: none;
+    min-height: 44px;
 }
 
 div button:hover {
@@ -35,4 +39,28 @@ div button:hover {
     cursor: pointer;
     box-shadow: 0 3px 8px;
     font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    div {
+        margin: 1rem 1rem 0 1rem;
+        flex-wrap: wrap;
+    }
+
+    input {
+        flex: 1 1 auto;
+        min-width: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    input {
+        flex: 1 1 100%;
+        width: 100%;
+    }
+
+    div button {
+        flex: 1 1 100%;
+        width: 100%;
+    }
 }

@@ -47,3 +47,14 @@
 app-orders-list.hide {
     display: none;
 }
+
+@media (max-width: 480px) {
+    .header-container {
+        margin: 1rem 0 0 0;
+    }
+
+    .toggle-icon-container {
+        top: 35px;
+        left: 10px;
+    }
+}

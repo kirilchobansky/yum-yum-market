@@ -5,3 +5,15 @@
 app-search {
     margin: 3rem;
 }
+
+@media (max-width: 768px) {
+    app-search {
+        margin: 1.5rem 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    app-search {
+        margin: 1rem;
+    }
+}

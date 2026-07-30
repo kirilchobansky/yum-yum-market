@@ -37,6 +37,7 @@ button {
     background-color: #e72929;
     width: 100%;
     height: 3rem;
+    min-height: 44px;
     opacity: 0.8;
     font-size: 1.3rem;
     border: none;
@@ -47,4 +48,21 @@ button {
 button:hover {
     opacity: 1;
     cursor: pointer;
+}
+
+@media (max-width: 900px) {
+    .container {
+        margin: 1rem;
+    }
+
+    .content {
+        width: 100%;
+        max-width: 30rem;
+        margin-right: 0;
+    }
+
+    .buttons {
+        width: 100%;
+        max-width: 30rem;
+    }
 }

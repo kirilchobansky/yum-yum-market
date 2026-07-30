@@ -38,3 +38,25 @@
     margin: 2rem;
     width: 25rem;
 }
+
+@media (max-width: 900px) {
+    .container {
+        margin: 1rem;
+    }
+
+    .content {
+        width: 100%;
+        max-width: 30rem;
+        margin-right: 0;
+    }
+
+    .buttons {
+        width: 100%;
+        max-width: 30rem;
+        margin: 1.5rem 0;
+    }
+
+    .summary > div {
+        flex-wrap: wrap;
+    }
+}
