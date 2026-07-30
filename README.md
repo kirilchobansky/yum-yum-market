@@ -4,7 +4,9 @@
 
 **A full-stack food ordering platform — browse, cart, checkout, and track orders end to end.**
 
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-yum--yum--market.vercel.app-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://yum-yum-market.vercel.app)
+<a href="https://yum-yum-market.vercel.app" target="_blank" rel="noopener noreferrer">
+  <img src="https://img.shields.io/badge/Live%20Demo-yum--yum--market.vercel.app-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Live Demo" />
+</a>
 
 <br />
 
@@ -37,12 +39,12 @@ Yum Yum Market is a full-stack e-commerce application for browsing food, managin
 
 ## 🛠️ Tech Stack
 
-| Layer | Stack |
-|---|---|
-| **Frontend** | Angular · TypeScript · SCSS (mobile responsive) |
-| **Backend** | Node.js · Express · TypeScript |
-| **Database** | MongoDB Atlas (Mongoose) |
-| **Deployment** | Vercel (frontend) · Render (backend) |
+| Layer          | Stack                                           |
+| -------------- | ----------------------------------------------- |
+| **Frontend**   | Angular · TypeScript · SCSS (mobile responsive) |
+| **Backend**    | Node.js · Express · TypeScript                  |
+| **Database**   | MongoDB Atlas (Mongoose)                        |
+| **Deployment** | Vercel (frontend) · Render (backend)            |
 
 ## 🚀 Local Development
 
@@ -86,9 +88,9 @@ Populate your PayPal Client ID for local development in `frontend/src/environmen
 ```ts
 export const environment = {
   production: false,
-  apiBaseUrl: 'http://localhost:3000',
-  paypalClientId: 'YOUR_PAYPAL_CLIENT_ID',
-  paypalCurrency: 'EUR',
+  apiBaseUrl: "http://localhost:3000",
+  paypalClientId: "YOUR_PAYPAL_CLIENT_ID",
+  paypalCurrency: "EUR",
 };
 ```
 
@@ -104,16 +106,16 @@ The app will be available at `http://localhost:4200`.
 
 **Backend** (`backend/.env`):
 
-| Variable | Description |
-|---|---|
-| `MONGO_URL` | MongoDB Atlas (or local) connection string |
-| `JWT_SECRET` | Secret used to sign JSON Web Tokens |
+| Variable      | Description                                            |
+| ------------- | ------------------------------------------------------ |
+| `MONGO_URL`   | MongoDB Atlas (or local) connection string             |
+| `JWT_SECRET`  | Secret used to sign JSON Web Tokens                    |
 | `CORS_ORIGIN` | Allowed origin for CORS (e.g. `http://localhost:4200`) |
 
 **Frontend** (production builds on Vercel):
 
-| Variable | Description |
-|---|---|
+| Variable           | Description                                                       |
+| ------------------ | ----------------------------------------------------------------- |
 | `PAYPAL_CLIENT_ID` | PayPal Client ID, injected at build time via `scripts/set-env.js` |
 
 ## 👤 Author
